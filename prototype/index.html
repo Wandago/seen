@@ -1,7 +1,7 @@
 <title>Wanlly Seen</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700;800;900&family=Figtree:wght@400;500;600;700&family=Anton&family=Permanent+Marker&family=Instrument+Serif:ital@0;1&family=Archivo+Narrow:wght@500;700&family=DM+Serif+Display:ital@0;1&family=Caveat:wght@600&display=swap">
 <style>
 /* Layout: warm off-white page broken into full-width pastel bands; centred chunky headlines; big rounded white cards with thick coloured arcs; black pill buttons, one yellow pill for the main sign-up. */
 :root {
@@ -169,17 +169,10 @@ footer .links button { background: none; border: 0; padding: 0; color: inherit; 
 .toolbar input { flex: 1; border: 0; padding: 10px 14px; background: transparent; min-width: 0 }
 .toolbar select { border: 0; border-left: 1px solid var(--line); padding: 0 12px; background: transparent }
 
-.cover { height: 190px; border-radius: 30px; position: relative; overflow: hidden; background: var(--cream) }
-.cover::after { content: ""; position: absolute; width: 460px; aspect-ratio: 1; border-radius: 50%; border: 60px solid var(--arc, var(--mustard)); right: -120px; top: -230px }
-.phead { display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: end; margin-top: -54px; padding-inline: 20px; position: relative }
-.avatar { width: 112px; height: 112px; border-radius: 50%; border: 5px solid var(--bg); background: var(--yellow); color: var(--on-yellow); display: grid; place-items: center; font-family: var(--display); font-weight: 900; font-size: 2.3rem }
 .pgrid { display: grid; gap: 28px; grid-template-columns: 1fr 320px; align-items: start; margin-top: 28px }
 .pgrid > * { min-width: 0 }
 .side { display: grid; gap: 14px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 84px) }
 .box { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 18px; display: grid; gap: 10px }
-.services div { display: flex; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line) }
-.services div:last-child { border-bottom: 0 }
-.work { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)) }
 .banner { display: flex; gap: 14px; align-items: center; justify-content: space-between; flex-wrap: wrap; background: var(--cream); border-radius: 22px; padding: 18px 22px }
 .kv { display: grid; grid-template-columns: 110px 1fr; gap: 8px 12px; font-size: 14.5px; margin: 0 }
 .kv dt { color: var(--muted) } .kv dd { margin: 0; min-width: 0; overflow-wrap: anywhere }
@@ -224,6 +217,203 @@ tr:last-child td { border-bottom: 0 }
 .field input, .field select, .field textarea { width: 100%; border: 1px solid var(--line); background: var(--card); border-radius: 12px; padding: 10px 12px }
 .field textarea { min-height: 90px; resize: vertical }
 .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 11px 18px; border-radius: 999px; font-weight: 600; z-index: 30; max-width: calc(100% - 32px) }
+
+/* ───────── Personal sites. Every template restyles the same markup through --s-* tokens. ───────── */
+.site { container-type: inline-size; --s-bg: #FFFFFF; --s-ink: #111111; --s-mut: #6B6B6B; --s-acc: #111111; --s-on: #FFFFFF; --s-acc2: #FFCB00; --s-card: #F4F4F4; --s-line: rgb(0 0 0 / .12); --s-fd: var(--display); --s-fb: var(--body); --s-r: 16px;
+  background: var(--s-bg); color: var(--s-ink); font-family: var(--s-fb); position: relative; overflow: hidden }
+.s-in { max-width: 1100px; margin: 0 auto; padding-inline: 24px; position: relative }
+.s-hero { padding-block: 64px 40px; position: relative }
+.s-hero .s-in { display: grid; gap: 14px; justify-items: start }
+.s-av { width: 84px; height: 84px; border-radius: 50%; background: var(--s-acc); color: var(--s-on); display: grid; place-items: center; font-family: var(--s-fd); font-size: 1.9rem }
+.s-kicker { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--s-mut); font-weight: 600 }
+.s-name { font-family: var(--s-fd); font-size: clamp(2.6rem, 11cqi, 7.5rem); line-height: .92; margin: 0; font-weight: 400; letter-spacing: -0.01em; text-wrap: balance; position: relative }
+.s-tag { display: none }
+.s-bio { max-width: 52ch; font-size: 1.08rem; color: var(--s-mut) }
+.s-contact { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px }
+.s-btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 10px 18px; font-weight: 600; font-size: 14.5px; border: 1.5px solid var(--s-ink); background: transparent; color: var(--s-ink); cursor: pointer; white-space: nowrap }
+.s-btn:first-child { background: var(--s-acc); color: var(--s-on); border-color: var(--s-acc) }
+.s-btn b { font-size: 11px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: currentColor; flex: none }
+.s-btn b span { color: var(--s-bg); font-weight: 700 }
+.s-btn:first-child b span { color: var(--s-acc) }
+.s-sec { padding-block: 28px 44px }
+.s-h { font-family: var(--s-fd); font-size: clamp(1.6rem, 4.4cqi, 2.6rem); margin: 0 0 18px; font-weight: 400; line-height: 1 }
+.s-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); grid-auto-flow: dense }
+.emb { background: var(--s-card); border-radius: var(--s-r); overflow: hidden; display: grid; border: 1px solid var(--s-line); min-width: 0 }
+.emb .tile { border-radius: 0; aspect-ratio: 4/5 }
+.emb[data-k="yt"] .tile, .emb[data-k="vi"] .tile { aspect-ratio: 16/9 }
+.emb[data-k="tt"] .tile { aspect-ratio: 9/14 }
+.emb[data-k="sc"] .tile, .emb[data-k="mx"] .tile { aspect-ratio: 16/7 }
+.emb[data-k="be"] .tile, .emb[data-k="dr"] .tile, .emb[data-k="img"] .tile { aspect-ratio: 4/3 }
+.emb .play { position: absolute; inset: 0; margin: auto; width: 54px; height: 54px; border-radius: 50%; background: rgb(0 0 0 / .55); z-index: 1 }
+.emb .play::after { content: ""; position: absolute; left: 21px; top: 16px; border-left: 16px solid #FFFFFF; border-top: 11px solid transparent; border-bottom: 11px solid transparent }
+.emb .wave { position: absolute; inset: auto 12px 12px 12px; height: 40%; display: flex; align-items: end; gap: 3px; z-index: 1 }
+.emb .wave i { flex: 1; background: #FFFFFF; opacity: .85; border-radius: 2px }
+.emb-cap { padding: 10px 12px 12px; display: grid; gap: 2px; min-width: 0 }
+.emb-cap strong { font-size: 14.5px; font-weight: 600; overflow-wrap: anywhere }
+.emb-src { display: flex; gap: 6px; align-items: center; font-size: 12px; color: var(--s-mut); min-width: 0 }
+.emb-src em { font-style: normal; font-weight: 700; font-size: 10px; padding: 1px 6px; border-radius: 4px; background: var(--s-ink); color: var(--s-bg); flex: none }
+.emb-src span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.s-proof { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px }
+.s-card { background: var(--s-card); border: 1px solid var(--s-line); border-radius: var(--s-r); padding: 18px; display: grid; gap: 6px }
+.s-stars { font-size: 1.4rem; letter-spacing: 2px; color: var(--s-acc2) }
+.s-big { font-family: var(--s-fd); font-size: 2.6rem; line-height: 1 }
+.s-foot { border-top: 1px solid var(--s-line); padding-block: 26px 30px }
+.s-foot .s-in { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; font-size: 13px; color: var(--s-mut) }
+.s-qr { width: 76px; height: 76px; background: #FFFFFF; padding: 6px; border-radius: 8px; flex: none }
+.s-qr img, .s-qr canvas { width: 100% !important; height: 100% !important; display: block }
+.s-made { display: inline-flex; gap: 6px; align-items: center; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--s-line) }
+
+/* Street: hip hop, loud, stickers */
+.site[data-tpl="street"] { --s-bg: #0B0B0B; --s-ink: #F5F5F0; --s-mut: #A9A9A0; --s-acc: #FFE600; --s-on: #0B0B0B; --s-acc2: #FF4FA3; --s-card: #161616; --s-line: #2C2C2C; --s-fd: "Anton", Impact, sans-serif; --s-r: 4px }
+.site[data-tpl="street"] .s-name { text-transform: uppercase; font-size: clamp(3.4rem, 17cqi, 11rem); line-height: .85 }
+.site[data-tpl="street"] .s-tag { display: block; position: absolute; right: 2%; top: -6%; font-family: "Permanent Marker", cursive; color: var(--s-acc2); font-size: clamp(1.6rem, 6cqi, 3.8rem); transform: rotate(-8deg); text-transform: none; white-space: nowrap }
+.site[data-tpl="street"] .s-hero::after { content: "WORK WORK WORK WORK"; position: absolute; left: -2%; bottom: -18px; font-family: "Anton", Impact, sans-serif; font-size: 22cqi; line-height: 1; color: transparent; -webkit-text-stroke: 1px #2E2E2E; white-space: nowrap; pointer-events: none }
+.site[data-tpl="street"] .s-hero .s-in { z-index: 1 }
+.site[data-tpl="street"] .s-av { border-radius: 0; transform: rotate(-4deg); box-shadow: 6px 6px 0 var(--s-acc2) }
+.site[data-tpl="street"] .s-btn { border-radius: 0; text-transform: uppercase; letter-spacing: .04em; border-width: 2px }
+.site[data-tpl="street"] .s-h { text-transform: uppercase; color: var(--s-acc) }
+.site[data-tpl="street"] .emb { border: 3px solid var(--s-ink) }
+.site[data-tpl="street"] .emb:nth-child(odd) { transform: rotate(-1.2deg) }
+.site[data-tpl="street"] .emb:nth-child(even) { transform: rotate(1deg) translateY(10px) }
+.site[data-tpl="street"] .emb-src em { background: var(--s-acc2); color: #0B0B0B }
+
+/* Gallery: quiet, editorial, images first */
+.site[data-tpl="gallery"] { --s-bg: #F7F6F2; --s-ink: #141414; --s-mut: #77756F; --s-acc: #141414; --s-on: #F7F6F2; --s-acc2: #141414; --s-card: transparent; --s-line: transparent; --s-fd: "Instrument Serif", Georgia, serif; --s-r: 0 }
+.site[data-tpl="gallery"] .s-name { font-style: italic }
+.site[data-tpl="gallery"] .s-hero .s-in { justify-items: center; text-align: center }
+.site[data-tpl="gallery"] .s-contact { justify-content: center }
+.site[data-tpl="gallery"] .s-av { display: none }
+.site[data-tpl="gallery"] .s-btn { border-width: 1px; font-weight: 500 }
+.site[data-tpl="gallery"] .emb:first-child { grid-column: span 2; grid-row: span 2 }
+.site[data-tpl="gallery"] .emb:first-child .tile { aspect-ratio: auto; height: 100% }
+.site[data-tpl="gallery"] .emb-cap { padding-inline: 0 }
+.site[data-tpl="gallery"] .s-h { text-align: center; font-style: italic }
+
+/* Reel: cinema, widescreen */
+.site[data-tpl="reel"] { --s-bg: #0E1114; --s-ink: #EDEDED; --s-mut: #8D96A0; --s-acc: #FF5A36; --s-on: #0E1114; --s-acc2: #FF5A36; --s-card: #161B20; --s-line: #232A31; --s-fd: "Archivo Narrow", "Arial Narrow", sans-serif; --s-r: 6px }
+.site[data-tpl="reel"] .s-name, .site[data-tpl="reel"] .s-h { text-transform: uppercase; font-weight: 700; letter-spacing: .01em }
+.site[data-tpl="reel"] .s-hero { border-bottom: 1px solid var(--s-line); background: linear-gradient(180deg, #000000, var(--s-bg)) }
+.site[data-tpl="reel"] .s-hero::before { content: "● REC"; position: absolute; right: 24px; top: 20px; color: var(--s-acc); font: 700 12px/1 var(--s-fb); letter-spacing: .15em }
+.site[data-tpl="reel"] .s-av { border-radius: 6px }
+.site[data-tpl="reel"] .s-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) }
+.site[data-tpl="reel"] .emb .tile { aspect-ratio: 16/9 }
+.site[data-tpl="reel"] .emb:first-child { grid-column: 1 / -1 }
+.site[data-tpl="reel"] .emb:first-child .tile { aspect-ratio: 21/9 }
+
+/* Studio: Swiss grid */
+.site[data-tpl="studio"] { --s-bg: #FFFFFF; --s-ink: #111111; --s-mut: #6B6B6B; --s-acc: #E5341D; --s-on: #FFFFFF; --s-acc2: #E5341D; --s-card: #FFFFFF; --s-line: #111111; --s-r: 0 }
+.site[data-tpl="studio"] .s-name { font-weight: 900; letter-spacing: -0.04em; font-size: clamp(2.8rem, 12cqi, 8rem) }
+.site[data-tpl="studio"] .s-hero { border-bottom: 2px solid var(--s-ink) }
+.site[data-tpl="studio"] .s-av { border-radius: 0; background: var(--s-ink) }
+.site[data-tpl="studio"] .s-btn { border-radius: 0 }
+.site[data-tpl="studio"] .s-h { font-weight: 800 }
+.site[data-tpl="studio"] .s-grid { gap: 0; border-top: 1px solid var(--s-ink); border-left: 1px solid var(--s-ink) }
+.site[data-tpl="studio"] .emb { border: 0; border-right: 1px solid var(--s-ink); border-bottom: 1px solid var(--s-ink); padding: 12px; gap: 10px }
+
+/* Kitenge: print pattern, warm */
+.site[data-tpl="kitenge"] { --s-bg: #FFF4E0; --s-ink: #2B1A0E; --s-mut: #7A5C44; --s-acc: #E0592A; --s-on: #FFF4E0; --s-acc2: #1D5C63; --s-card: #FFFFFF; --s-line: #EAD6B8; --s-fd: "DM Serif Display", Georgia, serif; --s-r: 24px }
+.site[data-tpl="kitenge"] .s-hero { padding-top: 104px }
+.site[data-tpl="kitenge"] .s-hero::before { content: ""; position: absolute; inset: 0 0 auto; height: 64px; background:
+  radial-gradient(circle at 16px 16px, #1D5C63 9px, transparent 10px) 0 0 / 32px 32px,
+  radial-gradient(circle at 16px 16px, #F2B33D 5px, transparent 6px) 16px 16px / 32px 32px,
+  linear-gradient(90deg, #E0592A 50%, #B83A1B 50%) 0 0 / 64px 64px }
+.site[data-tpl="kitenge"] .s-av { background: var(--s-acc2); color: #FFF4E0; border: 4px solid #F2B33D }
+.site[data-tpl="kitenge"] .s-btn:first-child { background: var(--s-acc2); border-color: var(--s-acc2); color: #FFF4E0 }
+.site[data-tpl="kitenge"] .s-btn:first-child b span { color: var(--s-acc2) }
+
+/* Glow: soft, beauty */
+.site[data-tpl="glow"] { --s-bg: #FFF0F3; --s-ink: #3A1E2A; --s-mut: #8A5F6E; --s-acc: #D9467A; --s-on: #FFFFFF; --s-acc2: #D9467A; --s-card: #FFFFFF; --s-line: #F6D3DD; --s-fd: "DM Serif Display", Georgia, serif; --s-r: 28px }
+.site[data-tpl="glow"] .s-hero .s-in { justify-items: center; text-align: center }
+.site[data-tpl="glow"] .s-contact { justify-content: center }
+.site[data-tpl="glow"] .s-name { font-style: italic }
+.site[data-tpl="glow"] .s-kicker { font-family: "Caveat", cursive; text-transform: none; letter-spacing: 0; font-size: 1.6rem; color: var(--s-acc) }
+.site[data-tpl="glow"] .s-av { width: 110px; height: 110px; box-shadow: 0 0 0 6px #FFFFFF, 0 0 0 9px var(--s-acc) }
+.site[data-tpl="glow"] .s-hero { background: radial-gradient(60% 80% at 50% 0%, #FFD6E2, transparent) }
+.site[data-tpl="glow"] .s-btn:not(:first-child) { border-color: var(--s-line); background: #FFFFFF }
+
+/* Groove: DJs and musicians */
+.site[data-tpl="groove"] { --s-bg: #0F2A22; --s-ink: #F1EAD8; --s-mut: #A9BFB4; --s-acc: #FF8A3D; --s-on: #0F2A22; --s-acc2: #FF8A3D; --s-card: #143629; --s-line: #1F4536; --s-fd: "Gabarito", sans-serif; --s-r: 14px }
+.site[data-tpl="groove"] .s-name { font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em }
+.site[data-tpl="groove"] .s-hero { padding-bottom: 96px }
+.site[data-tpl="groove"] .s-hero::after { content: ""; position: absolute; left: 24px; right: 24px; bottom: 24px; height: 48px; opacity: .55;
+  background: repeating-linear-gradient(90deg, var(--s-acc) 0 4px, transparent 4px 9px);
+  -webkit-mask: radial-gradient(70% 120% at 40% 100%, #000 40%, transparent 72%); mask: radial-gradient(70% 120% at 40% 100%, #000 40%, transparent 72%) }
+.site[data-tpl="groove"] .s-av { border-radius: 50%; background: conic-gradient(var(--s-acc) 0 25%, #F1EAD8 0 50%, var(--s-acc) 0 75%, #F1EAD8 0); color: #0F2A22 }
+.site[data-tpl="groove"] .s-h { font-weight: 800; text-transform: uppercase }
+
+/* Menu: caterers and food */
+.site[data-tpl="menu"] { --s-bg: #F4EBDD; --s-ink: #2A1712; --s-mut: #7B5E52; --s-acc: #8E2A1E; --s-on: #F4EBDD; --s-acc2: #C98A1B; --s-card: #FFFDF8; --s-line: #E2D2BC; --s-fd: "DM Serif Display", Georgia, serif; --s-r: 10px }
+.site[data-tpl="menu"] .s-hero .s-in { justify-items: center; text-align: center }
+.site[data-tpl="menu"] .s-contact { justify-content: center }
+.site[data-tpl="menu"] .s-kicker::before, .site[data-tpl="menu"] .s-kicker::after { content: " ✦ "; color: var(--s-acc2) }
+.site[data-tpl="menu"] .s-hero { border-bottom: 3px double var(--s-line) }
+.site[data-tpl="menu"] .s-h { text-align: center }
+.site[data-tpl="menu"] .s-av { background: var(--s-acc2); color: #2A1712 }
+
+@container (max-width: 560px) {
+  .s-in { padding-inline: 16px }
+  .s-hero { padding-block: 44px 28px }
+  .s-grid { grid-template-columns: 1fr 1fr; gap: 10px }
+  .site[data-tpl="reel"] .s-grid { grid-template-columns: 1fr }
+  .site[data-tpl="gallery"] .emb:first-child { grid-column: 1 / -1; grid-row: auto }
+  .site[data-tpl="gallery"] .emb:first-child .tile { aspect-ratio: 4/3; height: auto }
+  .emb-cap strong { font-size: 13px }
+  .site[data-tpl="street"] .s-tag { position: static; display: block; margin-top: 8px; font-size: 1.5rem }
+}
+
+/* Seen strip above a personal site */
+.strip { background: var(--card); border-bottom: 1px solid var(--line) }
+.strip .wrap { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding-block: 10px; font-size: 14px }
+.strip .tpls { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto }
+.swatch { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); cursor: pointer; font-size: 13px }
+.swatch i { width: 18px; height: 18px; border-radius: 50%; flex: none; border: 1px solid rgb(0 0 0 / .1) }
+.swatch[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--bg) }
+
+/* Templates gallery */
+.tgrid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) }
+.tcard { background: var(--card); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; cursor: pointer; text-align: left; padding: 0 }
+.tcard:hover { border-color: var(--ink) }
+.thumb { height: 300px; overflow: hidden; position: relative; border-bottom: 1px solid var(--line) }
+.thumb .site { width: calc(100% / .31); transform: scale(.31); transform-origin: top left; position: absolute; left: 0; top: 0; pointer-events: none }
+.tcard .body { padding: 14px 16px 16px; display: grid; gap: 3px }
+.tcard .name { font-family: var(--display); font-weight: 700; font-size: 18px }
+.soon { display: flex; flex-wrap: wrap; gap: 8px }
+
+/* Editor */
+.editor { display: grid; grid-template-columns: 360px 1fr; gap: 22px; align-items: start }
+.editor > * { min-width: 0 }
+.ed-panel { display: grid; gap: 14px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 84px) }
+.ed-links { display: grid; gap: 8px }
+.ed-link { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; padding: 8px 10px; border: 1px solid var(--line); border-radius: 12px; font-size: 13.5px; background: var(--card) }
+.ed-link em { font-style: normal; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: var(--ink); color: var(--bg) }
+.ed-link span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0 }
+.ed-link button { background: none; border: 0; cursor: pointer; color: var(--muted); font-size: 18px; padding: 0 4px }
+.ed-add { display: flex; gap: 6px }
+.ed-add input { flex: 1; min-width: 0; border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px; background: var(--card) }
+.ed-hint { font-size: 12.5px; color: var(--muted) }
+.ed-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap }
+.ed-row input[type=color] { width: 44px; height: 32px; border: 1px solid var(--line); border-radius: 8px; padding: 2px; background: var(--card) }
+.preview { border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: var(--card); box-shadow: 0 30px 60px -40px rgb(0 0 0 / .4) }
+.preview .chrome { display: flex; gap: 8px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--line); font-size: 13px; color: var(--muted) }
+.preview .chrome i { width: 10px; height: 10px; border-radius: 50%; background: var(--line) }
+.preview .chrome span { margin-left: 8px; background: var(--soft); border-radius: 999px; padding: 3px 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0 }
+.preview .pv { max-height: 760px; overflow: auto }
+
+/* Share card */
+.share { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center }
+.qr { width: 132px; height: 132px; background: #FFFFFF; border: 1px solid var(--line); border-radius: 14px; padding: 8px; display: grid; place-items: center; font-size: 11px; color: var(--muted); text-align: center }
+.qr img, .qr canvas { width: 100% !important; height: 100% !important; display: block }
+.linkbox { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 5px 5px 5px 14px; min-width: 0 }
+.linkbox span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 1 }
+.side .share { grid-template-columns: 1fr; justify-items: start }
+.side .share .stack { width: 100% }
+.taps > div { display: grid; grid-template-columns: 110px 1fr 40px; gap: 10px; align-items: center; font-size: 14px; padding: 5px 0 }
+.taps .bar { height: 10px; border-radius: 99px; background: var(--soft); overflow: hidden }
+.taps .bar i { display: block; height: 100%; background: var(--ink); border-radius: 99px }
+@media (max-width: 900px) {
+  .editor { grid-template-columns: 1fr }
+  .ed-panel { position: static }
+}
 
 /* walkthrough */
 .tour { position: fixed; z-index: 40; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); width: min(460px, calc(100% - 32px)); background: #0A0A0A; color: #FFFFFF; border-radius: 22px; padding: 18px 18px 14px; display: grid; gap: 10px; box-shadow: 0 24px 60px -20px rgb(0 0 0 / .6) }
@@ -279,12 +469,14 @@ tr:last-child td { border-bottom: 0 }
     <nav class="nav" aria-label="Screens">
       <button data-go="home">Home</button>
       <button data-go="results">Find talent</button>
+      <button data-go="templates">Templates</button>
+      <button data-go="edit">Edit my page</button>
+      <button data-go="dash">My stats</button>
       <button data-go="unclaimed">Unclaimed page</button>
       <button data-go="claim">Claim</button>
-      <button data-go="dash">My page</button>
       <button data-go="admin">Admin</button>
     </nav>
-    <div class="auth"><button class="btn line sm" data-tour>▶ Walkthrough</button><button class="btn ghost" data-go="dash">Log in</button><button class="btn yellow" data-go="claim">Get listed</button></div>
+    <div class="auth"><button class="btn line sm" data-tour>▶ Walkthrough</button><button class="btn yellow" data-go="edit">Get listed</button></div>
   </div>
 </header>
 
@@ -293,8 +485,8 @@ tr:last-child td { border-bottom: 0 }
 <footer>
   <div class="wrap">
     <div class="cols">
-      <div class="stack" style="gap:10px"><strong style="font-family:var(--display);font-size:1.4rem;text-transform:uppercase;font-weight:900">Seen</strong><p style="color:#CFCFCF;max-width:34ch" class="small">A free directory for Kenyan freelancers and small businesses. Part of Wanlly. Prototype with example data.</p></div>
-      <div><h4>Seen</h4><div class="links"><button data-go="results">Find talent</button><button data-go="claim">Claim your page</button><button data-brief="">Post a brief</button></div></div>
+      <div class="stack" style="gap:10px"><strong style="font-family:var(--display);font-size:1.4rem;text-transform:uppercase;font-weight:900">Seen</strong><p style="color:#CFCFCF;max-width:36ch" class="small">A free directory for Kenyan freelancers and small businesses. No fees, no commission, no middleman. Part of Wanlly. Prototype with example people.</p></div>
+      <div><h4>Seen</h4><div class="links"><button data-go="results">Find talent</button><button data-go="templates">Templates</button><button data-go="edit">Make your page</button><button data-go="claim">Claim your business</button></div></div>
       <div><h4>Wanlly</h4><div class="links"><span>wanlly.africa</span><span>sign.wanlly.africa</span><span>seen.wanlly.africa</span></div></div>
     </div>
   </div>
@@ -302,106 +494,204 @@ tr:last-child td { border-bottom: 0 }
 </footer>
 <div id="layer"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-const PAL = [["#F2A65A", "#7A2E22", "#FFCB00"], ["#1E6A5E", "#E2F8E5", "#F2A65A"], ["#5B3D8A", "#F6B8D9", "#FFCB00"], ["#D4911C", "#0A0A0A", "#FDE6C8"], ["#C8DBF9", "#1F3E73", "#F2A65A"], ["#B04031", "#FFCB00", "#FCE5F3"], ["#2F2A26", "#D4911C", "#E2F8E5"]];
-const PEOPLE = [
-  { id: "amina", name: "Amina Wanjiru", initials: "AW", kind: "Freelancer", trade: "Brand & logo design", city: "Nairobi", t: 0, claimed: true, updated: "2 days ago", reply: "Usually replies in 2 hours", from: 8000,
-    work: ["Logo · Mama Mboga app", "Packaging · Kahawa Bora", "Brand book · Tujenge Sacco", "Menu · Java Kilimani", "Poster · Blankets & Wine", "Social kit · Zuri Salon"],
-    services: [["Logo + brand basics", 8000], ["Full brand identity", 35000], ["Social media kit", 6000]],
-    about: "I design brands for Kenyan small businesses: logos, packaging and the social posts that go with them. Six years, 90+ clients." },
-  { id: "otieno", name: "Brian Otieno", initials: "BO", kind: "Freelancer", trade: "Wedding & event photography", city: "Kisumu", t: 1, claimed: true, updated: "5 days ago", reply: "Usually replies the same day", from: 15000,
-    work: ["Wedding · Dunga Hill", "Ruracio · Kisumu", "Corporate · KCB AGM"], services: [["Half-day event", 15000], ["Full wedding day", 60000]], about: "Weddings, ruracios and corporate events across western Kenya." },
-  { id: "kibet", name: "Kibet Web Studio", initials: "KW", kind: "Business", trade: "Websites & online shops", city: "Eldoret", t: 4, claimed: true, updated: "1 week ago", reply: "Usually replies within a day", from: 25000,
-    work: ["Shop · Rift Valley Dairy", "Site · Eldoret Hospital", "Booking · Kerio Lodge"], services: [["Business website", 25000], ["Online shop with M-Pesa", 55000]], about: "A small team building fast websites and M-Pesa shops." },
-  { id: "njeri", name: "Njeri Kamau", initials: "NK", kind: "Freelancer", trade: "Copywriting & content", city: "Remote · Kenya", t: 2, claimed: true, updated: "today", reply: "Usually replies in an hour", from: 3000,
-    work: ["Website copy · Lipa Later", "Blog series · Twiga", "Newsletter · Akiba"], services: [["Website page", 3000], ["Monthly blog (4 posts)", 18000]], about: "Clear copy for fintech and consumer brands." },
-  { id: "zawadi", name: "Zawadi Tailoring", initials: "ZT", kind: "Business", trade: "Tailoring & bridal", city: "Mombasa", t: 5, claimed: true, updated: "3 days ago", reply: "Usually replies the same day", from: 4500,
-    work: ["Bridal · Nyali", "Kitenge suits", "School uniforms"], services: [["Kitenge outfit", 4500], ["Bridal gown", 45000]], about: "Made-to-measure kitenge, suits and bridal wear." },
-  { id: "mwangi", name: "Mwangi & Co. Catering", initials: "MC", kind: "Business", trade: "Event catering", city: "Nakuru", t: 3, claimed: false, updated: "", reply: "", from: 0, work: [], services: [], about: "" },
+const PAL = [["#F2A65A", "#7A2E22", "#FFCB00"], ["#1E6A5E", "#E2F8E5", "#F2A65A"], ["#5B3D8A", "#F6B8D9", "#FFCB00"], ["#D4911C", "#0A0A0A", "#FDE6C8"], ["#C8DBF9", "#1F3E73", "#F2A65A"], ["#B04031", "#FFCB00", "#FCE5F3"], ["#2F2A26", "#D4911C", "#E2F8E5"], ["#FF4FA3", "#0B0B0B", "#FFE600"], ["#0E1114", "#FF5A36", "#8D96A0"]];
+
+// Where work can live. Seen stores only the link; the post, video or image stays on that platform.
+const KINDS = {
+  ig: { name: "Instagram", tag: "IG", re: /instagram\.com\/(p|reel)\// },
+  tt: { name: "TikTok", tag: "TT", re: /tiktok\.com\//, video: 1 },
+  yt: { name: "YouTube", tag: "YT", re: /(youtube\.com|youtu\.be)\//, video: 1 },
+  vi: { name: "Vimeo", tag: "VI", re: /vimeo\.com\//, video: 1 },
+  be: { name: "Behance", tag: "BE", re: /behance\.net\// },
+  dr: { name: "Dribbble", tag: "DR", re: /dribbble\.com\// },
+  sc: { name: "SoundCloud", tag: "SC", re: /soundcloud\.com\//, audio: 1 },
+  mx: { name: "Mixcloud", tag: "MX", re: /mixcloud\.com\//, audio: 1 },
+  pin: { name: "Pinterest", tag: "PIN", re: /pin(terest\.com|\.it)\// },
+  img: { name: "Image link", tag: "IMG", re: /\.(jpe?g|png|webp|gif)(\?|$)/i },
+  link: { name: "Link", tag: "WEB", re: /./ },
+};
+const kindOf = (u) => Object.keys(KINDS).find((k) => KINDS[k].re.test(u));
+const CONTACT = { wa: ["WhatsApp", "W"], ig: ["Instagram DM", "IG"], em: ["Email", "@"], ph: ["Call", "☎"], tt: ["TikTok", "TT"], x: ["X", "X"], li: ["LinkedIn", "in"] };
+
+const TPLS = [
+  { id: "street", name: "Street", for: "Designers, illustrators, streetwear", dot: "#FFE600" },
+  { id: "gallery", name: "Gallery", for: "Photographers", dot: "#F7F6F2" },
+  { id: "reel", name: "Reel", for: "Videographers and filmmakers", dot: "#FF5A36" },
+  { id: "studio", name: "Studio", for: "Agencies, brand and web designers", dot: "#E5341D" },
+  { id: "kitenge", name: "Kitenge", for: "Fashion and tailoring", dot: "#E0592A" },
+  { id: "glow", name: "Glow", for: "Makeup, hair and beauty", dot: "#D9467A" },
+  { id: "groove", name: "Groove", for: "DJs, musicians and producers", dot: "#0F2A22" },
+  { id: "menu", name: "Menu", for: "Caterers, chefs and food", dot: "#8E2A1E" },
 ];
-const CATS = ["Graphic design", "Photography", "Video", "Websites", "Writing", "Music & DJs", "Events", "Catering", "Tailoring", "Makeup & hair"];
-const fmt = (n) => "KES " + n.toLocaleString("en-KE");
+const SOON = ["Ink (tattoo artists)", "Canvas (painters)", "Lens Mono (black & white)", "Stage (dancers)", "Pages (writers)", "Blueprint (architects)", "Chalk (teachers & tutors)", "Garage (mechanics)", "Bloom (florists)", "Matatu (graffiti & sign writers)", "Spoken (poets & MCs)", "Frame (interior design)"];
+
+const PEOPLE = [
+  { id: "kaz", name: "Kaz Ndegwa", initials: "KZ", tag: "kazdrips", kind: "Freelancer", trade: "Graphic designer & illustrator", city: "Nairobi", tpl: "street", t: 7, claimed: true, updated: "2 days ago",
+    bio: "Album covers, streetwear graphics and murals. Hip hop is the brief, Nairobi is the canvas.",
+    contact: [["wa", "+254 712 345 678"], ["ig", "@kazdrips"], ["em", "kaz@kazdrips.co.ke"], ["tt", "@kazdrips"]],
+    work: [["ig", "Cover art · “Matatu Nights” EP", "instagram.com/p/C9xKz2"], ["tt", "Process: from sketch to cover", "tiktok.com/@kazdrips/video/73…"], ["be", "Shuka Gang drop 04", "behance.net/gallery/1882…"], ["yt", "Mural speed paint, Kilimani", "youtube.com/watch?v=Qm8…"], ["ig", "Sticker pack · Sauti Records", "instagram.com/p/C8a1Lm"], ["ig", "Poster · Kenya Hip Hop Fest", "instagram.com/p/C7tWq0"]],
+    proof: { clients: "Sauti Records · Shuka Gang · Nairobi Design Week · Kilimani Arts Trust" } },
+  { id: "otieno", name: "Brian Otieno", initials: "BO", kind: "Freelancer", trade: "Wedding & event photographer", city: "Kisumu", tpl: "gallery", t: 1, claimed: true, updated: "5 days ago",
+    bio: "Weddings, ruracios and corporate events across western Kenya. Quiet on the day, loud in the album.",
+    contact: [["wa", "+254 722 000 111"], ["ig", "@otienoframes"], ["em", "hello@otienoframes.com"]],
+    work: [["ig", "Wedding · Dunga Hill", "instagram.com/p/C6Rk"], ["ig", "Ruracio · Kisumu", "instagram.com/p/C5Ta"], ["pin", "Bridal portraits board", "pinterest.com/otienoframes/…"], ["ig", "KCB AGM", "instagram.com/p/C4Qq"], ["img", "Lake Victoria sunset", "drive.google.com/…/sunset.jpg"]],
+    proof: { rating: 4.9, reviews: 63, quote: "He caught moments we didn't know happened." } },
+  { id: "wanjiru", name: "Wanjiru Films", initials: "WF", kind: "Business", trade: "Videography & music videos", city: "Nairobi", tpl: "reel", t: 8, claimed: true, updated: "1 week ago",
+    bio: "Music videos, brand films and documentaries. Shot in Nairobi, seen everywhere.",
+    contact: [["wa", "+254 733 222 444"], ["em", "studio@wanjirufilms.com"], ["ig", "@wanjirufilms"], ["ph", "+254 733 222 444"]],
+    work: [["yt", "Showreel 2026", "youtube.com/watch?v=Wf26"], ["yt", "“Nairobi Nights”, official video", "youtube.com/watch?v=Nn1"], ["vi", "Safaricom brand film (BTS)", "vimeo.com/90122…"], ["tt", "Behind the scenes", "tiktok.com/@wanjirufilms/…"]],
+    proof: { rating: 4.8, reviews: 41, quote: "Delivered our launch film in 10 days." } },
+  { id: "amina", name: "Amina Wanjiru", initials: "AW", kind: "Freelancer", trade: "Brand & logo design", city: "Nairobi", tpl: "studio", t: 0, claimed: true, updated: "today",
+    bio: "I design brands for Kenyan small businesses: logos, packaging and the social posts that go with them.",
+    contact: [["em", "amina@aminaw.studio"], ["wa", "+254 711 555 888"], ["li", "Amina Wanjiru"]],
+    work: [["be", "Mama Mboga app identity", "behance.net/gallery/1771…"], ["dr", "Kahawa Bora packaging", "dribbble.com/shots/2390…"], ["be", "Tujenge Sacco brand book", "behance.net/gallery/1650…"], ["ig", "Java Kilimani menu", "instagram.com/p/C3Pp"]],
+    proof: { clients: "Mama Mboga · Kahawa Bora · Tujenge Sacco · Java Kilimani" } },
+  { id: "zawadi", name: "Zawadi Tailoring", initials: "ZT", kind: "Business", trade: "Tailoring & bridal", city: "Mombasa", tpl: "kitenge", t: 5, claimed: true, updated: "3 days ago",
+    bio: "Made-to-measure kitenge, suits and bridal wear from our shop in Nyali.",
+    contact: [["wa", "+254 700 123 987"], ["ph", "+254 700 123 987"], ["ig", "@zawaditailoring"]],
+    work: [["ig", "Bridal · Nyali", "instagram.com/p/C2Zz"], ["tt", "Kitenge suit fitting", "tiktok.com/@zawadi/…"], ["ig", "School uniforms, 2026", "instagram.com/p/C1Uu"]],
+    proof: { rating: 4.7, reviews: 112, quote: "My gown was ready a week early." } },
+  { id: "grace", name: "Grace Beauty Studio", initials: "GB", kind: "Freelancer", trade: "Bridal makeup & hair", city: "Nairobi", tpl: "glow", t: 2, claimed: true, updated: "4 days ago",
+    bio: "Soft glam and bridal makeup. I come to you anywhere in Nairobi.",
+    contact: [["wa", "+254 799 456 123"], ["ig", "@gracebeauty.ke"], ["tt", "@gracebeauty"]],
+    work: [["ig", "Bridal soft glam", "instagram.com/reel/C9…"], ["tt", "Makeup in 60 seconds", "tiktok.com/@gracebeauty/…"], ["ig", "Graduation looks", "instagram.com/p/C8…"]],
+    proof: { rating: 5.0, reviews: 38, quote: "Lasted from 7am to the last dance." } },
+  { id: "mosh", name: "DJ Mosh", initials: "DM", kind: "Freelancer", trade: "DJ · Amapiano & Afrobeats", city: "Nairobi", tpl: "groove", t: 6, claimed: true, updated: "yesterday",
+    bio: "Weddings, clubs and corporate parties. Amapiano, Afrobeats, Gengetone and the old school when it's time.",
+    contact: [["wa", "+254 745 000 321"], ["ig", "@djmosh254"], ["em", "bookings@djmosh.co.ke"]],
+    work: [["mx", "Amapiano Sundays vol. 9", "mixcloud.com/djmosh/…"], ["sc", "Gengetone throwback mix", "soundcloud.com/djmosh/…"], ["yt", "Live at Blankets & Wine", "youtube.com/watch?v=Bw9"], ["tt", "Crowd at Alchemist", "tiktok.com/@djmosh/…"]],
+    proof: { clients: "Blankets & Wine · Alchemist · Safaricom Jazz after-party" } },
+  { id: "pishi", name: "Pishi Kitchen", initials: "PK", kind: "Business", trade: "Event catering", city: "Nakuru", tpl: "menu", t: 3, claimed: true, updated: "6 days ago",
+    bio: "Swahili and Kenyan dishes for weddings, harambees and office lunches, 20 to 800 guests.",
+    contact: [["wa", "+254 701 777 222"], ["ph", "+254 701 777 222"], ["em", "orders@pishikitchen.co.ke"]],
+    work: [["ig", "Wedding buffet, Lake Elementaita", "instagram.com/p/C5…"], ["ig", "Pilau day", "instagram.com/p/C4…"], ["tt", "Biryani for 300", "tiktok.com/@pishi/…"]],
+    proof: { rating: 4.8, reviews: 87, quote: "Our guests are still talking about the biryani." } },
+  { id: "mwangi", name: "Mwangi & Co. Catering", initials: "MC", kind: "Business", trade: "Event catering", city: "Nakuru", t: 3, claimed: false, work: [] },
+];
+const CATS = ["Graphic design", "Photography", "Video", "Music & DJs", "Makeup & hair", "Fashion", "Websites", "Writing", "Catering", "Events"];
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const first = (n) => n.split(" ")[0];
+const byId = (id) => PEOPLE.find((x) => x.id === id);
+const tplName = (id) => (TPLS.find((t) => t.id === id) || TPLS[0]).name;
 
 function tile(i, who, s = i % 4) {
   const [a, b, c] = PAL[i % PAL.length];
   return `<div class="tile" data-s="${s}" style="--c1:${a};--c2:${b};--c3:${c}">${who ? `<span class="who"><i></i>${esc(who)}</span>` : ""}</div>`;
 }
+function emb([k, title, url], i, seed) {
+  const K = KINDS[k] || KINDS.link;
+  const art = tile(seed + i, "", i % 4);
+  const extra = K.video ? `<span class="play"></span>` : K.audio ? `<span class="wave">${Array.from({ length: 28 }, (_, j) => `<i style="height:${20 + Math.abs(Math.sin(j * 1.7 + i)) * 80}%"></i>`).join("")}</span>` : "";
+  return `<div class="emb" data-k="${k}">${art.replace("</div>", extra + "</div>")}<div class="emb-cap"><strong>${esc(title)}</strong><span class="emb-src"><em>${K.tag}</em><span>${esc(url)}</span></span></div></div>`;
+}
+function site(p, tpl = p.tpl, acc) {
+  const proof = p.proof || {};
+  const cards = [];
+  if (proof.rating) cards.push(`<div class="s-card"><span class="s-stars">★★★★★</span><span class="s-big">${proof.rating.toFixed(1)}</span><span>${proof.reviews} Google reviews</span><span style="color:var(--s-mut)">“${esc(proof.quote)}”</span><span class="emb-src"><em>G</em><span>From the Google Business link on this page</span></span></div>`);
+  if (proof.clients) cards.push(`<div class="s-card"><span class="s-kicker">Worked with</span><span style="font-family:var(--s-fd);font-size:1.4rem;line-height:1.25">${esc(proof.clients)}</span></div>`);
+  return `<div class="site" data-tpl="${tpl}"${acc ? ` style="--s-acc:${acc}"` : ""}>
+    <header class="s-hero"><div class="s-in">
+      <div class="s-av">${p.initials}</div>
+      <span class="s-kicker">${esc(p.trade)} · ${esc(p.city)}</span>
+      <h1 class="s-name">${esc(p.name)}${p.tag ? `<span class="s-tag">@${esc(p.tag)}</span>` : ""}</h1>
+      <p class="s-bio">${esc(p.bio)}</p>
+      <div class="s-contact">${p.contact.map(([k, v]) => `<button class="s-btn" data-toast="Opens ${esc(CONTACT[k][0])}: ${esc(v)}"><b><span>${CONTACT[k][1]}</span></b>${CONTACT[k][0]}</button>`).join("")}</div>
+    </div></header>
+    <section class="s-sec"><div class="s-in"><h2 class="s-h">Work</h2><div class="s-grid">${p.work.map((w, i) => emb(w, i, p.t)).join("")}</div></div></section>
+    ${cards.length ? `<section class="s-sec" style="padding-top:0"><div class="s-in"><div class="s-proof">${cards.join("")}</div></div></section>` : ""}
+    <footer class="s-foot"><div class="s-in"><div class="row" style="gap:12px"><div class="s-qr" data-qr="seen.wanlly.africa/${p.id}"></div><span>Scan or visit<br><strong style="color:var(--s-ink)">seen.wanlly.africa/${p.id}</strong></span></div><span class="s-made">Made on Seen · free</span></div></footer>
+  </div>`;
+}
 function card(p) {
   if (!p.claimed) return `<button class="card unclaimed-card" data-open="unclaimed"><div class="tile"></div><div class="body"><span class="name">${esc(p.name)}</span><span class="meta">${esc(p.trade)} · ${esc(p.city)}</span><span><span class="pill flag">Unclaimed</span></span></div></button>`;
-  return `<button class="card" data-open="${p.id}">${tile(p.t, p.work[0])}<div class="body"><span class="name">${esc(p.name)}</span><span class="meta">${esc(p.trade)} · ${esc(p.city)}</span><span class="meta"><span class="pill ${p.kind === "Business" ? "lav" : "mint"}">${p.kind}</span>From <span class="num">${fmt(p.from)}</span></span></div></button>`;
+  const srcs = [...new Set(p.work.map((w) => KINDS[w[0]].name))].slice(0, 3).join(" · ");
+  return `<button class="card" data-open="${p.id}">${tile(p.t, p.work[0][1])}<div class="body"><span class="name">${esc(p.name)}</span><span class="meta">${esc(p.trade)} · ${esc(p.city)}</span><span class="meta"><span class="pill ${p.kind === "Business" ? "lav" : "mint"}">${p.kind}</span>${esc(srcs)}</span><span class="meta small">New work ${esc(p.updated)}</span></div></button>`;
+}
+function drawQRs(root = document) {
+  root.querySelectorAll("[data-qr]").forEach((el) => {
+    if (el.dataset.done) return;
+    el.dataset.done = "1";
+    if (typeof QRCode === "undefined") { el.textContent = "QR code"; return; }
+    try { new QRCode(el, { text: "https://" + el.dataset.qr, width: 240, height: 240, colorDark: "#000000", colorLight: "#FFFFFF", correctLevel: QRCode.CorrectLevel.M }); } catch { el.textContent = "QR code"; }
+  });
 }
 const petal = `<svg class="petal" viewBox="0 0 100 100" aria-hidden="true">${[0, 90, 180, 270].map((r) => `<ellipse cx="50" cy="26" rx="15" ry="26" fill="var(--mustard)" transform="rotate(${r + 20} 50 50)"/>`).join("")}</svg>`;
+
+// Editor state: Kaz editing his own page.
+const ED = { tpl: "street", acc: "", work: byId("kaz").work.slice(0, 4) };
 
 const views = {
   home() {
     const faces = ["#FFCB00", "#F2A65A", "#E2F8E5", "#C8DBF9", "#F6B8D9", "#FDE6C8", "#FFCB00", "#E6DFF5"];
+    const thumbs = ["street", "gallery", "groove"].map((id, i) => `<div class="thumb" style="height:150px;border:1px solid var(--line);border-radius:14px"><div style="transform:scale(.19);transform-origin:top left;width:1100px;position:absolute">${site(PEOPLE.find((p) => p.tpl === id))}</div></div>`).join("");
     return `<section class="band cream" style="padding-top:0"><div class="wrap">
       <div class="hero">
         <button class="announce" data-tour style="cursor:pointer"><b>New</b>Take the 2-minute walkthrough →</button>
         <h1>Find Talent. Show Your Work.<br>Get Seen.</h1>
-        <p class="lead">Seen is a free directory where every freelancer and small business has a portfolio page. Look at real work, see a starting price, and send a brief in one tap.</p>
+        <p class="lead">A free directory where every Kenyan freelancer and small business gets their own portfolio site. People reach you directly, on WhatsApp, Instagram or email. No fees, no commission, no middleman.</p>
         <form class="search" id="searchForm" role="search">
-          <input type="text" id="q" aria-label="What do you need?" placeholder="What do you need? A logo, wedding photos…">
+          <input type="text" id="q" aria-label="Who are you looking for?" placeholder="Who are you looking for? A designer, a DJ…">
           <select id="city" aria-label="Where"><option>Anywhere in Kenya</option><option>Nairobi</option><option>Mombasa</option><option>Kisumu</option><option>Nakuru</option><option>Eldoret</option><option>Remote</option></select>
           <button class="btn" type="submit">Search</button>
         </form>
         <div class="chips">${CATS.map((c) => `<button class="chip" data-go="results">${c}</button>`).join("")}</div>
       </div>
       <div class="frame">
-        <div class="bar"><strong style="font-family:var(--display);font-weight:900;text-transform:uppercase">Seen</strong><span class="muted hide-sm">Graphic design · Nairobi · 143 pages</span><span class="pill flag" style="margin-left:auto">Sorted by new work</span></div>
+        <div class="bar"><strong style="font-family:var(--display);font-weight:900;text-transform:uppercase">Seen</strong><span class="muted hide-sm">Creatives · Nairobi · 312 pages</span><span class="pill flag" style="margin-left:auto">Sorted by new work</span></div>
         <div class="grid">${PEOPLE.filter((p) => p.claimed).slice(0, 4).map(card).join("")}</div>
         ${petal}
       </div>
-      <div class="stack center" style="margin-top:36px;gap:10px"><p class="muted">Join 1,240 Kenyan creatives and businesses</p><div class="faces">${faces.map((c, i) => `<span style="background:${c}">${"AWBOKWNKZTMCJMLG".slice(i * 2, i * 2 + 2)}</span>`).join("")}</div></div>
+      <div class="stack center" style="margin-top:36px;gap:10px"><p class="muted">Join 1,240 Kenyan creatives and businesses</p><div class="faces">${faces.map((c, i) => `<span style="background:${c}">${"KZBOWFAWZTGBDMPK".slice(i * 2, i * 2 + 2)}</span>`).join("")}</div></div>
     </div></section>
 
     <section class="band cream2" style="padding-top:24px"><div class="wrap stack center">
-      <h2 class="t-maroon">The Easiest Place to Be<br>Found for Your Work</h2>
-      <p class="lead">Most good freelancers and small businesses live in someone's WhatsApp contacts. Seen puts their work where people are searching.</p>
-      <button class="btn maroon" data-go="claim">Create your page</button>
+      <h2 class="t-maroon">We Just Connect You.<br>The Rest Is Yours.</h2>
+      <p class="lead">Seen is a listing, nothing more. No inbox, no bookings, no cut of your work. Clients find you here and talk to you wherever you already talk.</p>
+      <button class="btn maroon" data-go="edit">Make your page</button>
     </div></section>
 
     <section class="band mint"><div class="wrap">
-      <div class="stack center" style="margin-bottom:40px"><span class="eyebrow t-teal">Portfolio first</span><h2 class="t-teal">Show People What<br>You Actually Make</h2><p class="lead" style="color:var(--teal)">Your page leads with your work. Photos of real jobs, what you charge, and how fast you reply.</p><button class="btn teal" data-open="amina">See an example page</button></div>
+      <div class="stack center" style="margin-bottom:40px"><span class="eyebrow t-teal">Templates</span><h2 class="t-teal">A Site That Looks<br>Like Your Work</h2><p class="lead" style="color:var(--teal)">A hip hop designer and a wedding photographer shouldn't have the same page. Pick a template made for your craft, then make it yours.</p><button class="btn teal" data-go="templates">Browse templates</button></div>
       <div class="feature teal">
-        <div class="copy"><h2 class="t-teal">New Work<br>Ranks First</h2><p class="muted">Pages that added work in the last 30 days show up first in search. Keep posting jobs and more people see you. Nobody can pay to jump the queue.</p></div>
-        <div class="art"><div class="mini"><div class="row between"><strong>Amina Wanjiru</strong><span class="pill good">New work · 2 days ago</span></div><div class="two">${tile(0, "", 0)}${tile(5, "", 2)}</div></div></div>
+        <div class="copy"><h2 class="t-teal">Street, Gallery,<br>Groove and More</h2><p class="muted">8 templates to start, growing to 100: one for designers, photographers, videographers, DJs, makeup artists, tailors, caterers and more. Change colours, fonts and layout any time.</p></div>
+        <div class="art"><div class="mini" style="grid-template-columns:repeat(3,1fr);gap:8px">${thumbs}</div></div>
       </div>
       <div class="feature teal flip">
-        <div class="copy"><h2 class="t-teal">Your Page Is<br>Your Link</h2><p class="muted">seen.wanlly.africa/yourname is made to share on Instagram, your WhatsApp status and your email signature. One link instead of a PDF portfolio and a price list.</p></div>
-        <div class="art"><div class="mini"><span class="eyebrow">Your link</span><div class="row between" style="border:1px solid var(--line);border-radius:999px;padding:6px 6px 6px 16px"><span class="num" style="min-width:0;overflow-wrap:anywhere">seen.wanlly.africa/amina</span><button class="btn sm" data-copy="seen.wanlly.africa/amina">Copy</button></div></div></div>
+        <div class="copy"><h2 class="t-teal">Paste a Link.<br>It Shows Up.</h2><p class="muted">Your work stays where it already lives: Instagram, TikTok, YouTube, Behance, SoundCloud, or any image link. Paste the link and it appears on your page. We don't store your files.</p></div>
+        <div class="art"><div class="mini"><span class="eyebrow">Add work</span><div class="linkbox"><span>instagram.com/p/C9xKz2</span><button class="btn sm" data-go="edit">Add</button></div><div class="row small muted">${["Instagram", "TikTok", "YouTube", "Behance", "Dribbble", "Vimeo", "SoundCloud", "Pinterest", "Image link"].map((n) => `<span class="pill">${n}</span>`).join("")}</div></div></div>
       </div>
     </div></section>
 
     <section class="band lav"><div class="wrap">
-      <div class="stack center" style="margin-bottom:40px"><span class="eyebrow t-plum">Briefs</span><h2 class="t-plum">Let the Work<br>Come to You</h2><p class="lead" style="color:var(--plum)">Clients post what they need, their budget and deadline. We send it to up to 5 matching pages, and they reply directly.</p><button class="btn plum" data-brief="">Post a brief</button></div>
+      <div class="stack center" style="margin-bottom:40px"><span class="eyebrow t-plum">Direct contact</span><h2 class="t-plum">People Reach You<br>However You Like</h2><p class="lead" style="color:var(--plum)">Add the buttons you want: WhatsApp, Instagram DM, email, a phone call, TikTok, LinkedIn. Clients tap and they're talking to you.</p><button class="btn plum" data-open="kaz">See Kaz's page</button></div>
       <div class="feature plum">
-        <div class="copy"><h2 class="t-plum">See That It's<br>Working</h2><p class="muted">On the 1st of every month we email you how many people saw your page, tapped WhatsApp and sent you a brief.</p></div>
-        <div class="art"><div class="mini"><span class="eyebrow">October on Seen</span><div class="two">
-          <div class="stat" style="background:var(--cream)"><span class="small muted">Page views</span><span class="v num">548</span></div>
-          <div class="stat" style="background:var(--mint)"><span class="small muted">In search</span><span class="v num">2,310</span></div>
-          <div class="stat" style="background:var(--lav)"><span class="small muted">WhatsApp taps</span><span class="v num">31</span></div>
-          <div class="stat" style="background:var(--peach)"><span class="small muted">Briefs</span><span class="v num">7</span></div></div></div></div>
+        <div class="copy"><h2 class="t-plum">Share It<br>Anywhere</h2><p class="muted">Your page gets a short link and a QR code. Put them in your Instagram bio, your WhatsApp status, on your business card or on the wall of your shop.</p></div>
+        <div class="art"><div class="mini"><div class="share"><div class="qr" data-qr="seen.wanlly.africa/kaz"></div><div class="stack" style="gap:8px;min-width:0"><span class="eyebrow">Your link</span><div class="linkbox"><span>seen.wanlly.africa/kaz</span><button class="btn sm" data-copy="seen.wanlly.africa/kaz">Copy</button></div><span class="small muted">The QR code opens your page.</span></div></div></div></div>
       </div>
     </div></section>
 
     <section class="band peach"><div class="wrap">
       <div class="feature mustard">
-        <div class="copy"><h2 class="t-mustard">No Guesswork,<br>Just Prices</h2><p class="t-mustard" style="opacity:.9">Every service shows a starting price in shillings, so nobody has to "DM for price". When you agree, send the agreement through Wanlly Sign for free.</p></div>
-        <div class="art"><div class="mini"><strong>Wedding photography</strong><span class="muted small">From KES 15,000 · half day · edited photos in 7 days</span><div class="two">${tile(1, "", 1)}${tile(6, "", 3)}</div></div></div>
+        <div class="copy"><h2 class="t-mustard">See That It's<br>Working</h2><p class="t-mustard" style="opacity:.9">On the 1st of every month we email you how many people saw your page and tapped to reach you. And pages with new work in the last 30 days are shown first.</p></div>
+        <div class="art"><div class="mini"><span class="eyebrow">October on Seen</span><div class="two">
+          <div class="stat" style="background:var(--cream)"><span class="small muted">Page views</span><span class="v num">1,204</span></div>
+          <div class="stat" style="background:var(--mint)"><span class="small muted">In search</span><span class="v num">4,880</span></div>
+          <div class="stat" style="background:var(--lav)"><span class="small muted">Contact taps</span><span class="v num">58</span></div>
+          <div class="stat" style="background:var(--peach)"><span class="small muted">QR scans</span><span class="v num">37</span></div></div></div></div>
       </div>
-      <div style="margin-top:56px"><p class="quote">“I got two catering jobs in my first month just because my menu and prices were finally somewhere people could see them.”<small>Example quote for the prototype</small></p></div>
+      <div style="margin-top:56px"><p class="quote">“I put the QR code on my stall at the market. People scan it, see my work, and message me on WhatsApp the same day.”<small>Example quote for the prototype</small></p></div>
     </div></section>
 
     <section class="band sand"><div class="wrap stack">
       <div class="stack center" style="margin-bottom:12px"><h2 style="font-size:clamp(2.2rem,5vw,3.6rem)">FAQs</h2><p class="muted">Everything you need to know.</p></div>
       <div class="faq">
-        <details open><summary>Is it really free?</summary><p>Yes, for clients and for listed people and businesses. There are no fees, no commission and no paid placement.</p></details>
+        <details open><summary>Is it really free?</summary><p>Yes, for everyone. There are no fees, no commission and no paid placement. Seen only connects people.</p></details>
+        <details><summary>Do you handle bookings or payments?</summary><p>No. Clients contact you directly on WhatsApp, Instagram, email or whatever you add. What you agree is between you and them.</p></details>
+        <details><summary>Do I have to upload my work?</summary><p>No. Paste links to posts and videos that are already on Instagram, TikTok, YouTube, Behance and other sites. They show on your page from there.</p></details>
         <details><summary>Why is my business already on Seen?</summary><p>We list registered businesses using details they published themselves, such as their website. The page shows only those public facts until you claim it. You can claim it or remove it in one click.</p></details>
-        <details><summary>I'm a freelancer. Will you list me without asking?</summary><p>No. Individuals only get a page when they create one themselves.</p></details>
-        <details><summary>How do I get to the top of search?</summary><p>Add real work often. Pages with new work in the last 30 days are shown first.</p></details>
+        <details><summary>I'm a freelancer. Will you list me without asking?</summary><p>No. Individuals only get a page when they make one themselves.</p></details>
       </div>
       <div class="box" style="width:min(760px,100%);margin:12px auto 0;border-color:var(--ink);grid-template-columns:1fr auto;align-items:center"><p>Don't see what you're looking for?<br>Reach out and we'll get back to you.</p><button class="btn" data-toast="Contact form (prototype)">Get in touch</button></div>
     </div></section>`;
@@ -409,59 +699,69 @@ const views = {
   results() {
     const f = (legend, items) => `<fieldset><legend class="eyebrow">${legend}</legend>${items.map(([id, l, on]) => `<label class="check"><input type="checkbox" id="${id}" ${on ? "checked" : ""}> ${l}</label>`).join("")}</fieldset>`;
     return `<section class="band plain" style="background:linear-gradient(180deg,var(--lav),var(--bg) 320px)"><div class="wrap">
-      <div class="pagehead"><span class="eyebrow t-plum">Find talent</span><h2 class="t-plum">143 designers in Kenya</h2></div>
+      <div class="pagehead"><span class="eyebrow t-plum">Find talent</span><h2 class="t-plum">312 creatives and businesses in Nairobi</h2></div>
       <div class="results">
         <aside class="filters">
           ${f("Who", [["fF", "Freelancers", 1], ["fB", "Businesses", 1]])}
-          ${f("Show", [["fA", "Taking work now", 1], ["fP", "Has a portfolio", 1], ["fU", "Include unclaimed", 1]])}
-          ${f("Starting price", [["p1", "Under KES 5,000"], ["p2", "KES 5,000–20,000"], ["p3", "Over KES 20,000"]])}
+          ${f("Reach them on", [["cW", "WhatsApp", 1], ["cI", "Instagram", 1], ["cE", "Email", 1]])}
+          ${f("Show", [["fN", "New work this month"], ["fU", "Include unclaimed", 1]])}
           <p class="small muted">Sorted by recent work.</p>
         </aside>
-        <div><div class="toolbar"><input type="text" id="rq" aria-label="Search" value="Graphic design"><select id="rc" aria-label="Town"><option>Anywhere in Kenya</option><option>Nairobi</option></select></div>
+        <div><div class="toolbar"><input type="text" id="rq" aria-label="Search" value="Creatives"><select id="rc" aria-label="Town"><option>Nairobi</option><option>Anywhere in Kenya</option></select></div>
         <div class="grid">${PEOPLE.map(card).join("")}</div></div>
       </div>
     </div></section>`;
   },
-  profile(id) {
-    const p = PEOPLE.find((x) => x.id === id) || PEOPLE[0];
-    const [a, b] = PAL[p.t];
+  profile(id, tpl) {
+    const p = byId(id) || byId("kaz");
+    const cur = tpl || p.tpl;
+    return `<div class="strip"><div class="wrap"><span class="muted">seen.wanlly.africa/</span><strong style="margin-left:-8px">${p.id}</strong><button class="btn line sm" data-copy="seen.wanlly.africa/${p.id}">Copy link</button>
+      <div class="tpls" role="group" aria-label="Preview this page in another template"><span class="small muted" style="align-self:center">Try another template:</span>${TPLS.map((t) => `<button class="swatch" aria-pressed="${t.id === cur}" data-retpl="${p.id}:${t.id}"><i style="background:${t.dot}"></i>${t.name}</button>`).join("")}</div></div></div>
+      ${site(p, cur)}`;
+  },
+  templates() {
+    return `<section class="band plain" style="background:linear-gradient(180deg,var(--mint),var(--bg) 360px)"><div class="wrap stack">
+      <div class="pagehead" style="padding-bottom:8px"><span class="eyebrow t-teal">Templates</span><h2 class="t-teal">Pick a Look Made<br>for Your Craft</h2><p class="muted" style="max-width:60ch">Every template is free and fully editable: colours, fonts, which sections show and in what order. Switch any time without losing your links.</p></div>
+      <div class="tgrid">${TPLS.map((t) => { const p = PEOPLE.find((x) => x.tpl === t.id); return `<div class="tcard" role="link" tabindex="0" data-open="${p.id}" aria-label="${t.name} template, example: ${esc(p.name)}"><div class="thumb" aria-hidden="true">${site(p, t.id)}</div><div class="body"><span class="name">${t.name}</span><span class="small muted">${t.for}</span><span class="small">Example: ${esc(p.name)}</span></div></div>`; }).join("")}</div>
+      <div class="box" style="margin-top:12px"><span class="eyebrow">Coming next, on the way to 100</span><div class="soon">${SOON.map((s) => `<span class="pill">${s}</span>`).join("")}</div></div>
+    </div></section>`;
+  },
+  edit() {
+    const p = { ...byId("kaz"), work: ED.work };
     return `<section class="band plain"><div class="wrap">
-      <div class="cover" style="background:${a};--arc:${b}"></div>
-      <div class="phead">
-        <div class="avatar">${p.initials}</div>
-        <div class="stack" style="gap:6px;min-width:0"><h2>${esc(p.name)}</h2><div class="row small muted"><span class="pill ${p.kind === "Business" ? "lav" : "mint"}">${p.kind}</span>${esc(p.trade)} · ${esc(p.city)}<span class="pill good">✓ Verified</span></div></div>
-        <div class="row"><button class="btn line" data-copy="seen.wanlly.africa/${p.id}">Copy link</button><button class="btn" data-brief="${p.id}">Start a project</button></div>
-      </div>
-      <div class="pgrid">
-        <div class="stack">
-          <p style="max-width:62ch;font-size:1.05rem">${esc(p.about)}</p>
-          <div class="row between" style="margin-top:8px"><h3>Work</h3><span class="small muted">Updated ${esc(p.updated)}</span></div>
-          <div class="work">${p.work.map((w, i) => tile(p.t + i, w, i)).join("")}</div>
+      <div class="row between pagehead"><div class="stack" style="gap:6px"><span class="eyebrow">Editing seen.wanlly.africa/kaz</span><h2>Your Page</h2></div><div class="row"><button class="btn line" data-open="kaz">View live page</button><button class="btn" data-toast="Published. Your page is live.">Publish</button></div></div>
+      <div class="editor">
+        <div class="ed-panel">
+          <div class="box ed-tpl"><span class="eyebrow">Template</span><div class="row" style="gap:6px">${TPLS.map((t) => `<button class="swatch" aria-pressed="${t.id === ED.tpl}" data-edtpl="${t.id}"><i style="background:${t.dot}"></i>${t.name}</button>`).join("")}</div>
+            <div class="ed-row"><label for="edAcc" class="small">Accent colour</label><input type="color" id="edAcc" value="${ED.acc || "#FFE600"}"><button class="btn ghost sm" data-edreset>Reset</button></div></div>
+          <div class="box ed-work"><span class="eyebrow">Your work · ${ED.work.length} links</span>
+            <div class="ed-links">${ED.work.map(([k, t, u], i) => `<div class="ed-link"><em>${KINDS[k].tag}</em><span>${esc(t)}</span><button aria-label="Remove ${esc(t)}" data-edrm="${i}">×</button></div>`).join("")}</div>
+            <form class="ed-add" id="edAdd"><input type="text" id="edUrl" aria-label="Paste a link to your work" placeholder="Paste a link: Instagram, YouTube, TikTok…"><button class="btn sm" type="submit">Add</button></form>
+            <p class="ed-hint">We show the post from where it lives. Nothing is uploaded or stored on Seen.</p></div>
+          <div class="box"><span class="eyebrow">How people reach you</span>
+            <div class="field"><label for="edWa">WhatsApp</label><input type="text" id="edWa" value="+254 712 345 678"></div>
+            <div class="field"><label for="edIg">Instagram</label><input type="text" id="edIg" value="@kazdrips"></div>
+            <div class="field"><label for="edEm">Email</label><input type="text" id="edEm" value="kaz@kazdrips.co.ke"></div>
+            <button class="btn line sm" data-toast="Add: Call, TikTok, X, LinkedIn, Google Business…">+ Add another way</button></div>
         </div>
-        <aside class="side">
-          <div class="box"><span class="eyebrow">Services</span><div class="services">${p.services.map(([s, n]) => `<div><span>${esc(s)}</span><span class="num">from ${fmt(n)}</span></div>`).join("")}</div></div>
-          <div class="box" style="background:var(--cream);border-color:transparent"><span class="eyebrow">Get in touch</span><p class="small muted">${esc(p.reply)}</p>
-            <button class="btn" data-brief="${p.id}">Send a brief</button>
-            <button class="btn line" data-toast="Opens WhatsApp with “Hi ${esc(first(p.name))}, I found you on Seen…”">WhatsApp</button>
-            <p class="small muted">Agreed on the work? Send the agreement with Wanlly Sign. Signing is free.</p></div>
-        </aside>
+        <div class="preview"><div class="chrome"><i></i><i></i><i></i><span>seen.wanlly.africa/kaz</span></div><div class="pv" id="pv">${site(p, ED.tpl, ED.acc)}</div></div>
       </div>
     </div></section>`;
   },
   unclaimed() {
     const p = PEOPLE.find((x) => !x.claimed);
     return `<section class="band plain"><div class="wrap stack">
-      <div class="banner"><div class="stack" style="gap:2px"><strong style="font-family:var(--display);font-size:1.2rem">Is this your business?</strong><span class="small muted">Claim this page for free to add your work and prices. Until then it shows only what's already public.</span></div><button class="btn yellow" data-go="claim">Claim this page</button></div>
+      <div class="banner"><div class="stack" style="gap:2px"><strong style="font-family:var(--display);font-size:1.2rem">Is this your business?</strong><span class="small muted">Claim this page for free to pick a template, add your work and the ways people can reach you. Until then it shows only what's already public.</span></div><button class="btn yellow" data-go="claim">Claim this page</button></div>
       <div class="pgrid" style="margin-top:8px">
         <div class="stack">
-          <div class="row" style="gap:16px"><div class="avatar" style="border:0;background:var(--soft);color:var(--muted);width:84px;height:84px;font-size:1.7rem">MC</div><div class="stack" style="gap:6px"><h2>${esc(p.name)}</h2><div class="row small muted"><span class="pill flag">Unclaimed</span>${esc(p.trade)} · ${esc(p.city)}</div></div></div>
+          <div class="row" style="gap:16px"><div style="width:84px;height:84px;border-radius:50%;background:var(--soft);color:var(--muted);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.7rem">MC</div><div class="stack" style="gap:6px"><h2>${esc(p.name)}</h2><div class="row small muted"><span class="pill flag">Unclaimed</span>${esc(p.trade)} · ${esc(p.city)}</div></div></div>
           <div class="box"><span class="eyebrow">Public details</span>
             <dl class="kv"><dt>Category</dt><dd>Event catering</dd><dt>Town</dt><dd>Nakuru, Milimani</dd><dt>Website</dt><dd>mwangicatering.co.ke</dd><dt>Source</dt><dd>The business's own website, checked 3 Oct 2026</dd></dl>
           </div>
-          <div class="box" style="border-style:dashed"><h3>No work shown yet</h3><p class="muted small">Once the owner claims this page, photos of their events and their prices appear here.</p></div>
+          <div class="box" style="border-style:dashed"><h3>No work shown yet</h3><p class="muted small">Once the owner claims this page, links to their work appear here, in the template they choose.</p></div>
         </div>
         <aside class="side">
-          <div class="box" style="background:var(--mint);border-color:transparent"><span class="eyebrow t-teal">Need catering in Nakuru?</span><p class="small">These caterers have claimed their pages and show their work.</p><button class="btn teal" data-go="results">See 12 caterers</button></div>
+          <div class="box" style="background:var(--mint);border-color:transparent"><span class="eyebrow t-teal">Need catering in Nakuru?</span><p class="small">These caterers have claimed their pages and show their work.</p><button class="btn teal" data-open="pishi">See Pishi Kitchen</button></div>
           <p class="small muted">Wrong, or want it gone? <button class="btn ghost sm" style="padding:0;text-decoration:underline" data-remove>Remove this page</button>. It's deleted right away, and we won't list or email you again.</p>
         </aside>
       </div>
@@ -476,37 +776,35 @@ const views = {
           <div class="code">${[4, 8, 1, 9, 0, 3].map((d, i) => `<input type="text" inputmode="numeric" maxlength="1" id="c${i}" aria-label="Digit ${i + 1}" value="${d}">`).join("")}</div>
           <div class="row"><button class="btn" data-toast="Verified. This page is now yours.">Verify</button><button class="btn ghost" data-toast="We sent a new code.">Send a new code</button></div>
           <p class="small muted">Email not yours any more? Verify with the business phone number on the page instead.</p></div></div>
-        <div class="step"><div class="stack" style="gap:8px"><h3>Add your work</h3><p class="small muted">Upload at least 3 photos of real jobs, a starting price, and your WhatsApp number. Pages with work are shown first in search.</p></div></div>
+        <div class="step"><div class="stack" style="gap:8px"><h3>Pick a template and add your work</h3><p class="small muted">Choose a look, paste links to your posts and videos, and add your WhatsApp. <button class="btn ghost sm" style="padding:0;text-decoration:underline" data-go="edit">See the editor</button></p></div></div>
       </div>
     </div></section>`;
   },
   dash() {
-    const pts = [12, 18, 15, 22, 30, 26, 41, 38, 35, 52, 48, 61, 58, 72];
-    const W = 600, H = 130, max = 80, x = (i) => 8 + (i * (W - 16)) / (pts.length - 1), y = (v) => H - 14 - (v / max) * (H - 28);
+    const pts = [22, 30, 26, 41, 38, 35, 52, 48, 61, 58, 72, 66, 84, 91];
+    const W = 600, H = 130, max = 100, x = (i) => 8 + (i * (W - 16)) / (pts.length - 1), y = (v) => H - 14 - (v / max) * (H - 28);
     const line = pts.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
-    const grid = [0, 40, 80].map((v) => `<line x1="8" x2="${W - 8}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${W - 8}" y="${y(v) - 4}" text-anchor="end" font-size="10" fill="var(--muted)">${v}</text>`).join("");
+    const grid = [0, 50, 100].map((v) => `<line x1="8" x2="${W - 8}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${W - 8}" y="${y(v) - 4}" text-anchor="end" font-size="10" fill="var(--muted)">${v}</text>`).join("");
+    const taps = [["WhatsApp", 31], ["Instagram DM", 17], ["Email", 7], ["TikTok", 3]];
     return `<section class="band plain"><div class="wrap">
-      <div class="row between pagehead"><div class="stack" style="gap:6px"><span class="eyebrow">seen.wanlly.africa/amina</span><h2>Good morning, Amina</h2></div><div class="row"><button class="btn line" data-open="amina">View page</button><button class="btn" data-toast="Upload opened (prototype)">Add new work</button></div></div>
+      <div class="row between pagehead"><div class="stack" style="gap:6px"><span class="eyebrow">seen.wanlly.africa/kaz</span><h2>Good morning, Kaz</h2></div><div class="row"><button class="btn line" data-open="kaz">View page</button><button class="btn" data-go="edit">Edit page</button></div></div>
       <div class="stats">
-        <div class="stat"><span class="small muted">Page views</span><span class="v num">548</span><span class="delta">+38% vs September</span></div>
-        <div class="stat"><span class="small muted">Showed up in search</span><span class="v num">2,310</span><span class="delta">+21%</span></div>
-        <div class="stat"><span class="small muted">WhatsApp taps</span><span class="v num">31</span><span class="delta">+9</span></div>
-        <div class="stat"><span class="small muted">Briefs received</span><span class="v num">7</span><span class="delta">+3</span></div>
+        <div class="stat"><span class="small muted">Page views</span><span class="v num">1,204</span><span class="delta">+38% vs September</span></div>
+        <div class="stat"><span class="small muted">Showed up in search</span><span class="v num">4,880</span><span class="delta">+21%</span></div>
+        <div class="stat"><span class="small muted">Contact taps</span><span class="v num">58</span><span class="delta">+14</span></div>
+        <div class="stat"><span class="small muted">QR code scans</span><span class="v num">37</span><span class="delta">+12</span></div>
       </div>
       <div class="pgrid">
         <div class="stack">
-          <div class="box"><div class="row between"><span class="eyebrow">Daily page views · last 14 days</span><span class="small muted">Peak <span class="num">72</span> yesterday</span></div>
-            <svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Page views rising from 12 to 72 a day">${grid}<path d="${line}L${x(pts.length - 1)},${H - 14}L8,${H - 14}Z" fill="var(--cream)"/><path d="${line}" fill="none" stroke="var(--mustard)" stroke-width="2.5"/><circle cx="${x(pts.length - 1)}" cy="${y(pts[pts.length - 1])}" r="5" fill="var(--mustard)"/></svg></div>
-          <div class="box"><span class="eyebrow">Briefs</span><div class="list">
-            <div><strong>Logo for a juice bar in Kilimani</strong><span class="pill flag">New</span><span class="small muted">Budget KES 10,000–15,000 · needs it in 2 weeks</span><span class="small muted">1h ago</span></div>
-            <div><strong>Rebrand for a SACCO</strong><span class="pill good">You replied</span><span class="small muted">Budget KES 40,000 · Thika</span><span class="small muted">Tue</span></div>
-            <div><strong>Instagram templates for a salon</strong><span class="pill lav">Agreement sent</span><span class="small muted">KES 6,000 · signing on Wanlly Sign</span><span class="small muted">Oct 9</span></div>
-          </div></div>
+          <div class="box"><div class="row between"><span class="eyebrow">Daily page views · last 14 days</span><span class="small muted">Peak <span class="num">91</span> yesterday</span></div>
+            <svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Page views rising from 22 to 91 a day">${grid}<path d="${line}L${x(pts.length - 1)},${H - 14}L8,${H - 14}Z" fill="var(--cream)"/><path d="${line}" fill="none" stroke="var(--mustard)" stroke-width="2.5"/><circle cx="${x(pts.length - 1)}" cy="${y(pts[pts.length - 1])}" r="5" fill="var(--mustard)"/></svg></div>
+          <div class="box taps"><span class="eyebrow">How people reached you this month</span>${taps.map(([n, v]) => `<div><span>${n}</span><span class="bar"><i style="width:${(v / 31) * 100}%"></i></span><span class="num">${v}</span></div>`).join("")}<p class="small muted">Seen only counts the tap. The conversation happens on your own WhatsApp, Instagram or email.</p></div>
         </div>
         <aside class="side">
+          <div class="box share-box"><span class="eyebrow">Share your page</span><div class="share"><div class="qr" data-qr="seen.wanlly.africa/kaz"></div><div class="stack" style="gap:8px;min-width:0"><div class="linkbox"><span>seen.wanlly.africa/kaz</span><button class="btn sm" data-copy="seen.wanlly.africa/kaz">Copy</button></div><span class="small muted">Put the QR code on posters, stickers and business cards.</span></div></div></div>
           <div class="box"><div class="row between"><span class="eyebrow">Your page is 80% complete</span><span class="num">80%</span></div><div class="meter"><i style="width:80%"></i></div>
-            <div class="todo"><label><input type="checkbox" checked disabled> 6 pieces of work</label><label><input type="checkbox" checked disabled> Prices for 3 services</label><label><input type="checkbox" checked disabled> WhatsApp number</label><label><input type="checkbox" disabled> Something new in the last 30 days</label></div>
-            <p class="small muted">Pages with new work in the last 30 days are shown first. Your last upload was 34 days ago.</p></div>
+            <div class="todo"><label><input type="checkbox" checked disabled> 6 links to your work</label><label><input type="checkbox" checked disabled> 4 ways to reach you</label><label><input type="checkbox" checked disabled> Template: Street</label><label><input type="checkbox" disabled> A new link in the last 30 days</label></div>
+            <p class="small muted">Pages with new work in the last 30 days are shown first in search.</p></div>
         </aside>
       </div>
     </div></section>`;
@@ -534,8 +832,8 @@ const views = {
       <div class="email"><div class="hdr"><span>From: Louis at Wanlly Seen &lt;seen@wanlly.africa&gt;</span><span>To: info@mwangicatering.co.ke</span><span><strong style="color:var(--ink)">Subject: Mwangi & Co. Catering is on Seen</strong></span></div>
         <p>Dear Mwangi & Co. Catering team,</p>
         <p>We've added Mwangi & Co. Catering to Seen, a free directory where people in Kenya find caterers, designers, photographers and other small businesses by looking at their work.</p>
-        <p>Right now your page only shows your name, town and website, taken from your own site. People looking for catering in Nakuru are choosing pages with photos and prices first.</p>
-        <p><u>Claim your page</u> to add photos of your events, your starting prices and your WhatsApp. It's free and takes about five minutes. There's nothing to pay, now or later.</p>
+        <p>Right now your page only shows your name, town and website, taken from your own site. People looking for catering in Nakuru are choosing pages that show photos of events first.</p>
+        <p><u>Claim your page</u> to pick a design, link your Instagram or TikTok posts, and add your WhatsApp so customers can reach you directly. It's free, takes about five minutes, and we never take a cut.</p>
         <p>Rather not be listed? <u>Remove the page</u> and it's gone right away.</p>
         <p class="small muted">Louis Wandago · seen.wanlly.africa · You're getting this because these details are published on your website. Unsubscribe.</p>
       </div>
@@ -544,62 +842,78 @@ const views = {
 };
 
 const app = document.getElementById("app"), layer = document.getElementById("layer");
-function go(v, arg) {
-  app.innerHTML = `<div class="view">${v === "profile" ? views.profile(arg) : views[v]()}</div>`;
-  document.querySelectorAll(".nav button").forEach((b) => b.dataset.go === v ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
+function go(v, arg, arg2) {
+  app.innerHTML = `<div class="view">${v === "profile" ? views.profile(arg, arg2) : views[v]()}</div>`;
+  const navKey = v === "profile" ? "results" : v;
+  document.querySelectorAll(".nav button").forEach((b) => b.dataset.go === navKey ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
+  drawQRs(app);
   window.scrollTo(0, 0);
   try { localStorage.setItem("seen-view", v === "profile" ? "home" : v); } catch {}
+}
+function renderPreview() {
+  const pv = document.getElementById("pv");
+  if (!pv) return go("edit");
+  pv.innerHTML = site({ ...byId("kaz"), work: ED.work }, ED.tpl, ED.acc);
+  drawQRs(pv);
+}
+function addLink(url) {
+  url = url.trim().replace(/^https?:\/\//, "");
+  if (!url) return toast("Paste a link first");
+  const k = kindOf(url);
+  const titles = { ig: "New Instagram post", tt: "New TikTok", yt: "New YouTube video", vi: "New Vimeo video", be: "New Behance project", dr: "New Dribbble shot", sc: "New SoundCloud track", mx: "New Mixcloud mix", pin: "New Pinterest pin", img: "New image", link: "New link" };
+  ED.work = [[k, titles[k], url], ...ED.work];
+  go("edit");
+  toast(`Added from ${KINDS[k].name}`);
 }
 function toast(msg) {
   const t = document.createElement("div"); t.className = "toast"; t.textContent = msg; document.body.append(t);
   setTimeout(() => t.remove(), 2600);
 }
-function brief(id) {
-  const p = PEOPLE.find((x) => x.id === id);
-  layer.innerHTML = `<div class="scrim" data-close><form class="modal" id="briefForm" role="dialog" aria-label="Send a brief">
-    <h2 style="font-size:1.8rem">${p ? `Brief for ${esc(first(p.name))}` : "Post a brief"}</h2>
-    <p class="small muted">${p ? "They get it by email and WhatsApp and reply to you directly." : "We send it to up to 5 matching people. They reply to you directly."}</p>
-    <div class="field"><label for="bWhat">What do you need?</label><textarea id="bWhat">A logo and simple brand colours for my new juice bar in Kilimani.</textarea></div>
-    <div class="row" style="align-items:start"><div class="field" style="flex:1;min-width:140px"><label for="bBudget">Budget</label><select id="bBudget"><option>Under KES 5,000</option><option selected>KES 5,000–15,000</option><option>KES 15,000–50,000</option><option>Over KES 50,000</option></select></div>
-      <div class="field" style="flex:1;min-width:140px"><label for="bWhen">When</label><select id="bWhen"><option>This week</option><option selected>In 2 weeks</option><option>This month</option><option>Flexible</option></select></div></div>
-    <div class="field"><label for="bEmail">Your email or WhatsApp number</label><input type="text" id="bEmail" value="0712 345 678"></div>
-    <div class="row"><button class="btn" type="submit">Send brief</button><button class="btn ghost" type="button" data-close>Cancel</button></div>
-  </form></div>`;
-}
 
 document.addEventListener("click", (e) => {
-  const el = e.target.closest("[data-go],[data-open],[data-brief],[data-toast],[data-copy],[data-close],[data-remove]");
+  const el = e.target.closest("[data-go],[data-open],[data-toast],[data-copy],[data-close],[data-remove],[data-retpl],[data-edtpl],[data-edrm],[data-edreset]");
   if (!el) return;
-  if (el.hasAttribute("data-close") && e.target !== el && !e.target.matches("button[data-close]")) return;
   if (el.dataset.go) go(el.dataset.go);
   else if (el.dataset.open) el.dataset.open === "unclaimed" ? go("unclaimed") : go("profile", el.dataset.open);
-  else if (el.hasAttribute("data-brief")) brief(el.dataset.brief);
+  else if (el.dataset.retpl) { const [id, t] = el.dataset.retpl.split(":"); const y = window.scrollY; go("profile", id, t); window.scrollTo(0, y); }
+  else if (el.dataset.edtpl) { ED.tpl = el.dataset.edtpl; ED.acc = ""; const y = window.scrollY; go("edit"); window.scrollTo(0, y); }
+  else if (el.dataset.edrm) { ED.work.splice(+el.dataset.edrm, 1); const y = window.scrollY; go("edit"); window.scrollTo(0, y); }
+  else if (el.hasAttribute("data-edreset")) { ED.acc = ""; const y = window.scrollY; go("edit"); window.scrollTo(0, y); }
   else if (el.dataset.toast) toast(el.dataset.toast);
   else if (el.dataset.copy) { const t = el.dataset.copy; try { navigator.clipboard.writeText(t).then(() => toast("Link copied"), () => toast(t)); } catch { toast(t); } }
   else if (el.hasAttribute("data-remove")) toast("In the real app: page deleted and email added to the do-not-list");
   else if (el.hasAttribute("data-close")) layer.innerHTML = "";
 });
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && e.target.matches(".tcard")) e.target.click();
+});
+document.addEventListener("input", (e) => {
+  if (e.target.id === "edAcc") { ED.acc = e.target.value; renderPreview(); }
+});
 document.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (e.target.id === "briefForm") { layer.innerHTML = ""; toast("Brief sent (prototype)"); }
   if (e.target.id === "searchForm") go("results");
+  if (e.target.id === "edAdd") addLink(document.getElementById("edUrl").value);
 });
-// Walkthrough: three stories, each step opens a screen and spotlights one part of it.
+
+// Walkthrough: each step opens a screen and spotlights one part of it.
 const TOUR = [
-  { part: "Welcome", v: "home", sel: ".hero h1", title: "This is Seen", text: "A free directory at seen.wanlly.africa where Kenyan freelancers and small businesses get found by their work. Let's follow three people through it." },
-  { part: "1 · A client needs a designer", v: "home", sel: ".search", title: "Wanjiku needs a logo", text: "She's opening a juice bar in Kilimani. She searches for “logo” in Nairobi, or taps a category below.", run: () => { const q = document.getElementById("q"), c = document.getElementById("city"); if (q) q.value = "logo"; if (c) c.value = "Nairobi"; } },
-  { part: "1 · A client needs a designer", v: "results", sel: ".results .grid", title: "She compares work, not logos", text: "Every card leads with a real piece of work and a starting price in KES. Pages with new work in the last 30 days come first." },
-  { part: "1 · A client needs a designer", v: "profile", arg: "amina", sel: ".work", title: "Amina's page is her portfolio", text: "Wanjiku opens Amina's page and scrolls through packaging, menus and brand books for real Kenyan businesses." },
-  { part: "1 · A client needs a designer", v: "profile", arg: "amina", sel: ".side .box", title: "Prices up front", text: "No “DM for price”. She can see a logo starts at KES 8,000 and that Amina usually replies within 2 hours." },
-  { part: "1 · A client needs a designer", v: "profile", arg: "amina", sel: ".modal", brief: "amina", title: "She sends a brief", text: "What she needs, her budget and when. Amina gets it by email and WhatsApp and replies directly. Seen takes no cut." },
-  { part: "2 · Getting businesses on Seen", v: "admin", sel: ".funnel", title: "You import a list of businesses", text: "Like the law firm list for Wanlly Sign: upload a CSV. Each business gets an unclaimed page with only its public details." },
-  { part: "2 · Getting businesses on Seen", v: "admin", sel: ".email", title: "They get a short, honest email", text: "“Your business is on Seen. Claim it free to add your work, or remove it.” 25 a day, weekdays, with two follow-ups at most." },
-  { part: "2 · Getting businesses on Seen", v: "unclaimed", sel: ".banner", title: "The owner opens their page", text: "Mwangi & Co. Catering sees their basic listing and a big “Claim this page” button. “Remove this page” deletes it for good." },
-  { part: "2 · Getting businesses on Seen", v: "claim", sel: ".step.now", title: "Claiming takes 5 minutes", text: "A 6-digit code goes to the email already on the page. No password. Then they add photos of their work and prices." },
-  { part: "3 · Why owners come back", v: "dash", sel: ".stats", title: "Proof that it's working", text: "Amina sees her views, search appearances, WhatsApp taps and briefs. On the 1st of each month she gets the same numbers by email." },
-  { part: "3 · Why owners come back", v: "dash", sel: ".list", title: "Briefs turn into work", text: "New briefs land here. When they agree on a job, the agreement goes out through Wanlly Sign." },
-  { part: "3 · Why owners come back", v: "dash", sel: ".side .box", title: "A reason to keep posting", text: "Her page drops in search if she hasn't added work in 30 days. Posting new jobs keeps her at the top, and keeps Seen fresh for clients." },
-  { part: "That's Seen", v: "home", sel: ".frame", title: "Clients find good people. People get seen.", text: "Click around the screens on your own, or restart the walkthrough from the top bar any time." },
+  { part: "Welcome", v: "home", sel: ".hero h1", title: "This is Seen", text: "A free directory at seen.wanlly.africa where Kenyan freelancers and small businesses get their own portfolio site and get found. Seen only connects people. No fees, no commission." },
+  { part: "1 · A client looks for talent", v: "home", sel: ".search", title: "Brian needs cover art", text: "He runs a small record label and needs artwork for an EP. He searches for designers in Nairobi.", run: () => { const q = document.getElementById("q"), c = document.getElementById("city"); if (q) q.value = "cover art"; if (c) c.value = "Nairobi"; } },
+  { part: "1 · A client looks for talent", v: "results", sel: ".results .grid", title: "He compares people by their work", text: "Every card leads with real work. Pages with new work in the last 30 days come first." },
+  { part: "1 · A client looks for talent", v: "profile", arg: "kaz", sel: ".s-hero", title: "Kaz's page is his own site", text: "Kaz picked the Street template: loud, hip hop, his style. A wedding photographer would look completely different." },
+  { part: "1 · A client looks for talent", v: "profile", arg: "kaz", sel: ".s-grid", title: "Every piece is a link", text: "Instagram posts, a TikTok, a YouTube video, a Behance project. They show here but stay hosted on those sites. Seen stores no files." },
+  { part: "1 · A client looks for talent", v: "profile", arg: "kaz", sel: ".s-contact", title: "Brian reaches Kaz directly", text: "WhatsApp, Instagram DM, email or TikTok, whatever Kaz added. There's no inbox on Seen and no cut. They sort out the job between them." },
+  { part: "1 · A client looks for talent", v: "profile", arg: "kaz", tpl: "gallery", sel: ".strip .tpls", title: "Same page, different look", text: "Here's Kaz's page in the Gallery template. Owners can switch any time without losing their links." },
+  { part: "2 · Making a page", v: "templates", sel: ".tgrid", title: "A template for every craft", text: "8 to start, growing to 100: Street for designers, Gallery for photographers, Reel for filmmakers, Groove for DJs, Kitenge for tailors, and more." },
+  { part: "2 · Making a page", v: "edit", sel: ".ed-work", title: "Add work by pasting a link", text: "Kaz pastes a link to his latest Instagram post. Seen recognises where it's from and shows it on his page.", run: () => { if (!ED.work.some((w) => w[2] === "instagram.com/p/DA2kZ9")) { ED.work = [["ig", "New Instagram post", "instagram.com/p/DA2kZ9"], ...ED.work]; go("edit"); } } },
+  { part: "2 · Making a page", v: "edit", sel: ".ed-tpl", title: "Make it his own", text: "One tap changes the template. He can change the accent colour too, and the preview updates as he goes." },
+  { part: "2 · Making a page", v: "dash", sel: ".share-box", title: "Share with a link or QR code", text: "Kaz puts seen.wanlly.africa/kaz in his Instagram bio and the QR code on his stickers and posters." },
+  { part: "2 · Making a page", v: "dash", sel: ".stats", title: "Proof that it's working", text: "Views, search appearances, contact taps and QR scans. On the 1st of each month he gets the same numbers by email." },
+  { part: "3 · Getting businesses on Seen", v: "admin", sel: ".email", title: "You import businesses and invite them", text: "Upload a CSV. Each business gets a basic unclaimed page and a short, honest email: claim it free, or remove it." },
+  { part: "3 · Getting businesses on Seen", v: "unclaimed", sel: ".banner", title: "The owner opens their page", text: "Mwangi & Co. Catering sees their basic listing and a big “Claim this page” button. “Remove this page” deletes it for good." },
+  { part: "3 · Getting businesses on Seen", v: "claim", sel: ".step.now", title: "Claiming takes 5 minutes", text: "A code goes to the email already on the page. Then they pick a template, link their posts and add their WhatsApp." },
+  { part: "That's Seen", v: "home", sel: ".frame", title: "People get seen. Clients find them.", text: "Click around on your own, or restart the walkthrough from the top bar any time." },
 ];
 let tourAt = -1;
 function tourShow(i) {
@@ -607,13 +921,12 @@ function tourShow(i) {
   const s = TOUR[i];
   document.querySelectorAll(".tour-hl").forEach((e) => e.classList.remove("tour-hl"));
   layer.innerHTML = "";
-  go(s.v, s.arg);
-  if (s.brief) brief(s.brief);
+  go(s.v, s.arg, s.tpl);
   if (s.run) s.run();
   document.body.classList.add("tour-on");
   const el = document.querySelector(s.sel);
   if (el) {
-    if (!s.brief) el.classList.add("tour-hl");
+    el.classList.add("tour-hl");
     const smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
     requestAnimationFrame(() => el.scrollIntoView({ block: "center", behavior: smooth ? "smooth" : "auto" }));
   }
@@ -625,14 +938,13 @@ function tourShow(i) {
     <div class="foot"><span class="dots">${TOUR.map((_, k) => `<i class="${k === i ? "on" : ""}"></i>`).join("")}</span>
     ${i ? `<button class="btn ghost sm" data-tour-step="${i - 1}">Back</button>` : ""}
     <button class="btn yellow sm" style="font-size:14px" ${last ? "data-tour-end" : `data-tour-step="${i + 1}"`}>${last ? "Finish" : "Next"}</button></div>`;
-  try { localStorage.setItem("seen-tour", "seen"); } catch {}
+  try { localStorage.setItem("seen-tour2", "seen"); } catch {}
 }
 function tourEnd() {
   tourAt = -1;
   document.getElementById("tour")?.remove();
   document.querySelectorAll(".tour-hl").forEach((e) => e.classList.remove("tour-hl"));
   document.body.classList.remove("tour-on");
-  layer.innerHTML = "";
 }
 document.addEventListener("click", (e) => {
   const t = e.target.closest("[data-tour],[data-tour-step],[data-tour-end]");
@@ -653,6 +965,7 @@ let start = "home";
 try { start = localStorage.getItem("seen-view") || "home"; } catch {}
 go(views[start] ? start : "home");
 let toured = null;
-try { toured = localStorage.getItem("seen-tour"); } catch {}
+try { toured = localStorage.getItem("seen-tour2"); } catch {}
 if (!toured) tourShow(0);
+window.addEventListener("load", () => drawQRs());
 </script>
