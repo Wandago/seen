@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: white page broken into full-width pastel bands; centred chunky headlines; big rounded white cards with thick coloured arcs; black pill buttons, one yellow pill for the main sign-up. */
+/* Layout: warm off-white page broken into full-width pastel bands; centred chunky headlines; big rounded white cards with thick coloured arcs; black pill buttons, one yellow pill for the main sign-up. */
 :root {
   --bg: #FFFBF2;     /* warm off-white, like NewComma's page */
   --ink: #0A0A0A;
@@ -24,21 +24,10 @@
   --display: "Gabarito", "Avenir Next", "Segoe UI", sans-serif;
   --body: "Figtree", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
 }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #0E0E0F; --ink: #F4F4F2; --muted: #A3A3A3; --line: #2A2A2C; --soft: #19191B; --card: #161618;
-  --cream: #2A2412; --mint: #12271C; --teal: #7AD9C1; --lav: #221C33; --plum: #C9B0F2;
-  --peach: #2E2216; --sky: #161A26; --sand: #1F1A12; --gold: #3A2C12; --mustard: #F0B54A; --rose: #2E1726; --maroon: #F09A86;
-  --good: #6FD3A0; --good-soft: #163325; --flag: #F2B451; --flag-soft: #3A2C12;
-  color-scheme: dark;
-} }
-:root[data-theme="dark"] {
-  --bg: #0E0E0F; --ink: #F4F4F2; --muted: #A3A3A3; --line: #2A2A2C; --soft: #19191B; --card: #161618;
-  --cream: #2A2412; --mint: #12271C; --teal: #7AD9C1; --lav: #221C33; --plum: #C9B0F2;
-  --peach: #2E2216; --sky: #161A26; --sand: #1F1A12; --gold: #3A2C12; --mustard: #F0B54A; --rose: #2E1726; --maroon: #F09A86;
-  --good: #6FD3A0; --good-soft: #163325; --flag: #F2B451; --flag-soft: #3A2C12;
-  color-scheme: dark;
-}
+/* One light look on purpose, like NewComma. Solid background on html and body so the page is never see-through. */
+:root { color-scheme: light }
 * { box-sizing: border-box }
+html { background: var(--bg) }
 body { background: var(--bg); color: var(--ink); font: 15.5px/1.55 var(--body) }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg) }
 .wrap { max-width: 1200px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
@@ -236,6 +225,22 @@ tr:last-child td { border-bottom: 0 }
 .field textarea { min-height: 90px; resize: vertical }
 .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 11px 18px; border-radius: 999px; font-weight: 600; z-index: 30; max-width: calc(100% - 32px) }
 
+/* walkthrough */
+.tour { position: fixed; z-index: 40; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); width: min(460px, calc(100% - 32px)); background: #0A0A0A; color: #FFFFFF; border-radius: 22px; padding: 18px 18px 14px; display: grid; gap: 10px; box-shadow: 0 24px 60px -20px rgb(0 0 0 / .6) }
+.tour .part { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--yellow); font-weight: 600 }
+.tour h3 { color: #FFFFFF; font-size: 1.25rem }
+.tour p { color: #D6D6D6; font-size: 14.5px }
+.tour .foot { display: flex; align-items: center; gap: 8px; margin-top: 4px }
+.tour .dots { display: flex; gap: 4px; margin-right: auto; flex-wrap: wrap }
+.tour .dots i { width: 6px; height: 6px; border-radius: 50%; background: #4A4A4A }
+.tour .dots i.on { background: var(--yellow); width: 16px; border-radius: 99px }
+.tour .btn.ghost { color: #BDBDBD }
+.tour .x { position: absolute; top: 10px; right: 10px; background: none; border: 0; color: #BDBDBD; font-size: 20px; cursor: pointer; padding: 4px 8px; border-radius: 99px }
+.tour-hl { position: relative; z-index: 15; border-radius: 22px; box-shadow: 0 0 0 4px var(--yellow), 0 0 0 9999px rgb(10 10 10 / .42); transition: box-shadow .25s }
+.tour-on main { padding-bottom: 260px }
+.tour-on .scrim { padding-bottom: calc(230px + env(safe-area-inset-bottom, 0px)) }
+@media (prefers-reduced-motion: reduce) { .tour-hl { transition: none } }
+
 @media (max-width: 900px) {
   .feature, .feature.flip { grid-template-columns: 1fr }
   .feature.flip .copy { order: 0 }
@@ -279,7 +284,7 @@ tr:last-child td { border-bottom: 0 }
       <button data-go="dash">My page</button>
       <button data-go="admin">Admin</button>
     </nav>
-    <div class="auth"><button class="btn ghost" data-go="dash">Log in</button><button class="btn yellow" data-go="claim">Get listed</button></div>
+    <div class="auth"><button class="btn line sm" data-tour>▶ Walkthrough</button><button class="btn ghost" data-go="dash">Log in</button><button class="btn yellow" data-go="claim">Get listed</button></div>
   </div>
 </header>
 
@@ -334,7 +339,7 @@ const views = {
     const faces = ["#FFCB00", "#F2A65A", "#E2F8E5", "#C8DBF9", "#F6B8D9", "#FDE6C8", "#FFCB00", "#E6DFF5"];
     return `<section class="band cream" style="padding-top:0"><div class="wrap">
       <div class="hero">
-        <span class="announce"><b>Free for everyone</b>Made in Kenya, for Kenyan talent →</span>
+        <button class="announce" data-tour style="cursor:pointer"><b>New</b>Take the 2-minute walkthrough →</button>
         <h1>Find Talent. Show Your Work.<br>Get Seen.</h1>
         <p class="lead">Seen is a free directory where every freelancer and small business has a portfolio page. Look at real work, see a starting price, and send a brief in one tap.</p>
         <form class="search" id="searchForm" role="search">
@@ -579,7 +584,75 @@ document.addEventListener("submit", (e) => {
   if (e.target.id === "briefForm") { layer.innerHTML = ""; toast("Brief sent (prototype)"); }
   if (e.target.id === "searchForm") go("results");
 });
+// Walkthrough: three stories, each step opens a screen and spotlights one part of it.
+const TOUR = [
+  { part: "Welcome", v: "home", sel: ".hero h1", title: "This is Seen", text: "A free directory at seen.wanlly.africa where Kenyan freelancers and small businesses get found by their work. Let's follow three people through it." },
+  { part: "1 · A client needs a designer", v: "home", sel: ".search", title: "Wanjiku needs a logo", text: "She's opening a juice bar in Kilimani. She searches for “logo” in Nairobi, or taps a category below.", run: () => { const q = document.getElementById("q"), c = document.getElementById("city"); if (q) q.value = "logo"; if (c) c.value = "Nairobi"; } },
+  { part: "1 · A client needs a designer", v: "results", sel: ".results .grid", title: "She compares work, not logos", text: "Every card leads with a real piece of work and a starting price in KES. Pages with new work in the last 30 days come first." },
+  { part: "1 · A client needs a designer", v: "profile", arg: "amina", sel: ".work", title: "Amina's page is her portfolio", text: "Wanjiku opens Amina's page and scrolls through packaging, menus and brand books for real Kenyan businesses." },
+  { part: "1 · A client needs a designer", v: "profile", arg: "amina", sel: ".side .box", title: "Prices up front", text: "No “DM for price”. She can see a logo starts at KES 8,000 and that Amina usually replies within 2 hours." },
+  { part: "1 · A client needs a designer", v: "profile", arg: "amina", sel: ".modal", brief: "amina", title: "She sends a brief", text: "What she needs, her budget and when. Amina gets it by email and WhatsApp and replies directly. Seen takes no cut." },
+  { part: "2 · Getting businesses on Seen", v: "admin", sel: ".funnel", title: "You import a list of businesses", text: "Like the law firm list for Wanlly Sign: upload a CSV. Each business gets an unclaimed page with only its public details." },
+  { part: "2 · Getting businesses on Seen", v: "admin", sel: ".email", title: "They get a short, honest email", text: "“Your business is on Seen. Claim it free to add your work, or remove it.” 25 a day, weekdays, with two follow-ups at most." },
+  { part: "2 · Getting businesses on Seen", v: "unclaimed", sel: ".banner", title: "The owner opens their page", text: "Mwangi & Co. Catering sees their basic listing and a big “Claim this page” button. “Remove this page” deletes it for good." },
+  { part: "2 · Getting businesses on Seen", v: "claim", sel: ".step.now", title: "Claiming takes 5 minutes", text: "A 6-digit code goes to the email already on the page. No password. Then they add photos of their work and prices." },
+  { part: "3 · Why owners come back", v: "dash", sel: ".stats", title: "Proof that it's working", text: "Amina sees her views, search appearances, WhatsApp taps and briefs. On the 1st of each month she gets the same numbers by email." },
+  { part: "3 · Why owners come back", v: "dash", sel: ".list", title: "Briefs turn into work", text: "New briefs land here. When they agree on a job, the agreement goes out through Wanlly Sign." },
+  { part: "3 · Why owners come back", v: "dash", sel: ".side .box", title: "A reason to keep posting", text: "Her page drops in search if she hasn't added work in 30 days. Posting new jobs keeps her at the top, and keeps Seen fresh for clients." },
+  { part: "That's Seen", v: "home", sel: ".frame", title: "Clients find good people. People get seen.", text: "Click around the screens on your own, or restart the walkthrough from the top bar any time." },
+];
+let tourAt = -1;
+function tourShow(i) {
+  tourAt = i;
+  const s = TOUR[i];
+  document.querySelectorAll(".tour-hl").forEach((e) => e.classList.remove("tour-hl"));
+  layer.innerHTML = "";
+  go(s.v, s.arg);
+  if (s.brief) brief(s.brief);
+  if (s.run) s.run();
+  document.body.classList.add("tour-on");
+  const el = document.querySelector(s.sel);
+  if (el) {
+    if (!s.brief) el.classList.add("tour-hl");
+    const smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+    requestAnimationFrame(() => el.scrollIntoView({ block: "center", behavior: smooth ? "smooth" : "auto" }));
+  }
+  let card = document.getElementById("tour");
+  if (!card) { card = document.createElement("div"); card.id = "tour"; card.className = "tour"; card.setAttribute("role", "dialog"); card.setAttribute("aria-label", "Walkthrough"); document.body.append(card); }
+  const last = i === TOUR.length - 1;
+  card.innerHTML = `<button class="x" data-tour-end aria-label="Close walkthrough">×</button>
+    <span class="part">${esc(s.part)} · ${i + 1} of ${TOUR.length}</span><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p>
+    <div class="foot"><span class="dots">${TOUR.map((_, k) => `<i class="${k === i ? "on" : ""}"></i>`).join("")}</span>
+    ${i ? `<button class="btn ghost sm" data-tour-step="${i - 1}">Back</button>` : ""}
+    <button class="btn yellow sm" style="font-size:14px" ${last ? "data-tour-end" : `data-tour-step="${i + 1}"`}>${last ? "Finish" : "Next"}</button></div>`;
+  try { localStorage.setItem("seen-tour", "seen"); } catch {}
+}
+function tourEnd() {
+  tourAt = -1;
+  document.getElementById("tour")?.remove();
+  document.querySelectorAll(".tour-hl").forEach((e) => e.classList.remove("tour-hl"));
+  document.body.classList.remove("tour-on");
+  layer.innerHTML = "";
+}
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("[data-tour],[data-tour-step],[data-tour-end]");
+  if (!t) return;
+  e.stopImmediatePropagation();
+  if (t.hasAttribute("data-tour-end")) tourEnd();
+  else if (t.dataset.tourStep) tourShow(+t.dataset.tourStep);
+  else tourShow(0);
+}, true);
+document.addEventListener("keydown", (e) => {
+  if (tourAt < 0) return;
+  if (e.key === "ArrowRight" && tourAt < TOUR.length - 1) tourShow(tourAt + 1);
+  if (e.key === "ArrowLeft" && tourAt > 0) tourShow(tourAt - 1);
+  if (e.key === "Escape") tourEnd();
+});
+
 let start = "home";
 try { start = localStorage.getItem("seen-view") || "home"; } catch {}
 go(views[start] ? start : "home");
+let toured = null;
+try { toured = localStorage.getItem("seen-tour"); } catch {}
+if (!toured) tourShow(0);
 </script>
