@@ -218,327 +218,413 @@ tr:last-child td { border-bottom: 0 }
 .field textarea { min-height: 90px; resize: vertical }
 .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 11px 18px; border-radius: 999px; font-weight: 600; z-index: 30; max-width: calc(100% - 32px) }
 
-/* ───────── Personal sites. Every template restyles the same markup through --s-* tokens. ───────── */
-.site { container-type: inline-size; --s-bg: #FFFFFF; --s-ink: #111111; --s-mut: #6B6B6B; --s-acc: #111111; --s-on: #FFFFFF; --s-acc2: #FFCB00; --s-card: #F4F4F4; --s-line: rgb(0 0 0 / .12); --s-fd: var(--display); --s-fb: var(--body); --s-r: 16px;
-  background: var(--s-bg); color: var(--s-ink); font-family: var(--s-fb); position: relative; overflow: hidden }
-.s-in { max-width: 1100px; margin: 0 auto; padding-inline: 24px; position: relative }
-.s-hero { padding-block: 64px 40px; position: relative }
-.s-hero .s-in { display: grid; gap: 14px; justify-items: start }
-.s-av { width: 84px; height: 84px; border-radius: 50%; background: var(--s-acc); color: var(--s-on); display: grid; place-items: center; font-family: var(--s-fd); font-size: 1.9rem }
-.s-kicker { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--s-mut); font-weight: 600 }
-.s-name { font-family: var(--s-fd); font-size: clamp(2.6rem, 11cqi, 7.5rem); line-height: .92; margin: 0; font-weight: 400; letter-spacing: -0.01em; text-wrap: balance; position: relative }
-.s-tag { display: none }
-.s-bio { max-width: 52ch; font-size: 1.08rem; color: var(--s-mut) }
-.s-contact { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px }
-.s-btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 10px 18px; font-weight: 600; font-size: 14.5px; border: 1.5px solid var(--s-ink); background: transparent; color: var(--s-ink); cursor: pointer; white-space: nowrap }
-.s-btn:first-child { background: var(--s-acc); color: var(--s-on); border-color: var(--s-acc) }
-.s-btn b { font-size: 11px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: currentColor; flex: none }
+/* ───────── Personal sites ─────────
+   One markup for every page. Each template sets its own tokens (--s-*), picks a hero layout
+   (data-hero: split, poster, center, cover) and a work layout (data-work: grid, bento, masonry, list, wide),
+   then adds a few signature touches. */
+.site { container-type: inline-size; --s-bg: #FFFFFF; --s-ink: #111111; --s-mut: #6B6B6B; --s-acc: #111111; --s-on: #FFFFFF; --s-acc2: #FFCB00; --s-card: #F4F4F4; --s-line: rgb(0 0 0 / .12); --s-fd: var(--display); --s-fb: var(--body); --s-r: 16px; --s-pr: var(--s-r);
+  background: var(--s-bg); color: var(--s-ink); font-family: var(--s-fb); line-height: 1.5; position: relative; overflow: hidden }
+.site img { display: block; width: 100%; height: 100%; object-fit: cover }
+.s-in { max-width: 1180px; margin: 0 auto; padding-inline: 28px; position: relative }
+.s-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap }
+
+/* nav */
+.s-nav { position: relative; z-index: 3 }
+.s-nav .s-in { display: flex; align-items: center; gap: 22px; padding-block: 18px }
+.s-logo { font-family: var(--s-fd); font-size: 1.2rem; line-height: 1; white-space: nowrap }
+.s-links { display: flex; gap: 22px; margin-left: auto; font-size: 14px; color: var(--s-mut) }
+.s-nav .s-btn { padding: 8px 16px; font-size: 13.5px }
+
+/* buttons */
+.s-contact { display: flex; flex-wrap: wrap; gap: 8px }
+.s-btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 11px 20px; font-weight: 600; font-size: 14.5px; border: 1.5px solid var(--s-ink); background: transparent; color: var(--s-ink); cursor: pointer; white-space: nowrap; font-family: var(--s-fb) }
+.s-contact .s-btn:first-child, .s-nav .s-btn { background: var(--s-acc); color: var(--s-on); border-color: var(--s-acc) }
+.s-btn b { font-size: 10.5px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: currentColor; flex: none }
 .s-btn b span { color: var(--s-bg); font-weight: 700 }
-.s-btn:first-child b span { color: var(--s-acc) }
-.s-sec { padding-block: 28px 44px }
-.s-h { font-family: var(--s-fd); font-size: clamp(1.6rem, 4.4cqi, 2.6rem); margin: 0 0 18px; font-weight: 400; line-height: 1 }
-.s-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); grid-auto-flow: dense }
-.emb { background: var(--s-card); border-radius: var(--s-r); overflow: hidden; display: grid; border: 1px solid var(--s-line); min-width: 0 }
-.emb .tile { border-radius: 0; aspect-ratio: 4/5 }
-.emb[data-k="yt"] .tile, .emb[data-k="vi"] .tile { aspect-ratio: 16/9 }
-.emb[data-k="tt"] .tile { aspect-ratio: 9/14 }
-.emb[data-k="sc"] .tile, .emb[data-k="mx"] .tile { aspect-ratio: 16/7 }
-.emb[data-k="be"] .tile, .emb[data-k="dr"] .tile, .emb[data-k="img"] .tile { aspect-ratio: 4/3 }
-.emb .play { position: absolute; inset: 0; margin: auto; width: 54px; height: 54px; border-radius: 50%; background: rgb(0 0 0 / .55); z-index: 1 }
-.emb .play::after { content: ""; position: absolute; left: 21px; top: 16px; border-left: 16px solid #FFFFFF; border-top: 11px solid transparent; border-bottom: 11px solid transparent }
-.emb .wave { position: absolute; inset: auto 12px 12px 12px; height: 40%; display: flex; align-items: end; gap: 3px; z-index: 1 }
-.emb .wave i { flex: 1; background: #FFFFFF; opacity: .85; border-radius: 2px }
-.emb-cap { padding: 10px 12px 12px; display: grid; gap: 2px; min-width: 0 }
-.emb-cap strong { font-size: 14.5px; font-weight: 600; overflow-wrap: anywhere }
+.s-contact .s-btn:first-child b span { color: var(--s-acc) }
+
+/* hero: split is the default */
+.s-hero { position: relative; padding-block: 36px 72px }
+.s-hero .s-in { display: grid; grid-template-columns: 1.2fr .9fr; gap: 56px; align-items: center }
+.s-hero-text { display: grid; gap: 18px; justify-items: start; min-width: 0; position: relative; z-index: 2 }
+.s-kicker { font-size: 13px; text-transform: uppercase; letter-spacing: .14em; color: var(--s-mut); font-weight: 600 }
+.s-name { font-family: var(--s-fd); font-size: clamp(2.8rem, 8.6cqi, 7rem); line-height: .92; margin: 0; font-weight: 400; letter-spacing: -0.01em; text-wrap: balance; position: relative }
+.s-bio { max-width: 46ch; font-size: 1.12rem; color: var(--s-mut) }
+.s-portrait { margin: 0; aspect-ratio: 4/5; border-radius: var(--s-pr); overflow: hidden; background: var(--s-card); position: relative; z-index: 1; min-width: 0 }
+.s-bigname, .s-tag { display: none }
+
+/* hero: poster, a giant name with the portrait standing in front of it */
+.site[data-hero="poster"] .s-hero { padding-top: 12px }
+.site[data-hero="poster"] .s-hero .s-in { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 0 }
+.site[data-hero="poster"] .s-bigname { display: block; grid-area: 1 / 1; align-self: start; width: 100%; font-family: var(--s-fd); font-size: var(--bn, 17cqi); line-height: .82; letter-spacing: -0.02em; white-space: nowrap; z-index: 0; position: relative }
+.site[data-hero="poster"] .s-portrait { grid-area: 1 / 1; width: min(400px, 46cqi); margin-top: calc(var(--bn, 17cqi) * .74) }
+.site[data-hero="poster"] .s-hero-text { grid-area: 2 / 1; justify-items: center; margin-top: 30px }
+.site[data-hero="poster"] .s-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0) }
+.site[data-hero="poster"] .s-contact { justify-content: center }
+
+/* hero: center, a round portrait above a centred name */
+.site[data-hero="center"] .s-hero .s-in { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 22px }
+.site[data-hero="center"] .s-portrait { order: -1; width: 168px; aspect-ratio: 1; border-radius: 50% }
+.site[data-hero="center"] .s-hero-text { justify-items: center }
+.site[data-hero="center"] .s-contact { justify-content: center }
+
+/* hero: cover, full-bleed work behind the name */
+.site[data-hero="cover"] .s-hero { --s-ink: #FFFFFF; --s-mut: rgb(255 255 255 / .8); color: #FFFFFF; min-height: clamp(460px, 62cqi, 720px); display: flex; align-items: flex-end; padding-block: 80px 56px; margin-top: -70px }
+.site[data-hero="cover"] .s-hero::before { content: ""; position: absolute; inset: 0; background: var(--cover) center / cover; z-index: 0 }
+.site[data-hero="cover"] .s-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(0 0 0 / .45), transparent 30%, transparent 45%, rgb(0 0 0 / .78)); z-index: 0 }
+.site[data-hero="cover"] .s-hero .s-in { width: 100%; grid-template-columns: 1fr auto; align-items: end }
+.site[data-hero="cover"] .s-portrait { width: 120px; aspect-ratio: 1; border-radius: 50%; border: 3px solid #FFFFFF }
+.site[data-hero="cover"] .s-nav { --s-ink: #FFFFFF; --s-mut: rgb(255 255 255 / .85); color: #FFFFFF }
+.site[data-hero="cover"] .s-btn b span { color: #111111 }
+
+/* stats */
+.s-stats .s-in { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--s-line) }
+.s-stat { padding: 22px 18px 20px 0; display: grid; gap: 2px }
+.s-stat + .s-stat { padding-left: 22px; border-left: 1px solid var(--s-line) }
+.s-stat b { font-family: var(--s-fd); font-size: clamp(2rem, 5.4cqi, 3.6rem); line-height: 1; font-weight: 400 }
+.s-stat span { font-size: 13.5px; color: var(--s-mut) }
+
+/* marquee */
+.s-marquee { overflow: hidden; background: var(--s-acc); color: var(--s-on); padding-block: 14px; margin-top: 56px; white-space: nowrap }
+.s-marquee div { display: inline-block; font-family: var(--s-fd); font-size: clamp(1.3rem, 3cqi, 2rem); text-transform: uppercase; letter-spacing: .02em }
+@media (prefers-reduced-motion: no-preference) { .s-marquee div { animation: s-mq 38s linear infinite } @keyframes s-mq { to { transform: translateX(-50%) } } }
+
+/* sections */
+.s-sec { padding-block: 72px 24px }
+.s-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 26px; padding-bottom: 14px; border-bottom: 1px solid var(--s-line) }
+.s-h { font-family: var(--s-fd); font-size: clamp(2rem, 6cqi, 4.2rem); margin: 0; font-weight: 400; line-height: .95 }
+.s-count { font-size: 14px; color: var(--s-mut); font-variant-numeric: tabular-nums }
+
+/* work cards */
+.s-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) }
+.emb { display: grid; gap: 0; min-width: 0; color: inherit }
+.emb-media { position: relative; overflow: hidden; border-radius: var(--s-r); aspect-ratio: 4/5; background: var(--s-card) }
+.emb-media img { transition: transform .6s ease }
+.emb:hover .emb-media img { transform: scale(1.04) }
+.emb-media .tile { position: absolute; inset: 0; aspect-ratio: auto; border-radius: 0 }
+.emb-n { position: absolute; left: 10px; top: 10px; z-index: 1; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: var(--s-bg); color: var(--s-ink) }
+.emb .play { position: absolute; inset: 0; margin: auto; width: 58px; height: 58px; border-radius: 50%; background: rgb(0 0 0 / .55); z-index: 1; backdrop-filter: blur(4px) }
+.emb .play::after { content: ""; position: absolute; left: 23px; top: 18px; border-left: 16px solid #FFFFFF; border-top: 11px solid transparent; border-bottom: 11px solid transparent }
+.emb .wave { position: absolute; inset: auto 14px 14px 14px; height: 34%; display: flex; align-items: end; gap: 3px; z-index: 1 }
+.emb .wave i { flex: 1; background: #FFFFFF; opacity: .9; border-radius: 2px }
+.emb-cap { padding: 12px 2px 4px; display: grid; gap: 3px; min-width: 0 }
+.emb-cap strong { font-size: 15.5px; font-weight: 600; overflow-wrap: anywhere; line-height: 1.3 }
 .emb-src { display: flex; gap: 6px; align-items: center; font-size: 12px; color: var(--s-mut); min-width: 0 }
 .emb-src em { font-style: normal; font-weight: 700; font-size: 10px; padding: 1px 6px; border-radius: 4px; background: var(--s-ink); color: var(--s-bg); flex: none }
 .emb-src span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
-.s-proof { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px }
-.s-card { background: var(--s-card); border: 1px solid var(--s-line); border-radius: var(--s-r); padding: 18px; display: grid; gap: 6px }
-.s-stars { font-size: 1.4rem; letter-spacing: 2px; color: var(--s-acc2) }
-.s-big { font-family: var(--s-fd); font-size: 2.6rem; line-height: 1 }
+
+/* work layouts */
+.site[data-work="bento"] .s-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(150px, 15cqi); grid-auto-flow: dense }
+.site[data-work="bento"] .emb { grid-template-rows: 1fr auto }
+.site[data-work="bento"] .emb-media { aspect-ratio: auto; height: 100% }
+.site[data-work="bento"] .emb:nth-child(1) { grid-column: span 2; grid-row: span 2 }
+.site[data-work="bento"] .emb:nth-child(4) { grid-column: span 2 }
+.site[data-work="bento"] .emb:nth-child(5):nth-last-child(2), .site[data-work="bento"] .emb:nth-child(6):last-child { grid-column: span 2 }
+.site[data-work="bento"] .emb:nth-child(5):last-child { grid-column: span 4 }
+.site[data-work="masonry"] .s-grid { display: block; columns: 3 240px; column-gap: 16px }
+.site[data-work="masonry"] .emb { break-inside: avoid; margin-bottom: 18px }
+.site[data-work="masonry"] .emb:nth-child(3n+1) .emb-media { aspect-ratio: 3/4 }
+.site[data-work="masonry"] .emb:nth-child(3n+2) .emb-media { aspect-ratio: 1 }
+.site[data-work="masonry"] .emb:nth-child(3n) .emb-media { aspect-ratio: 4/5.4 }
+.site[data-work="list"] .s-grid { grid-template-columns: 1fr; gap: 0 }
+.site[data-work="list"] .emb { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 32px; align-items: center; padding-block: 22px; border-bottom: 1px solid var(--s-line) }
+.site[data-work="list"] .emb-media { aspect-ratio: 16/10 }
+.site[data-work="list"] .emb-cap strong { font-family: var(--s-fd); font-size: clamp(1.4rem, 3.4cqi, 2.4rem); font-weight: 400; line-height: 1.1 }
+.site[data-work="list"] .emb-n { position: static; justify-self: start; background: none; padding: 0; color: var(--s-mut); font-size: 13px }
+.site[data-work="wide"] .s-grid { grid-template-columns: repeat(2, 1fr) }
+.site[data-work="wide"] .emb-media { aspect-ratio: 16/9 }
+.site[data-work="wide"] .emb:first-child { grid-column: 1 / -1 }
+.site[data-work="wide"] .emb:first-child .emb-media { aspect-ratio: 21/9 }
+
+/* services */
+.s-svc { list-style: none; margin: 0; padding: 0; counter-reset: svc }
+.s-svc li { counter-increment: svc; display: grid; grid-template-columns: 64px 1fr auto; align-items: baseline; gap: 12px; padding-block: 20px; border-bottom: 1px solid var(--s-line); font-family: var(--s-fd); font-size: clamp(1.4rem, 4cqi, 2.6rem); line-height: 1.1 }
+.s-svc li::before { content: counter(svc, decimal-leading-zero); font-family: var(--s-fb); font-size: 13px; color: var(--s-mut); font-weight: 600 }
+.s-svc li::after { content: "↗"; font-family: var(--s-fb); font-size: 1.2rem; color: var(--s-mut) }
+
+/* about */
+.s-about .s-in { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: center }
+.s-about figure { margin: 0; aspect-ratio: 4/5; border-radius: var(--s-pr); overflow: hidden; background: var(--s-card); min-width: 0 }
+.s-about-text { display: grid; gap: 16px; min-width: 0 }
+.s-about-text p { font-size: clamp(1.1rem, 2.4cqi, 1.45rem); line-height: 1.5 }
+.s-chips { display: flex; flex-wrap: wrap; gap: 8px }
+.s-chips span { border: 1px solid var(--s-line); border-radius: 999px; padding: 5px 12px; font-size: 13px; color: var(--s-mut) }
+
+/* proof */
+.s-proof { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px }
+.s-card { background: var(--s-card); border: 1px solid var(--s-line); border-radius: var(--s-r); padding: 24px; display: grid; gap: 8px; align-content: start }
+.s-stars { font-size: 1.3rem; letter-spacing: 2px; color: var(--s-acc2) }
+.s-big { font-family: var(--s-fd); font-size: 3rem; line-height: 1 }
+.s-quote { font-family: var(--s-fd); font-size: clamp(1.3rem, 3cqi, 1.9rem); line-height: 1.25 }
+
+/* closing call */
+.s-cta { padding-block: 104px 88px; text-align: center }
+.s-cta .s-in { display: grid; gap: 26px; justify-items: center }
+.s-cta-h { font-family: var(--s-fd); font-size: clamp(2.8rem, 11cqi, 8.5rem); line-height: .9; margin: 0; font-weight: 400; text-wrap: balance }
+.s-cta .s-contact { justify-content: center }
+
 .s-foot { border-top: 1px solid var(--s-line); padding-block: 26px 30px }
 .s-foot .s-in { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; font-size: 13px; color: var(--s-mut) }
 .s-qr { width: 76px; height: 76px; background: #FFFFFF; padding: 6px; border-radius: 8px; flex: none }
 .s-qr img, .s-qr canvas { width: 100% !important; height: 100% !important; display: block }
 .s-made { display: inline-flex; gap: 6px; align-items: center; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--s-line) }
 
-/* Street: hip hop, loud, stickers */
-.site[data-tpl="street"] { --s-bg: #0B0B0B; --s-ink: #F5F5F0; --s-mut: #A9A9A0; --s-acc: #FFE600; --s-on: #0B0B0B; --s-acc2: #FF4FA3; --s-card: #161616; --s-line: #2C2C2C; --s-fd: "Anton", Impact, sans-serif; --s-r: 4px }
-.site[data-tpl="street"] .s-name { text-transform: uppercase; font-size: clamp(3.4rem, 17cqi, 11rem); line-height: .85 }
-.site[data-tpl="street"] .s-tag { display: block; position: absolute; right: 2%; top: -6%; font-family: "Permanent Marker", cursive; color: var(--s-acc2); font-size: clamp(1.6rem, 6cqi, 3.8rem); transform: rotate(-8deg); text-transform: none; white-space: nowrap }
-.site[data-tpl="street"] .s-hero::after { content: "WORK WORK WORK WORK"; position: absolute; left: -2%; bottom: -18px; font-family: "Anton", Impact, sans-serif; font-size: 22cqi; line-height: 1; color: transparent; -webkit-text-stroke: 1px #2E2E2E; white-space: nowrap; pointer-events: none }
-.site[data-tpl="street"] .s-hero .s-in { z-index: 1 }
-.site[data-tpl="street"] .s-av { border-radius: 0; transform: rotate(-4deg); box-shadow: 6px 6px 0 var(--s-acc2) }
-.site[data-tpl="street"] .s-btn { border-radius: 0; text-transform: uppercase; letter-spacing: .04em; border-width: 2px }
-.site[data-tpl="street"] .s-h { text-transform: uppercase; color: var(--s-acc) }
-.site[data-tpl="street"] .emb { border: 3px solid var(--s-ink) }
-.site[data-tpl="street"] .emb:nth-child(odd) { transform: rotate(-1.2deg) }
-.site[data-tpl="street"] .emb:nth-child(even) { transform: rotate(1deg) translateY(10px) }
+/* ───────── The templates ───────── */
+
+/* Street: hip hop designers */
+.site[data-tpl="street"] { --s-bg: #0B0B0B; --s-ink: #F5F5F0; --s-mut: #A9A9A0; --s-acc: #FFE600; --s-on: #0B0B0B; --s-acc2: #FF4FA3; --s-card: #161616; --s-line: #2A2A2A; --s-fd: "Anton", Impact, sans-serif; --s-r: 4px }
+.site[data-tpl="street"] .s-bigname, .site[data-tpl="street"] .s-h, .site[data-tpl="street"] .s-cta-h, .site[data-tpl="street"] .s-logo { text-transform: uppercase }
+.site[data-tpl="street"] .s-bigname { color: var(--s-acc) }
+.site[data-tpl="street"] .s-tag { display: block; position: absolute; right: 6%; top: 34%; z-index: 3; font-family: "Permanent Marker", cursive; color: var(--s-acc2); font-size: clamp(1.6rem, 5.4cqi, 3.6rem); transform: rotate(-9deg); text-transform: none; white-space: nowrap }
+.site[data-tpl="street"] .s-portrait { box-shadow: 14px 14px 0 var(--s-acc2); transform: rotate(-2deg) }
+.site[data-tpl="street"] .s-btn { border-radius: 0; text-transform: uppercase; letter-spacing: .05em; border-width: 2px }
+.site[data-tpl="street"] .s-marquee { background: var(--s-acc2); color: #0B0B0B; transform: rotate(-1.5deg); margin-inline: -20px }
+.site[data-tpl="street"] .emb-media { border: 3px solid var(--s-ink) }
+.site[data-tpl="street"] .emb:nth-child(odd) { transform: rotate(-.8deg) }
+.site[data-tpl="street"] .emb:nth-child(even) { transform: rotate(.8deg) }
 .site[data-tpl="street"] .emb-src em { background: var(--s-acc2); color: #0B0B0B }
+.site[data-tpl="street"] .s-cta-h { color: var(--s-acc) }
 
-/* Gallery: quiet, editorial, images first */
-.site[data-tpl="gallery"] { --s-bg: #F7F6F2; --s-ink: #141414; --s-mut: #77756F; --s-acc: #141414; --s-on: #F7F6F2; --s-acc2: #141414; --s-card: transparent; --s-line: transparent; --s-fd: "Instrument Serif", Georgia, serif; --s-r: 0 }
-.site[data-tpl="gallery"] .s-name { font-style: italic }
-.site[data-tpl="gallery"] .s-hero .s-in { justify-items: center; text-align: center }
-.site[data-tpl="gallery"] .s-contact { justify-content: center }
-.site[data-tpl="gallery"] .s-av { display: none }
+/* Gallery: photographers */
+.site[data-tpl="gallery"] { --s-bg: #F7F6F2; --s-ink: #141414; --s-mut: #77756F; --s-acc: #141414; --s-on: #F7F6F2; --s-acc2: #141414; --s-card: #ECEAE4; --s-line: rgb(20 20 20 / .14); --s-fd: "Instrument Serif", Georgia, serif; --s-r: 2px }
+.site[data-tpl="gallery"] .s-name, .site[data-tpl="gallery"] .s-h, .site[data-tpl="gallery"] .s-cta-h, .site[data-tpl="gallery"] .s-logo { font-style: italic }
+.site[data-tpl="gallery"] .s-name { font-size: clamp(3.2rem, 11cqi, 9rem) }
 .site[data-tpl="gallery"] .s-btn { border-width: 1px; font-weight: 500 }
-.site[data-tpl="gallery"] .emb:first-child { grid-column: span 2; grid-row: span 2 }
-.site[data-tpl="gallery"] .emb:first-child .tile { aspect-ratio: auto; height: 100% }
-.site[data-tpl="gallery"] .emb-cap { padding-inline: 0 }
-.site[data-tpl="gallery"] .s-h { text-align: center; font-style: italic }
+.site[data-tpl="gallery"] .s-marquee { background: transparent; color: var(--s-ink); border-block: 1px solid var(--s-line); font-style: italic }
+.site[data-tpl="gallery"] .s-marquee div { text-transform: none; font-style: italic }
+.site[data-tpl="gallery"] .s-grid { column-gap: 10px }
+.site[data-tpl="gallery"] .emb { margin-bottom: 12px }
 
-/* Reel: cinema, widescreen */
+/* Reel: filmmakers */
 .site[data-tpl="reel"] { --s-bg: #0E1114; --s-ink: #EDEDED; --s-mut: #8D96A0; --s-acc: #FF5A36; --s-on: #0E1114; --s-acc2: #FF5A36; --s-card: #161B20; --s-line: #232A31; --s-fd: "Archivo Narrow", "Arial Narrow", sans-serif; --s-r: 6px }
-.site[data-tpl="reel"] .s-name, .site[data-tpl="reel"] .s-h { text-transform: uppercase; font-weight: 700; letter-spacing: .01em }
-.site[data-tpl="reel"] .s-hero { border-bottom: 1px solid var(--s-line); background: linear-gradient(180deg, #000000, var(--s-bg)) }
-.site[data-tpl="reel"] .s-hero::before { content: "● REC"; position: absolute; right: 24px; top: 20px; color: var(--s-acc); font: 700 12px/1 var(--s-fb); letter-spacing: .15em }
-.site[data-tpl="reel"] .s-av { border-radius: 6px }
-.site[data-tpl="reel"] .s-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) }
-.site[data-tpl="reel"] .emb .tile { aspect-ratio: 16/9 }
-.site[data-tpl="reel"] .emb:first-child { grid-column: 1 / -1 }
-.site[data-tpl="reel"] .emb:first-child .tile { aspect-ratio: 21/9 }
+.site[data-tpl="reel"] .s-name, .site[data-tpl="reel"] .s-h, .site[data-tpl="reel"] .s-cta-h, .site[data-tpl="reel"] .s-logo, .site[data-tpl="reel"] .s-stat b { text-transform: uppercase; font-weight: 700 }
+.site[data-tpl="reel"] .s-hero .s-in::before { content: "● REC  00:02:14:07"; position: absolute; right: 28px; top: -40px; color: var(--s-acc); font: 700 12px/1 var(--s-fb); letter-spacing: .15em }
+.site[data-tpl="reel"] .s-portrait { border-color: var(--s-acc) }
 
-/* Studio: Swiss grid */
-.site[data-tpl="studio"] { --s-bg: #FFFFFF; --s-ink: #111111; --s-mut: #6B6B6B; --s-acc: #E5341D; --s-on: #FFFFFF; --s-acc2: #E5341D; --s-card: #FFFFFF; --s-line: #111111; --s-r: 0 }
-.site[data-tpl="studio"] .s-name { font-weight: 900; letter-spacing: -0.04em; font-size: clamp(2.8rem, 12cqi, 8rem) }
-.site[data-tpl="studio"] .s-hero { border-bottom: 2px solid var(--s-ink) }
-.site[data-tpl="studio"] .s-av { border-radius: 0; background: var(--s-ink) }
+/* Studio: agencies and brand designers */
+.site[data-tpl="studio"] { --s-bg: #FFFFFF; --s-ink: #111111; --s-mut: #6B6B6B; --s-acc: #E5341D; --s-on: #FFFFFF; --s-acc2: #E5341D; --s-card: #F2F2F2; --s-line: #111111; --s-r: 0 }
+.site[data-tpl="studio"] .s-name { font-weight: 900; letter-spacing: -0.045em; font-size: clamp(3rem, 10cqi, 8.4rem) }
+.site[data-tpl="studio"] .s-h, .site[data-tpl="studio"] .s-cta-h, .site[data-tpl="studio"] .s-stat b, .site[data-tpl="studio"] .s-svc li, .site[data-tpl="studio"] .s-logo { font-weight: 900; letter-spacing: -0.03em }
 .site[data-tpl="studio"] .s-btn { border-radius: 0 }
-.site[data-tpl="studio"] .s-h { font-weight: 800 }
-.site[data-tpl="studio"] .s-grid { gap: 0; border-top: 1px solid var(--s-ink); border-left: 1px solid var(--s-ink) }
-.site[data-tpl="studio"] .emb { border: 0; border-right: 1px solid var(--s-ink); border-bottom: 1px solid var(--s-ink); padding: 12px; gap: 10px }
+.site[data-tpl="studio"] .s-svc li::before, .site[data-tpl="studio"] .s-count { color: var(--s-acc) }
+.site[data-tpl="studio"] .emb-n { background: var(--s-acc); color: #FFFFFF; border-radius: 0 }
 
-/* Kitenge: print pattern, warm */
-.site[data-tpl="kitenge"] { --s-bg: #FFF4E0; --s-ink: #2B1A0E; --s-mut: #7A5C44; --s-acc: #E0592A; --s-on: #FFF4E0; --s-acc2: #1D5C63; --s-card: #FFFFFF; --s-line: #EAD6B8; --s-fd: "DM Serif Display", Georgia, serif; --s-r: 24px }
-.site[data-tpl="kitenge"] .s-hero { padding-top: 104px }
-.site[data-tpl="kitenge"] .s-hero::before { content: ""; position: absolute; inset: 0 0 auto; height: 64px; background:
-  radial-gradient(circle at 16px 16px, #1D5C63 9px, transparent 10px) 0 0 / 32px 32px,
-  radial-gradient(circle at 16px 16px, #F2B33D 5px, transparent 6px) 16px 16px / 32px 32px,
-  linear-gradient(90deg, #E0592A 50%, #B83A1B 50%) 0 0 / 64px 64px }
-.site[data-tpl="kitenge"] .s-av { background: var(--s-acc2); color: #FFF4E0; border: 4px solid #F2B33D }
-.site[data-tpl="kitenge"] .s-btn:first-child { background: var(--s-acc2); border-color: var(--s-acc2); color: #FFF4E0 }
-.site[data-tpl="kitenge"] .s-btn:first-child b span { color: var(--s-acc2) }
+/* Kitenge: fashion and tailoring */
+.site[data-tpl="kitenge"] { --s-bg: #FFF4E0; --s-ink: #2B1A0E; --s-mut: #7A5C44; --s-acc: #1D5C63; --s-on: #FFF4E0; --s-acc2: #E0592A; --s-card: #FFFFFF; --s-line: #EAD6B8; --s-fd: "DM Serif Display", Georgia, serif; --s-r: 22px; --s-pr: 200px 200px 22px 22px }
+.site[data-tpl="kitenge"] .s-nav { border-top: 18px solid transparent; border-image: repeating-linear-gradient(90deg, #E0592A 0 24px, #1D5C63 24px 48px, #F2B33D 48px 72px) 18 }
+.site[data-tpl="kitenge"] .s-portrait { border: 6px solid #F2B33D }
+.site[data-tpl="kitenge"] .s-marquee { background: repeating-linear-gradient(45deg, #E0592A 0 14px, #B83A1B 14px 28px); color: #FFF4E0 }
+.site[data-tpl="kitenge"] .s-stars { color: #E0592A }
 
-/* Glow: soft, beauty */
-.site[data-tpl="glow"] { --s-bg: #FFF0F3; --s-ink: #3A1E2A; --s-mut: #8A5F6E; --s-acc: #D9467A; --s-on: #FFFFFF; --s-acc2: #D9467A; --s-card: #FFFFFF; --s-line: #F6D3DD; --s-fd: "DM Serif Display", Georgia, serif; --s-r: 28px }
-.site[data-tpl="glow"] .s-hero .s-in { justify-items: center; text-align: center }
-.site[data-tpl="glow"] .s-contact { justify-content: center }
-.site[data-tpl="glow"] .s-name { font-style: italic }
-.site[data-tpl="glow"] .s-kicker { font-family: "Caveat", cursive; text-transform: none; letter-spacing: 0; font-size: 1.6rem; color: var(--s-acc) }
-.site[data-tpl="glow"] .s-av { width: 110px; height: 110px; box-shadow: 0 0 0 6px #FFFFFF, 0 0 0 9px var(--s-acc) }
-.site[data-tpl="glow"] .s-hero { background: radial-gradient(60% 80% at 50% 0%, #FFD6E2, transparent) }
-.site[data-tpl="glow"] .s-btn:not(:first-child) { border-color: var(--s-line); background: #FFFFFF }
+/* Glow: beauty */
+.site[data-tpl="glow"] { --s-bg: #FFF0F3; --s-ink: #3A1E2A; --s-mut: #8A5F6E; --s-acc: #D9467A; --s-on: #FFFFFF; --s-acc2: #D9467A; --s-card: #FFFFFF; --s-line: #F6D3DD; --s-fd: "DM Serif Display", Georgia, serif; --s-r: 26px }
+.site[data-tpl="glow"] .s-hero { background: radial-gradient(60% 70% at 50% 10%, #FFD1DF, transparent) }
+.site[data-tpl="glow"] .s-name, .site[data-tpl="glow"] .s-h, .site[data-tpl="glow"] .s-cta-h { font-style: italic }
+.site[data-tpl="glow"] .s-kicker { font-family: "Caveat", cursive; text-transform: none; letter-spacing: 0; font-size: 1.7rem; color: var(--s-acc); font-weight: 600 }
+.site[data-tpl="glow"] .s-portrait { width: 200px; box-shadow: 0 0 0 8px #FFFFFF, 0 0 0 11px var(--s-acc) }
+.site[data-tpl="glow"] .s-contact .s-btn:not(:first-child) { border-color: var(--s-line); background: #FFFFFF }
+.site[data-tpl="glow"] .s-marquee { background: #FFFFFF; color: var(--s-acc); font-style: italic }
 
-/* Groove: DJs and musicians */
-.site[data-tpl="groove"] { --s-bg: #0F2A22; --s-ink: #F1EAD8; --s-mut: #A9BFB4; --s-acc: #FF8A3D; --s-on: #0F2A22; --s-acc2: #FF8A3D; --s-card: #143629; --s-line: #1F4536; --s-fd: "Gabarito", sans-serif; --s-r: 14px }
-.site[data-tpl="groove"] .s-name { font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em }
-.site[data-tpl="groove"] .s-hero { padding-bottom: 96px }
-.site[data-tpl="groove"] .s-hero::after { content: ""; position: absolute; left: 24px; right: 24px; bottom: 24px; height: 48px; opacity: .55;
-  background: repeating-linear-gradient(90deg, var(--s-acc) 0 4px, transparent 4px 9px);
-  -webkit-mask: radial-gradient(70% 120% at 40% 100%, #000 40%, transparent 72%); mask: radial-gradient(70% 120% at 40% 100%, #000 40%, transparent 72%) }
-.site[data-tpl="groove"] .s-av { border-radius: 50%; background: conic-gradient(var(--s-acc) 0 25%, #F1EAD8 0 50%, var(--s-acc) 0 75%, #F1EAD8 0); color: #0F2A22 }
-.site[data-tpl="groove"] .s-h { font-weight: 800; text-transform: uppercase }
+/* Groove: DJs */
+.site[data-tpl="groove"] { --s-bg: #0F2A22; --s-ink: #F1EAD8; --s-mut: #A9BFB4; --s-acc: #FF8A3D; --s-on: #0F2A22; --s-acc2: #FF8A3D; --s-card: #143629; --s-line: #1F4536; --s-fd: "Gabarito", sans-serif; --s-r: 14px; --s-pr: 400px 400px 14px 14px }
+.site[data-tpl="groove"] .s-bigname, .site[data-tpl="groove"] .s-h, .site[data-tpl="groove"] .s-cta-h, .site[data-tpl="groove"] .s-logo { font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em }
+.site[data-tpl="groove"] .s-bigname { color: transparent; -webkit-text-stroke: 2px var(--s-acc) }
+.site[data-tpl="groove"] .s-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 18px; height: 44px; opacity: .5; background: repeating-linear-gradient(90deg, var(--s-acc) 0 4px, transparent 4px 9px); -webkit-mask: radial-gradient(60% 120% at 50% 100%, #000 40%, transparent 72%); mask: radial-gradient(60% 120% at 50% 100%, #000 40%, transparent 72%) }
 
-/* Menu: caterers and food */
+/* Menu: caterers */
 .site[data-tpl="menu"] { --s-bg: #F4EBDD; --s-ink: #2A1712; --s-mut: #7B5E52; --s-acc: #8E2A1E; --s-on: #F4EBDD; --s-acc2: #C98A1B; --s-card: #FFFDF8; --s-line: #E2D2BC; --s-fd: "DM Serif Display", Georgia, serif; --s-r: 10px }
-.site[data-tpl="menu"] .s-hero .s-in { justify-items: center; text-align: center }
-.site[data-tpl="menu"] .s-contact { justify-content: center }
 .site[data-tpl="menu"] .s-kicker::before, .site[data-tpl="menu"] .s-kicker::after { content: " ✦ "; color: var(--s-acc2) }
 .site[data-tpl="menu"] .s-hero { border-bottom: 3px double var(--s-line) }
-.site[data-tpl="menu"] .s-h { text-align: center }
-.site[data-tpl="menu"] .s-av { background: var(--s-acc2); color: #2A1712 }
+.site[data-tpl="menu"] .s-portrait { border: 6px solid #FFFDF8; box-shadow: 0 0 0 1px var(--s-line) }
+.site[data-tpl="menu"] .s-head, .site[data-tpl="menu"] .s-h { justify-content: center; text-align: center }
+.site[data-tpl="menu"] .s-count { display: none }
 
-
-/* Ink: tattoo flash, blackletter */
+/* Ink: tattoo */
 .site[data-tpl="ink"] { --s-bg: #0D0D0D; --s-ink: #EDE6DA; --s-mut: #9A9187; --s-acc: #C1121F; --s-on: #EDE6DA; --s-acc2: #C1121F; --s-card: #141414; --s-line: #2E2E2E; --s-fd: "UnifrakturMaguntia", "Old English Text MT", serif; --s-r: 0 }
-.site[data-tpl="ink"] .s-hero .s-in { justify-items: center; text-align: center; border: 1px solid #3A3A3A; outline: 1px solid #3A3A3A; outline-offset: 6px; padding: 40px 24px; max-width: 980px }
-.site[data-tpl="ink"] .s-contact { justify-content: center }
-.site[data-tpl="ink"] .s-av { border-radius: 0; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); width: 84px; height: 84px; font-size: 1.3rem }
-.site[data-tpl="ink"] .s-btn { border-radius: 0; text-transform: uppercase; letter-spacing: .12em; font-size: 12.5px }
-.site[data-tpl="ink"] .s-h { text-align: center }
-.site[data-tpl="ink"] .emb { border: 1px solid var(--s-ink) }
-.site[data-tpl="ink"] .emb .tile { filter: grayscale(.7) contrast(1.25) }
-.site[data-tpl="ink"] .emb-cap strong { text-transform: uppercase; letter-spacing: .08em; font-size: 12.5px }
+.site[data-tpl="ink"] .s-hero .s-in { border: 1px solid #3A3A3A; outline: 1px solid #3A3A3A; outline-offset: 7px; padding: 48px 24px; max-width: 980px }
+.site[data-tpl="ink"] .s-portrait { width: 190px; border-radius: 0; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); aspect-ratio: 1 }
+.site[data-tpl="ink"] .site img, .site[data-tpl="ink"] img { filter: grayscale(.85) contrast(1.15) }
+.site[data-tpl="ink"] .s-btn { border-radius: 0; text-transform: uppercase; letter-spacing: .14em; font-size: 12.5px }
+.site[data-tpl="ink"] .emb-media { border: 1px solid var(--s-ink) }
+.site[data-tpl="ink"] .s-svc li, .site[data-tpl="ink"] .s-stat b { font-family: var(--s-fb); font-weight: 300 }
 
-/* Canvas: gallery wall, matted frames */
-.site[data-tpl="canvas"] { --s-bg: #F3EEE6; --s-ink: #2B2622; --s-mut: #7C7266; --s-acc: #2B2622; --s-on: #F3EEE6; --s-acc2: #B5562F; --s-card: #FFFFFF; --s-line: transparent; --s-fd: "Cormorant Garamond", Georgia, serif; --s-r: 0;
+/* Canvas: painters */
+.site[data-tpl="canvas"] { --s-bg: #F3EEE6; --s-ink: #2B2622; --s-mut: #7C7266; --s-acc: #2B2622; --s-on: #F3EEE6; --s-acc2: #B5562F; --s-card: #FFFFFF; --s-line: rgb(43 38 34 / .14); --s-fd: "Cormorant Garamond", Georgia, serif; --s-r: 0;
   background-image: radial-gradient(rgb(0 0 0 / .035) 1px, transparent 1px); background-size: 6px 6px }
-.site[data-tpl="canvas"] .s-name { font-style: italic; font-weight: 500 }
-.site[data-tpl="canvas"] .s-av { display: none }
-.site[data-tpl="canvas"] .s-grid { gap: 34px }
-.site[data-tpl="canvas"] .emb { padding: 14px; box-shadow: 0 18px 30px -20px rgb(0 0 0 / .5); border: 0 }
-.site[data-tpl="canvas"] .emb-cap { text-align: center; justify-items: center; padding-bottom: 2px }
-.site[data-tpl="canvas"] .emb-cap strong { font-family: var(--s-fd); font-style: italic; font-size: 1.15rem; font-weight: 500 }
-.site[data-tpl="canvas"] .s-btn { border-width: 1px; font-weight: 500 }
+.site[data-tpl="canvas"] .s-name, .site[data-tpl="canvas"] .s-h, .site[data-tpl="canvas"] .s-cta-h { font-style: italic; font-weight: 500 }
+.site[data-tpl="canvas"] .s-portrait, .site[data-tpl="canvas"] .emb-media, .site[data-tpl="canvas"] .s-about figure { border: 16px solid #FFFFFF; box-shadow: 0 22px 34px -22px rgb(0 0 0 / .55) }
+.site[data-tpl="canvas"] .s-grid { gap: 36px }
+.site[data-tpl="canvas"] .emb-cap { text-align: center; justify-items: center }
+.site[data-tpl="canvas"] .emb-cap strong { font-family: var(--s-fd); font-style: italic; font-size: 1.2rem; font-weight: 500 }
+.site[data-tpl="canvas"] .s-marquee { background: transparent; color: var(--s-acc2); border-block: 1px solid var(--s-line) }
+.site[data-tpl="canvas"] .s-marquee div { text-transform: none; font-style: italic }
 
 /* Mono: black and white */
-.site[data-tpl="mono"] { --s-bg: #FFFFFF; --s-ink: #000000; --s-mut: #555555; --s-acc: #000000; --s-on: #FFFFFF; --s-acc2: #000000; --s-card: #FFFFFF; --s-line: transparent; --s-fd: "IBM Plex Mono", ui-monospace, monospace; --s-r: 0 }
-.site[data-tpl="mono"] .s-name { text-transform: uppercase; font-weight: 500; letter-spacing: -0.05em; font-size: clamp(2.2rem, 8cqi, 5.6rem) }
-.site[data-tpl="mono"] .s-hero { border-bottom: 1px solid #000000 }
-.site[data-tpl="mono"] .s-av { display: none }
+.site[data-tpl="mono"] { --s-bg: #FFFFFF; --s-ink: #000000; --s-mut: #555555; --s-acc: #000000; --s-on: #FFFFFF; --s-acc2: #000000; --s-card: #EEEEEE; --s-line: #000000; --s-fd: "IBM Plex Mono", ui-monospace, monospace; --s-r: 0 }
+.site[data-tpl="mono"] img, .site[data-tpl="mono"] .s-hero::before { filter: grayscale(1) contrast(1.2) }
+.site[data-tpl="mono"] .s-name { text-transform: uppercase; font-weight: 500; letter-spacing: -0.06em; font-size: clamp(2.4rem, 8cqi, 6rem) }
+.site[data-tpl="mono"] .s-h, .site[data-tpl="mono"] .s-cta-h { text-transform: uppercase; letter-spacing: -0.05em }
 .site[data-tpl="mono"] .s-btn { border-radius: 0; font-family: var(--s-fd); font-weight: 500; font-size: 13px; border-width: 1px }
-.site[data-tpl="mono"] .s-grid { gap: 4px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) }
-.site[data-tpl="mono"] .emb .tile { filter: grayscale(1) contrast(1.2); aspect-ratio: 1 }
-.site[data-tpl="mono"] .emb-cap { font-family: var(--s-fd); padding-inline: 0 }
-.site[data-tpl="mono"] .emb-cap strong { font-weight: 500; font-size: 12.5px }
+.site[data-tpl="mono"] .s-grid { column-gap: 4px }
+.site[data-tpl="mono"] .emb { margin-bottom: 4px }
+.site[data-tpl="mono"] .emb-cap { display: none }
 
-/* Stage: dance, diagonal energy */
+/* Stage: dancers */
 .site[data-tpl="stage"] { --s-bg: #111111; --s-ink: #F6EFE6; --s-mut: #B9B0A5; --s-acc: #E63946; --s-on: #FFFFFF; --s-acc2: #FFD23F; --s-card: #1C1C1C; --s-line: #2C2C2C; --s-fd: "Bebas Neue", Impact, sans-serif; --s-r: 0 }
-.site[data-tpl="stage"] .s-hero { background: linear-gradient(115deg, #E63946 0 34%, transparent 34.2%) }
-.site[data-tpl="stage"] .s-name { transform: skewX(-8deg); font-size: clamp(3.4rem, 16cqi, 10rem); line-height: .85 }
-.site[data-tpl="stage"] .s-kicker { color: var(--s-acc2) }
-.site[data-tpl="stage"] .s-av { border-radius: 0; transform: skewX(-8deg); background: var(--s-acc2); color: #111111 }
+.site[data-tpl="stage"] .s-hero { background: linear-gradient(115deg, #E63946 0 30%, transparent 30.2%) }
+.site[data-tpl="stage"] .s-bigname { transform: skewX(-8deg); color: var(--s-acc2) }
+.site[data-tpl="stage"] .s-portrait { clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%) }
 .site[data-tpl="stage"] .s-btn { border-radius: 0; transform: skewX(-8deg); text-transform: uppercase }
-.site[data-tpl="stage"] .s-h { font-size: clamp(2.2rem, 7cqi, 4rem); color: var(--s-acc2) }
-.site[data-tpl="stage"] .emb .tile { clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%) }
-.site[data-tpl="stage"] .emb { border: 0; background: transparent }
+.site[data-tpl="stage"] .s-h, .site[data-tpl="stage"] .s-cta-h { color: var(--s-acc2) }
+.site[data-tpl="stage"] .emb-media { clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%) }
+.site[data-tpl="stage"] .s-marquee { transform: skewY(-2deg) }
 
-/* Pages: writers, one column, book type */
-.site[data-tpl="pages"] { --s-bg: #FBF8F1; --s-ink: #1F1B16; --s-mut: #6E655A; --s-acc: #1F1B16; --s-on: #FBF8F1; --s-acc2: #9C2F2F; --s-card: transparent; --s-line: #DDD3C2; --s-fd: "Lora", Georgia, serif; --s-fb: "Lora", Georgia, serif; --s-r: 0 }
-.site[data-tpl="pages"] .s-in { max-width: 760px }
-.site[data-tpl="pages"] .s-name { font-style: italic; font-size: clamp(2.4rem, 8cqi, 4.8rem) }
-.site[data-tpl="pages"] .s-av { display: none }
-.site[data-tpl="pages"] .s-bio { color: var(--s-ink); font-size: 1.2rem; line-height: 1.6 }
-.site[data-tpl="pages"] .s-bio::first-letter { float: left; font-size: 3.6em; line-height: .8; padding: 6px 8px 0 0; color: var(--s-acc2); font-family: var(--s-fd) }
+/* Pages: writers */
+.site[data-tpl="pages"] { --s-bg: #FBF8F1; --s-ink: #1F1B16; --s-mut: #6E655A; --s-acc: #1F1B16; --s-on: #FBF8F1; --s-acc2: #9C2F2F; --s-card: #F2ECE0; --s-line: #DDD3C2; --s-fd: "Lora", Georgia, serif; --s-fb: "Lora", Georgia, serif; --s-r: 0 }
+.site[data-tpl="pages"] .s-in { max-width: 980px }
+.site[data-tpl="pages"] .s-hero .s-in { grid-template-columns: 1.6fr .7fr }
+.site[data-tpl="pages"] .s-name, .site[data-tpl="pages"] .s-h, .site[data-tpl="pages"] .s-cta-h { font-style: italic }
+.site[data-tpl="pages"] .s-bio { color: var(--s-ink); font-size: 1.25rem; line-height: 1.6 }
+.site[data-tpl="pages"] .s-bio::first-letter { float: left; font-size: 3.6em; line-height: .8; padding: 6px 8px 0 0; color: var(--s-acc2) }
 .site[data-tpl="pages"] .s-btn { border-width: 1px; font-family: var(--body) }
-.site[data-tpl="pages"] .s-grid { grid-template-columns: 1fr; gap: 0 }
-.site[data-tpl="pages"] .emb { grid-template-columns: 150px 1fr; gap: 18px; align-items: center; border: 0; border-bottom: 1px solid var(--s-line); padding-block: 16px; border-radius: 0 }
-.site[data-tpl="pages"] .emb .tile { aspect-ratio: 4/3 }
-.site[data-tpl="pages"] .emb-cap strong { font-size: 1.25rem; font-weight: 500 }
-.site[data-tpl="pages"] .s-h { font-style: italic }
+.site[data-tpl="pages"] .s-portrait { filter: sepia(.25) }
+.site[data-tpl="pages"] .s-marquee { background: transparent; color: var(--s-acc2); border-block: 1px solid var(--s-line) }
+.site[data-tpl="pages"] .s-marquee div { text-transform: none; font-style: italic }
 
 /* Blueprint: architects */
-.site[data-tpl="blueprint"] { --s-bg: #163A6B; --s-ink: #EAF2FF; --s-mut: #A9C1E6; --s-acc: #EAF2FF; --s-on: #163A6B; --s-acc2: #FFD166; --s-card: rgb(255 255 255 / .04); --s-line: rgb(234 242 255 / .45); --s-fd: "IBM Plex Mono", ui-monospace, monospace; --s-r: 0;
+.site[data-tpl="blueprint"] { --s-bg: #163A6B; --s-ink: #EAF2FF; --s-mut: #A9C1E6; --s-acc: #EAF2FF; --s-on: #163A6B; --s-acc2: #FFD166; --s-card: rgb(255 255 255 / .05); --s-line: rgb(234 242 255 / .4); --s-fd: "IBM Plex Mono", ui-monospace, monospace; --s-r: 0;
   background-image: linear-gradient(rgb(255 255 255 / .07) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / .07) 1px, transparent 1px); background-size: 24px 24px }
-.site[data-tpl="blueprint"] .s-name { text-transform: uppercase; font-weight: 500; letter-spacing: -0.03em; font-size: clamp(2.2rem, 8cqi, 5.4rem) }
-.site[data-tpl="blueprint"] .s-hero .s-in::after { content: "DRAWING NO. 01 · SCALE 1:100 · NOT FOR CONSTRUCTION"; font: 500 11px/1 var(--s-fd); color: var(--s-mut); border-top: 1px solid var(--s-line); padding-top: 8px; width: 100%; letter-spacing: .06em }
-.site[data-tpl="blueprint"] .s-av { border-radius: 0; background: transparent; border: 1px dashed var(--s-ink); color: var(--s-ink); font-family: var(--s-fd) }
+.site[data-tpl="blueprint"] .s-name, .site[data-tpl="blueprint"] .s-h, .site[data-tpl="blueprint"] .s-cta-h { text-transform: uppercase; font-weight: 500; letter-spacing: -0.04em }
+.site[data-tpl="blueprint"] .s-name { font-size: clamp(2.4rem, 7.6cqi, 5.8rem) }
+.site[data-tpl="blueprint"] .s-hero-text::after { content: "DRAWING NO. 01 · SCALE 1:100 · NOT FOR CONSTRUCTION"; font: 500 11px/1 var(--s-fd); color: var(--s-mut); border-top: 1px solid var(--s-line); padding-top: 8px; width: 100%; letter-spacing: .06em }
+.site[data-tpl="blueprint"] .s-portrait, .site[data-tpl="blueprint"] .emb-media, .site[data-tpl="blueprint"] .s-about figure { border: 1px dashed var(--s-ink); padding: 8px; background: transparent }
+.site[data-tpl="blueprint"] img { filter: grayscale(.6) brightness(1.05) }
 .site[data-tpl="blueprint"] .s-btn { border-radius: 0; font-family: var(--s-fd); font-weight: 500; border-width: 1px }
-.site[data-tpl="blueprint"] .emb { border: 1px dashed var(--s-line) }
-.site[data-tpl="blueprint"] .emb .tile { filter: saturate(.4) brightness(1.05) }
+.site[data-tpl="blueprint"] .s-marquee { background: var(--s-acc2); color: #163A6B }
 
 /* Chalk: tutors */
-.site[data-tpl="chalk"] { --s-bg: #2E3B33; --s-ink: #F2F0E8; --s-mut: #BFC7BF; --s-acc: #F7E26B; --s-on: #2E3B33; --s-acc2: #F7E26B; --s-card: #F7F3E8; --s-line: transparent; --s-fd: "Patrick Hand", "Comic Sans MS", cursive; --s-r: 2px;
+.site[data-tpl="chalk"] { --s-bg: #2E3B33; --s-ink: #F2F0E8; --s-mut: #BFC7BF; --s-acc: #F7E26B; --s-on: #2E3B33; --s-acc2: #F7E26B; --s-card: #F7F3E8; --s-line: rgb(242 240 232 / .2); --s-fd: "Patrick Hand", "Comic Sans MS", cursive; --s-r: 2px;
   background-image: radial-gradient(ellipse at 30% 20%, rgb(255 255 255 / .07), transparent 60%), radial-gradient(ellipse at 80% 70%, rgb(255 255 255 / .05), transparent 50%) }
-.site[data-tpl="chalk"] .s-name { font-size: clamp(2.8rem, 11cqi, 6.6rem) }
-.site[data-tpl="chalk"] .s-name::after { content: ""; display: block; height: 4px; width: 60%; margin-top: 8px; background: var(--s-acc); border-radius: 4px; opacity: .8 }
-.site[data-tpl="chalk"] .s-av { background: transparent; border: 3px solid var(--s-ink); color: var(--s-ink); font-family: var(--s-fd) }
+.site[data-tpl="chalk"] .s-name::after { content: ""; display: block; height: 5px; width: 60%; margin-top: 10px; background: var(--s-acc); border-radius: 4px; opacity: .85 }
+.site[data-tpl="chalk"] .s-portrait, .site[data-tpl="chalk"] .emb-media { border: 10px solid #F7F3E8; border-bottom-width: 34px; transform: rotate(-2deg); overflow: visible }
+.site[data-tpl="chalk"] .emb:nth-child(even) .emb-media { transform: rotate(1.6deg) }
+.site[data-tpl="chalk"] .s-portrait::before, .site[data-tpl="chalk"] .emb-media::before { content: ""; position: absolute; top: -16px; left: 50%; width: 80px; height: 22px; transform: translateX(-50%) rotate(-3deg); background: rgb(255 250 220 / .75); z-index: 2 }
 .site[data-tpl="chalk"] .s-btn { font-family: var(--s-fd); font-size: 17px; font-weight: 400 }
-.site[data-tpl="chalk"] .emb { overflow: visible; position: relative; padding: 10px; color: #2E3B33; box-shadow: 0 10px 18px -10px rgb(0 0 0 / .6) }
-.site[data-tpl="chalk"] .emb::before { content: ""; position: absolute; top: -9px; left: 50%; width: 70px; height: 20px; transform: translateX(-50%) rotate(-3deg); background: rgb(255 250 220 / .75); z-index: 2 }
-.site[data-tpl="chalk"] .emb:nth-child(odd) { transform: rotate(-1deg) }
-.site[data-tpl="chalk"] .emb:nth-child(even) { transform: rotate(1.2deg) }
-.site[data-tpl="chalk"] .emb-cap strong { font-family: var(--s-fd); font-size: 1.15rem; font-weight: 400 }
-.site[data-tpl="chalk"] .emb-src { color: #5E6B62 }
-.site[data-tpl="chalk"] .emb-src em { background: #2E3B33; color: #F7F3E8 }
 .site[data-tpl="chalk"] .s-card { color: #2E3B33 }
+.site[data-tpl="chalk"] .s-card .s-stars { color: #C98A1B }
 
 /* Garage: mechanics */
 .site[data-tpl="garage"] { --s-bg: #2B2D2F; --s-ink: #F1F1F1; --s-mut: #A7ABAF; --s-acc: #FFC300; --s-on: #111111; --s-acc2: #FFC300; --s-card: #35383B; --s-line: #4A4E52; --s-fd: "Black Ops One", Impact, sans-serif; --s-r: 4px }
-.site[data-tpl="garage"] .s-hero { padding-bottom: 64px }
-.site[data-tpl="garage"] .s-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 16px; background: repeating-linear-gradient(45deg, #FFC300 0 16px, #111111 16px 32px) }
-.site[data-tpl="garage"] .s-name { text-transform: uppercase }
-.site[data-tpl="garage"] .s-av { border-radius: 6px; font-family: var(--s-fd) }
+.site[data-tpl="garage"] .s-bigname, .site[data-tpl="garage"] .s-h, .site[data-tpl="garage"] .s-cta-h { text-transform: uppercase }
+.site[data-tpl="garage"] .s-bigname { color: var(--s-acc) }
+.site[data-tpl="garage"] .s-portrait { border: 5px solid var(--s-acc) }
+.site[data-tpl="garage"] .s-marquee { background: repeating-linear-gradient(45deg, #FFC300 0 22px, #111111 22px 44px); color: transparent; padding-block: 12px }
 .site[data-tpl="garage"] .s-btn { border-radius: 4px; text-transform: uppercase; letter-spacing: .05em }
-.site[data-tpl="garage"] .emb { border: 2px solid var(--s-line); background-image: radial-gradient(circle at 10px 10px, #6B7076 3px, transparent 4px), radial-gradient(circle at calc(100% - 10px) 10px, #6B7076 3px, transparent 4px); padding: 22px 8px 0 }
-.site[data-tpl="garage"] .emb .tile { border-radius: 2px }
-.site[data-tpl="garage"] .s-h { text-transform: uppercase; color: var(--s-acc) }
+.site[data-tpl="garage"] .s-h, .site[data-tpl="garage"] .s-stat b { color: var(--s-acc) }
 
-/* Bloom: florists, arches */
-.site[data-tpl="bloom"] { --s-bg: #EEF2EA; --s-ink: #2F3B2C; --s-mut: #6F7D6A; --s-acc: #B85470; --s-on: #FFFFFF; --s-acc2: #B85470; --s-card: #FFFFFF; --s-line: #D9E2D3; --s-fd: "Fraunces", Georgia, serif; --s-r: 18px }
-.site[data-tpl="bloom"] .s-hero .s-in { justify-items: center; text-align: center }
-.site[data-tpl="bloom"] .s-contact { justify-content: center }
-.site[data-tpl="bloom"] .s-name { font-style: italic; font-weight: 300 }
-.site[data-tpl="bloom"] .s-av { width: 96px; height: 120px; border-radius: 60px 60px 12px 12px; background: #8BA77F; color: #FFFFFF }
-.site[data-tpl="bloom"] .s-h { text-align: center; font-style: italic; font-weight: 300 }
-.site[data-tpl="bloom"] .emb { border-radius: 400px 400px 18px 18px; padding: 8px }
-.site[data-tpl="bloom"] .emb .tile { aspect-ratio: 3/4; border-radius: 400px 400px 12px 12px }
+/* Bloom: florists */
+.site[data-tpl="bloom"] { --s-bg: #EEF2EA; --s-ink: #2F3B2C; --s-mut: #6F7D6A; --s-acc: #B85470; --s-on: #FFFFFF; --s-acc2: #B85470; --s-card: #FFFFFF; --s-line: #D9E2D3; --s-fd: "Fraunces", Georgia, serif; --s-r: 400px 400px 18px 18px; --s-pr: 400px 400px 18px 18px }
+.site[data-tpl="bloom"] .s-name, .site[data-tpl="bloom"] .s-h, .site[data-tpl="bloom"] .s-cta-h { font-style: italic; font-weight: 300 }
+.site[data-tpl="bloom"] .emb-media { aspect-ratio: 3/4 }
 .site[data-tpl="bloom"] .emb-cap { text-align: center; justify-items: center }
+.site[data-tpl="bloom"] .s-card { border-radius: 18px }
+.site[data-tpl="bloom"] .s-marquee { background: #8BA77F; color: #FFFFFF }
 
-/* Matatu: sign writing, loud colour */
-.site[data-tpl="matatu"] { --s-bg: #111111; --s-ink: #FFFFFF; --s-mut: #CFCFCF; --s-acc: #FF2E88; --s-on: #FFFFFF; --s-acc2: #00E5FF; --s-card: #1A1A1A; --s-line: #FF2E88; --s-fd: "Bungee", Impact, sans-serif; --s-r: 14px }
-.site[data-tpl="matatu"] .s-hero { padding-top: 88px }
-.site[data-tpl="matatu"] .s-hero::before { content: ""; position: absolute; inset: 0 0 auto; height: 20px; background: linear-gradient(90deg, #FF2E88 0 20%, #FFD23F 0 40%, #00E5FF 0 60%, #7CFF6B 0 80%, #FF7A00 0) }
-.site[data-tpl="matatu"] .s-name { text-shadow: 3px 3px 0 #00E5FF, 6px 6px 0 #FF2E88; font-size: clamp(2.4rem, 10cqi, 6.4rem); line-height: 1.02 }
-.site[data-tpl="matatu"] .s-av { background: #FFD23F; color: #111111; font-family: var(--s-fd); font-size: 1.4rem }
-.site[data-tpl="matatu"] .s-btn { border-width: 2px }
-.site[data-tpl="matatu"] .s-h { color: #FFD23F }
-.site[data-tpl="matatu"] .emb { border: 3px solid #FF2E88 }
-.site[data-tpl="matatu"] .emb:nth-child(5n+2) { border-color: #FFD23F }
-.site[data-tpl="matatu"] .emb:nth-child(5n+3) { border-color: #00E5FF }
-.site[data-tpl="matatu"] .emb:nth-child(5n+4) { border-color: #7CFF6B }
-.site[data-tpl="matatu"] .emb:nth-child(5n+5) { border-color: #FF7A00 }
+/* Matatu: sign writers and matatu art */
+.site[data-tpl="matatu"] { --s-bg: #111111; --s-ink: #FFFFFF; --s-mut: #CFCFCF; --s-acc: #FF2E88; --s-on: #FFFFFF; --s-acc2: #00E5FF; --s-card: #1A1A1A; --s-line: #333333; --s-fd: "Bungee", Impact, sans-serif; --s-r: 14px }
+.site[data-tpl="matatu"] .s-nav { border-top: 14px solid transparent; border-image: linear-gradient(90deg, #FF2E88 0 20%, #FFD23F 0 40%, #00E5FF 0 60%, #7CFF6B 0 80%, #FF7A00 0) 14 }
+.site[data-tpl="matatu"] .s-bigname { line-height: .95; text-shadow: 4px 4px 0 #00E5FF, 8px 8px 0 #FF2E88 }
+.site[data-tpl="matatu"] .s-h, .site[data-tpl="matatu"] .s-cta-h { text-shadow: 3px 3px 0 #FF2E88 }
+.site[data-tpl="matatu"] .s-portrait { border: 6px solid #FFD23F; box-shadow: 12px 12px 0 #FF2E88 }
+.site[data-tpl="matatu"] .s-marquee { background: linear-gradient(90deg, #FF2E88, #FFD23F, #00E5FF, #7CFF6B, #FF7A00); color: #111111 }
+.site[data-tpl="matatu"] .emb-media { border: 3px solid #FF2E88 }
+.site[data-tpl="matatu"] .emb:nth-child(5n+2) .emb-media { border-color: #FFD23F }
+.site[data-tpl="matatu"] .emb:nth-child(5n+3) .emb-media { border-color: #00E5FF }
+.site[data-tpl="matatu"] .emb:nth-child(5n+4) .emb-media { border-color: #7CFF6B }
+.site[data-tpl="matatu"] .emb:nth-child(5n+5) .emb-media { border-color: #FF7A00 }
 
-/* Spoken: poets and MCs, the words lead */
+/* Spoken: poets and MCs */
 .site[data-tpl="spoken"] { --s-bg: #FFD23F; --s-ink: #111111; --s-mut: #3D3A2E; --s-acc: #111111; --s-on: #FFD23F; --s-acc2: #111111; --s-card: #FFE58A; --s-line: #111111; --s-fd: "Abril Fatface", Georgia, serif; --s-r: 0 }
-.site[data-tpl="spoken"] .s-av { display: none }
-.site[data-tpl="spoken"] .s-name { font-size: clamp(2rem, 6cqi, 3.6rem) }
-.site[data-tpl="spoken"] .s-bio { order: -1; font-family: var(--s-fd); color: var(--s-ink); font-size: clamp(1.6rem, 5.4cqi, 3.4rem); line-height: 1.12; max-width: 24ch }
+.site[data-tpl="spoken"] .s-name { font-size: clamp(1.8rem, 5cqi, 3.2rem) }
+.site[data-tpl="spoken"] .s-bio { order: -1; font-family: var(--s-fd); color: var(--s-ink); font-size: clamp(1.8rem, 6.4cqi, 4.6rem); line-height: 1.05; max-width: 20ch }
 .site[data-tpl="spoken"] .s-bio::before { content: "“" }
 .site[data-tpl="spoken"] .s-bio::after { content: "”" }
+.site[data-tpl="spoken"] .s-portrait { width: 120px; filter: grayscale(1) contrast(1.2); border: 3px solid #111111 }
 .site[data-tpl="spoken"] .s-btn { border-radius: 0; border-width: 2px }
-.site[data-tpl="spoken"] .emb { border: 2px solid #111111 }
+.site[data-tpl="spoken"] .emb-media { filter: grayscale(1) contrast(1.15) }
+.site[data-tpl="spoken"] .s-marquee { background: #111111; color: #FFD23F }
 
-/* Frame: interior design, split hero with an arch */
-.site[data-tpl="frame"] { --s-bg: #EFE8DF; --s-ink: #3B302A; --s-mut: #8A7B70; --s-acc: #3B302A; --s-on: #EFE8DF; --s-acc2: #A0785A; --s-card: #F7F2EC; --s-line: #D8CCBF; --s-fd: "Cormorant Garamond", Georgia, serif; --s-r: 0 }
-.site[data-tpl="frame"] .s-hero .s-in { grid-template-columns: 1.15fr 1fr; column-gap: 48px; align-items: center }
-.site[data-tpl="frame"] .s-hero .s-in > * { grid-column: 1 }
-.site[data-tpl="frame"] .s-hero .s-in::after { content: ""; grid-column: 2; grid-row: 1 / span 6; width: 100%; aspect-ratio: 3/4; border-radius: 400px 400px 0 0; background: radial-gradient(circle at 70% 30%, #E9D8C4 0 18%, transparent 19%), linear-gradient(180deg, #C9B29B, #A0785A) }
-.site[data-tpl="frame"] .s-name { text-transform: uppercase; letter-spacing: .06em; font-weight: 500; font-size: clamp(2.2rem, 7cqi, 4.8rem) }
-.site[data-tpl="frame"] .s-av { display: none }
+/* Frame: interior designers */
+.site[data-tpl="frame"] { --s-bg: #EFE8DF; --s-ink: #3B302A; --s-mut: #8A7B70; --s-acc: #3B302A; --s-on: #EFE8DF; --s-acc2: #A0785A; --s-card: #F7F2EC; --s-line: #D8CCBF; --s-fd: "Cormorant Garamond", Georgia, serif; --s-r: 0; --s-pr: 400px 400px 0 0 }
+.site[data-tpl="frame"] .s-name, .site[data-tpl="frame"] .s-h, .site[data-tpl="frame"] .s-cta-h, .site[data-tpl="frame"] .s-logo { text-transform: uppercase; letter-spacing: .06em; font-weight: 500 }
+.site[data-tpl="frame"] .s-name { font-size: clamp(2.4rem, 7cqi, 5.4rem) }
 .site[data-tpl="frame"] .s-btn { border-radius: 0; border-width: 1px; font-weight: 500; letter-spacing: .04em }
-.site[data-tpl="frame"] .s-h { text-transform: uppercase; letter-spacing: .1em; font-size: 1.4rem }
-.site[data-tpl="frame"] .emb { border: 0 }
+.site[data-tpl="frame"] .s-marquee { background: #A0785A; color: #EFE8DF }
 
-/* Pixel: developers, amber terminal */
+/* Pixel: developers */
 .site[data-tpl="pixel"] { --s-bg: #14110F; --s-ink: #FFB000; --s-mut: #B88A2E; --s-acc: #FFB000; --s-on: #14110F; --s-acc2: #FFB000; --s-card: #1C1814; --s-line: #3A2E1C; --s-fd: "VT323", ui-monospace, monospace; --s-fb: "IBM Plex Mono", ui-monospace, monospace; --s-r: 0;
   background-image: repeating-linear-gradient(0deg, rgb(255 176 0 / .035) 0 1px, transparent 1px 3px) }
-.site[data-tpl="pixel"] .s-name { font-size: clamp(3rem, 12cqi, 7.6rem); line-height: .9 }
+.site[data-tpl="pixel"] .s-name { font-size: clamp(3rem, 10cqi, 8rem); line-height: .9 }
 .site[data-tpl="pixel"] .s-name::before { content: "> " }
 .site[data-tpl="pixel"] .s-name::after { content: "_" }
 @media (prefers-reduced-motion: no-preference) { .site[data-tpl="pixel"] .s-name::after { animation: blink 1s steps(1) infinite } @keyframes blink { 50% { opacity: 0 } } }
-.site[data-tpl="pixel"] .s-av { border-radius: 0; font-family: var(--s-fd); font-size: 2.2rem }
-.site[data-tpl="pixel"] .s-btn { border-radius: 0; font-family: var(--s-fb); font-size: 13px; border-width: 1px }
 .site[data-tpl="pixel"] .s-h::before { content: "## " }
-.site[data-tpl="pixel"] .emb .tile { filter: sepia(1) saturate(2.6) hue-rotate(-12deg) brightness(.85) }
+.site[data-tpl="pixel"] img { filter: sepia(1) saturate(2.4) hue-rotate(-12deg) brightness(.85) contrast(1.1) }
+.site[data-tpl="pixel"] .s-portrait, .site[data-tpl="pixel"] .emb-media { border: 1px solid var(--s-ink) }
+.site[data-tpl="pixel"] .s-btn { border-radius: 0; font-size: 13px; border-width: 1px }
 .site[data-tpl="pixel"] .emb-src em { background: var(--s-acc); color: var(--s-bg) }
 
-/* Craft: makers, kraft paper and stamps */
+/* Craft: makers */
 .site[data-tpl="craft"] { --s-bg: #C9A27E; --s-ink: #2D1E12; --s-mut: #4F3A28; --s-acc: #2D1E12; --s-on: #EBD9C3; --s-acc2: #8B2E1A; --s-card: #F3E7D6; --s-line: #A9825F; --s-fd: "Special Elite", "Courier New", monospace; --s-r: 2px;
   background-image: radial-gradient(rgb(60 35 15 / .12) 1px, transparent 1.5px); background-size: 9px 9px }
-.site[data-tpl="craft"] .s-kicker { display: inline-block; border: 2px solid var(--s-acc2); color: var(--s-acc2); padding: 4px 10px; transform: rotate(-3deg); font-family: var(--s-fd) }
-.site[data-tpl="craft"] .s-av { border-radius: 50%; background: transparent; border: 2px dashed var(--s-ink); color: var(--s-ink); font-family: var(--s-fd) }
+.site[data-tpl="craft"] .s-kicker { border: 2px solid var(--s-acc2); color: var(--s-acc2); padding: 4px 10px; transform: rotate(-3deg); font-family: var(--s-fd) }
+.site[data-tpl="craft"] .s-portrait, .site[data-tpl="craft"] .emb-media { border: 12px solid #F3E7D6; border-bottom-width: 40px; box-shadow: 0 16px 24px -16px rgb(0 0 0 / .6); transform: rotate(2deg) }
+.site[data-tpl="craft"] .emb:nth-child(even) .emb-media { transform: rotate(-1.6deg) }
 .site[data-tpl="craft"] .s-btn { border-radius: 2px; font-family: var(--s-fd); font-weight: 400 }
-.site[data-tpl="craft"] .emb { padding: 10px 10px 0; box-shadow: 0 12px 20px -14px rgb(0 0 0 / .6); border: 0 }
-.site[data-tpl="craft"] .emb:nth-child(odd) { transform: rotate(-1.5deg) }
-.site[data-tpl="craft"] .emb:nth-child(even) { transform: rotate(1.2deg) }
-.site[data-tpl="craft"] .emb-cap strong { font-family: var(--s-fd); font-weight: 400 }
+.site[data-tpl="craft"] .s-marquee { background: var(--s-acc2); color: #F3E7D6 }
 
-/* Fade: barbershops */
+/* Fade: barbers */
 .site[data-tpl="fade"] { --s-bg: #101820; --s-ink: #F5F1E8; --s-mut: #A9B3BD; --s-acc: #D7263D; --s-on: #FFFFFF; --s-acc2: #F5F1E8; --s-card: #18232E; --s-line: #2A3846; --s-fd: "Alfa Slab One", Georgia, serif; --s-r: 8px }
-.site[data-tpl="fade"] .s-hero { padding-left: 18px }
-.site[data-tpl="fade"] .s-hero::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 18px; background: repeating-linear-gradient(-45deg, #D7263D 0 12px, #F5F1E8 12px 24px, #1F4E9C 24px 36px, #F5F1E8 36px 48px) }
-.site[data-tpl="fade"] .s-name { text-transform: uppercase; font-size: clamp(2.4rem, 10cqi, 6.4rem) }
-.site[data-tpl="fade"] .s-av { background: #F5F1E8; color: #101820; font-family: var(--s-fd); font-size: 1.5rem }
-.site[data-tpl="fade"] .s-h { text-transform: uppercase }
+.site[data-tpl="fade"]::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 16px; background: repeating-linear-gradient(-45deg, #D7263D 0 12px, #F5F1E8 12px 24px, #1F4E9C 24px 36px, #F5F1E8 36px 48px); z-index: 4 }
+.site[data-tpl="fade"] .s-bigname, .site[data-tpl="fade"] .s-h, .site[data-tpl="fade"] .s-cta-h { text-transform: uppercase }
+.site[data-tpl="fade"] .s-bigname { line-height: .9 }
+.site[data-tpl="fade"] .s-marquee { background: #F5F1E8; color: #101820 }
 .site[data-tpl="fade"] .s-foot { border-top: 0; background: conic-gradient(#F5F1E8 25%, #101820 0 50%, #F5F1E8 0 75%, #101820 0) 0 0 / 24px 24px repeat-x, var(--s-bg); padding-top: 44px }
 
-
-@container (max-width: 560px) {
-  .site[data-tpl="frame"] .s-hero .s-in { grid-template-columns: 1fr }
-  .site[data-tpl="frame"] .s-hero .s-in::after { display: none }
-  .site[data-tpl="pages"] .emb { grid-template-columns: 96px 1fr; gap: 12px }
-  .s-in { padding-inline: 16px }
-  .s-hero { padding-block: 44px 28px }
-  .s-grid { grid-template-columns: 1fr 1fr; gap: 10px }
-  .site[data-tpl="reel"] .s-grid { grid-template-columns: 1fr }
-  .site[data-tpl="gallery"] .emb:first-child { grid-column: 1 / -1; grid-row: auto }
-  .site[data-tpl="gallery"] .emb:first-child .tile { aspect-ratio: 4/3; height: auto }
-  .emb-cap strong { font-size: 13px }
-  .site[data-tpl="street"] .s-tag { position: static; display: block; margin-top: 8px; font-size: 1.5rem }
+/* narrow pages: every template collapses the same way */
+@container (max-width: 700px) {
+  .s-in { padding-inline: 18px }
+  .s-links { display: none }
+  .s-nav .s-btn { margin-left: auto }
+  .s-hero .s-in, .site[data-tpl="pages"] .s-hero .s-in { grid-template-columns: 1fr; gap: 28px }
+  .site[data-hero="split"] .s-portrait { order: -1; width: min(100%, 360px) }
+  .site[data-hero="cover"] .s-hero .s-in { grid-template-columns: 1fr }
+  .site[data-hero="cover"] .s-portrait { display: none }
+  .site[data-hero="poster"] .s-bigname { white-space: normal; font-size: var(--bnw); line-height: .9 }
+  .site[data-hero="poster"] .s-portrait { grid-area: 2 / 1; width: 70cqi; margin-top: -4cqi }
+  .site[data-hero="poster"] .s-hero-text { grid-area: 3 / 1 }
+  .site[data-hero="poster"] .s-tag { top: auto; bottom: 40%; }
+  .s-stats .s-in { grid-template-columns: 1fr 1fr 1fr }
+  .s-stat { padding-right: 8px }
+  .s-stat + .s-stat { padding-left: 12px }
+  .s-stat span { font-size: 12px }
+  .s-grid { grid-template-columns: 1fr 1fr; gap: 12px }
+  .site[data-work="bento"] .s-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 42cqi }
+  .site[data-work="bento"] .emb:nth-child(1) { grid-column: 1 / -1; grid-row: span 1 }
+  .site[data-work="bento"] .emb:nth-child(4), .site[data-work="bento"] .emb:nth-child(5), .site[data-work="bento"] .emb:nth-child(6) { grid-column: auto }
+  .site[data-work="list"] .emb { grid-template-columns: 1fr; gap: 10px }
+  .site[data-work="wide"] .s-grid { grid-template-columns: 1fr }
+  .s-about .s-in { grid-template-columns: 1fr; gap: 24px }
+  .s-about figure { max-width: 360px }
+  .s-svc li { grid-template-columns: 40px 1fr auto }
+  .emb-cap strong { font-size: 13.5px }
+  .site[data-tpl="street"] .s-tag { top: 46%; right: 2% }
+  .site[data-tpl="ink"] .s-hero .s-in { padding: 32px 14px; outline-offset: 4px }
 }
+
+.cardpic::before, .cardpic::after { display: none }
+.cardpic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover }
+.cardpic .who i { opacity: 1 }
 
 /* Seen strip above a personal site */
 .strip { background: var(--card); border-bottom: 1px solid var(--line) }
@@ -700,29 +786,29 @@ const CONTACT = { wa: ["WhatsApp", "W"], ig: ["Instagram DM", "IG"], em: ["Email
 
 const TCATS = ["All", "Art & design", "Photo & video", "Music & stage", "Beauty & fashion", "Food & events", "Words & teaching", "Services & trades"];
 const TPLS = [
-  { id: "street", name: "Street", for: "Designers, illustrators, streetwear", dot: "#FFE600", cat: "Art & design" },
-  { id: "gallery", name: "Gallery", for: "Photographers", dot: "#F7F6F2", cat: "Photo & video" },
-  { id: "reel", name: "Reel", for: "Videographers and filmmakers", dot: "#FF5A36", cat: "Photo & video" },
-  { id: "studio", name: "Studio", for: "Agencies, brand and web designers", dot: "#E5341D", cat: "Art & design" },
-  { id: "kitenge", name: "Kitenge", for: "Fashion and tailoring", dot: "#E0592A", cat: "Beauty & fashion" },
-  { id: "glow", name: "Glow", for: "Makeup, hair and beauty", dot: "#D9467A", cat: "Beauty & fashion" },
-  { id: "groove", name: "Groove", for: "DJs, musicians and producers", dot: "#0F2A22", cat: "Music & stage" },
-  { id: "menu", name: "Menu", for: "Caterers, chefs and food", dot: "#8E2A1E", cat: "Food & events" },
-  { id: "ink", name: "Ink", for: "Tattoo artists and piercers", dot: "#C1121F", cat: "Art & design" },
-  { id: "canvas", name: "Canvas", for: "Painters and fine artists", dot: "#F3EEE6", cat: "Art & design" },
-  { id: "mono", name: "Mono", for: "Black and white, street and documentary photographers", dot: "#000000", cat: "Photo & video" },
-  { id: "stage", name: "Stage", for: "Dancers and dance crews", dot: "#E63946", cat: "Music & stage" },
-  { id: "pages", name: "Pages", for: "Writers, journalists and copywriters", dot: "#FBF8F1", cat: "Words & teaching" },
-  { id: "blueprint", name: "Blueprint", for: "Architects and draughtsmen", dot: "#163A6B", cat: "Services & trades" },
-  { id: "chalk", name: "Chalk", for: "Tutors, teachers and coaches", dot: "#2E3B33", cat: "Words & teaching" },
-  { id: "garage", name: "Garage", for: "Mechanics, panel beaters and fundis", dot: "#FFC300", cat: "Services & trades" },
-  { id: "bloom", name: "Bloom", for: "Florists and event decor", dot: "#B85470", cat: "Food & events" },
-  { id: "matatu", name: "Matatu", for: "Matatu art, sign writers and graffiti", dot: "#FF2E88", cat: "Art & design" },
-  { id: "spoken", name: "Spoken", for: "Poets, MCs and hosts", dot: "#FFD23F", cat: "Music & stage" },
-  { id: "frame", name: "Frame", for: "Interior designers and stylists", dot: "#A0785A", cat: "Art & design" },
-  { id: "pixel", name: "Pixel", for: "Developers and tech freelancers", dot: "#FFB000", cat: "Services & trades" },
-  { id: "craft", name: "Craft", for: "Beadwork, jewellery and makers", dot: "#C9A27E", cat: "Beauty & fashion" },
-  { id: "fade", name: "Fade", for: "Barbers and barbershops", dot: "#101820", cat: "Beauty & fashion" },
+  { id: "street", name: "Street", for: "Designers, illustrators, streetwear", dot: "#FFE600", cat: "Art & design" , hero: "poster", work: "bento" },
+  { id: "gallery", name: "Gallery", for: "Photographers", dot: "#F7F6F2", cat: "Photo & video" , hero: "cover", work: "masonry" },
+  { id: "reel", name: "Reel", for: "Videographers and filmmakers", dot: "#FF5A36", cat: "Photo & video" , hero: "cover", work: "wide" },
+  { id: "studio", name: "Studio", for: "Agencies, brand and web designers", dot: "#E5341D", cat: "Art & design" , hero: "split", work: "grid" },
+  { id: "kitenge", name: "Kitenge", for: "Fashion and tailoring", dot: "#E0592A", cat: "Beauty & fashion" , hero: "split", work: "bento" },
+  { id: "glow", name: "Glow", for: "Makeup, hair and beauty", dot: "#D9467A", cat: "Beauty & fashion" , hero: "center", work: "masonry" },
+  { id: "groove", name: "Groove", for: "DJs, musicians and producers", dot: "#0F2A22", cat: "Music & stage" , hero: "poster", work: "grid" },
+  { id: "menu", name: "Menu", for: "Caterers, chefs and food", dot: "#8E2A1E", cat: "Food & events" , hero: "center", work: "grid" },
+  { id: "ink", name: "Ink", for: "Tattoo artists and piercers", dot: "#C1121F", cat: "Art & design" , hero: "center", work: "grid" },
+  { id: "canvas", name: "Canvas", for: "Painters and fine artists", dot: "#F3EEE6", cat: "Art & design" , hero: "split", work: "grid" },
+  { id: "mono", name: "Mono", for: "Black and white, street and documentary photographers", dot: "#000000", cat: "Photo & video" , hero: "cover", work: "masonry" },
+  { id: "stage", name: "Stage", for: "Dancers and dance crews", dot: "#E63946", cat: "Music & stage" , hero: "poster", work: "bento" },
+  { id: "pages", name: "Pages", for: "Writers, journalists and copywriters", dot: "#FBF8F1", cat: "Words & teaching" , hero: "split", work: "list" },
+  { id: "blueprint", name: "Blueprint", for: "Architects and draughtsmen", dot: "#163A6B", cat: "Services & trades" , hero: "split", work: "grid" },
+  { id: "chalk", name: "Chalk", for: "Tutors, teachers and coaches", dot: "#2E3B33", cat: "Words & teaching" , hero: "split", work: "grid" },
+  { id: "garage", name: "Garage", for: "Mechanics, panel beaters and fundis", dot: "#FFC300", cat: "Services & trades" , hero: "poster", work: "grid" },
+  { id: "bloom", name: "Bloom", for: "Florists and event decor", dot: "#B85470", cat: "Food & events" , hero: "split", work: "grid" },
+  { id: "matatu", name: "Matatu", for: "Matatu art, sign writers and graffiti", dot: "#FF2E88", cat: "Art & design" , hero: "poster", work: "bento" },
+  { id: "spoken", name: "Spoken", for: "Poets, MCs and hosts", dot: "#FFD23F", cat: "Music & stage" , hero: "center", work: "list" },
+  { id: "frame", name: "Frame", for: "Interior designers and stylists", dot: "#A0785A", cat: "Art & design" , hero: "split", work: "bento" },
+  { id: "pixel", name: "Pixel", for: "Developers and tech freelancers", dot: "#FFB000", cat: "Services & trades" , hero: "split", work: "list" },
+  { id: "craft", name: "Craft", for: "Beadwork, jewellery and makers", dot: "#C9A27E", cat: "Beauty & fashion" , hero: "split", work: "masonry" },
+  { id: "fade", name: "Fade", for: "Barbers and barbershops", dot: "#101820", cat: "Beauty & fashion" , hero: "poster", work: "bento" },
 ];
 const SOON = ["Wild (wildlife photographers)", "Runway (models)", "Party (kids' entertainers)", "Pitch (sports coaches)", "Mic (podcasters)", "Shamba (farmers & agribusiness)", "Safari (tour guides)", "Brew (coffee & bars)", "Plot (real estate agents)", "Clinic (therapists & wellness)", "Choir (choirs & bands)", "Thread (embroidery)"];
 let TFILTER = "All";
@@ -845,6 +931,84 @@ const PEOPLE = [
     proof: { rating: 4.8, reviews: 189, quote: "Best fade in Kisumu, no debate." } },
   { id: "mwangi", name: "Mwangi & Co. Catering", initials: "MC", kind: "Business", trade: "Event catering", city: "Nakuru", t: 3, claimed: false, work: [] },
 ];
+// Example photos (Unsplash) and the longer page content for each example person.
+const EXTRA = {
+  kaz: { pics: ["w-cover", "w-process", "w-drop", "w-mural", "w-sticker", "w-poster"], stats: [["7", "years drawing"], ["120+", "covers and drops"], ["40K", "Instagram followers"]],
+    services: ["Album & single covers", "Streetwear graphics", "Murals & live painting", "Posters & event art"], skills: ["Procreate", "Illustrator", "Spray paint", "Photoshop"],
+    about: "Raised in Eastlands, self-taught on a borrowed laptop. I started painting matatu panels at 15 and now design covers and merch for independent artists across East Africa.", cta: "Got a record that needs a face?" },
+  otieno: { pics: ["w-wed1", "w-wed2", "w-portrait", "w-hall", "w-sunset"], stats: [["9", "years shooting"], ["210", "weddings"], ["4.9★", "63 Google reviews"]],
+    services: ["Weddings & ruracios", "Engagement shoots", "Corporate events", "Portraits"], skills: ["Sony A7 IV", "Lightroom", "Drone", "Same-day previews"],
+    about: "I grew up in Kisumu and still shoot most of my weddings around the lake. I work quietly, plan with you in advance, and send a preview gallery within 48 hours.", cta: "Getting married? Let's talk dates." },
+  wanjiru: { pics: ["w-perform", "w-concert", "w-editor", "w-street"], stats: [["60+", "music videos"], ["12", "brand films"], ["4.8★", "41 Google reviews"]],
+    services: ["Music videos", "Brand films", "Documentaries", "Event coverage"], skills: ["RED Komodo", "DaVinci Resolve", "Drone", "Colour grading"],
+    about: "We're a team of four in Kilimani: a director, a cinematographer, an editor and a producer. We plan carefully, shoot fast and deliver on time.", cta: "Have a story? We'll film it." },
+  amina: { pics: ["w-system", "w-palette", "w-tablet", "w-apps"], stats: [["6", "years"], ["90+", "brands"], ["14", "industries"]],
+    services: ["Logos & identity", "Packaging", "Brand guidelines", "Social media kits"], skills: ["Illustrator", "Figma", "InDesign", "Brand strategy"],
+    about: "I help small Kenyan businesses look as good as the work they do. Every project starts with a conversation about your customers, not your logo.", cta: "Let's build your brand." },
+  zawadi: { pics: ["w-wed1", "w-jacket", "w-rack"], stats: [["15", "years in Nyali"], ["3,000+", "outfits made"], ["4.7★", "112 Google reviews"]],
+    services: ["Bridal gowns", "Kitenge outfits", "Suits", "School uniforms"], skills: ["Made to measure", "Ready in 7 days", "Fittings at home"],
+    about: "A family shop started by our mother in 2010. Bring your fabric or choose ours, and we'll fit you until it's perfect.", cta: "Need something made?" },
+  grace: { pics: ["w-portrait", "w-makeup", "w-curls", "w-pink"], stats: [["5", "years"], ["400+", "brides"], ["5.0★", "38 Google reviews"]],
+    services: ["Bridal makeup", "Soft glam", "Graduation looks", "Makeup classes"], skills: ["Home visits", "Trials", "All skin tones"],
+    about: "I specialise in soft, long-lasting looks that photograph well and still feel like you. I travel anywhere in Nairobi with my full kit.", cta: "Book your glam." },
+  mosh: { pics: ["w-decks", "w-lights", "w-crowd", "w-glow"], stats: [["11", "years behind the decks"], ["500+", "events"], ["3", "residencies"]],
+    services: ["Weddings", "Club nights", "Corporate parties", "Private events"], skills: ["Amapiano", "Afrobeats", "Gengetone", "Old school"],
+    about: "I read the room. From the first dance to the last song, I keep the floor full without losing the vibe you asked for.", cta: "Need the floor full?" },
+  pishi: { pics: ["w-dine", "w-plate", "w-choma"], stats: [["20–800", "guests"], ["8", "years"], ["4.8★", "87 Google reviews"]],
+    services: ["Weddings", "Harambees", "Office lunches", "Private dinners"], skills: ["Swahili dishes", "Nyama choma", "Vegetarian menus"],
+    about: "Mama Achieng started Pishi with one jiko and a wedding for 60. Today we cook for up to 800, and the pilau recipe hasn't changed.", cta: "Planning an event?" },
+  blackrose: { pics: ["w-tat2", "w-tat1", "w-tat3", "w-sticker"], stats: [["3", "artists"], ["9", "years"], ["4.9★", "204 Google reviews"]],
+    services: ["Fine line", "Blackwork", "Cover-ups", "Piercing"], skills: ["Sterile studio", "Custom designs", "Walk-ins on Saturdays"],
+    about: "A small, clean studio in Westlands. Every piece is drawn for you, and we'll always tell you honestly if an idea won't age well.", cta: "Book a consultation." },
+  achieng: { pics: ["w-paint2", "w-paint1", "w-paint3", "w-gallery"], stats: [["14", "years painting"], ["6", "solo shows"], ["80+", "commissions"]],
+    services: ["Original paintings", "Commissions", "Murals", "Workshops"], skills: ["Oil", "Acrylic", "Large format"],
+    about: "I paint Lake Victoria: the fishermen at dawn, the market women, the light on the water. Most of my work is commissioned by homes and hotels.", cta: "Commission a painting." },
+  kariuki: { pics: ["w-man", "w-tower", "w-city", "w-up", "w-street", "w-library"], stats: [["12", "years"], ["4", "exhibitions"], ["35mm", "always"]],
+    services: ["Documentary", "Editorial", "Street", "Prints"], skills: ["Leica M6", "Film", "Darkroom"],
+    about: "I've photographed Nairobi on black and white film since 2014. Prints are available, and I take editorial assignments.", cta: "Prints and assignments." },
+  mdundo: { pics: ["w-dance1", "w-street", "w-dance2", "w-dance3"], stats: [["12", "dancers"], ["30+", "music videos"], ["6", "years"]],
+    services: ["Music videos", "Wedding entrances", "Launches & shows", "Dance classes"], skills: ["Afro-fusion", "Amapiano", "Contemporary"],
+    about: "Twelve dancers from Mombasa who grew up on the beach and in the studio. We choreograph, perform and teach.", cta: "Book the crew." },
+  wairimu: { pics: ["w-reader", "w-cafe", "w-books", "w-library"], stats: [["8", "years writing"], ["300+", "articles"], ["40", "brands"]],
+    services: ["Features & essays", "Website copy", "Newsletters", "Editing"], skills: ["English", "Kiswahili", "SEO"],
+    about: "I write things people actually finish reading. Journalism trained me to find the story; brands hire me to tell theirs clearly.", cta: "Need words?" },
+  nyumba: { pics: ["w-house", "w-plans", "w-glass", "w-site"], stats: [["18", "years"], ["60", "buildings"], ["3", "schools"]],
+    services: ["Homes", "Schools", "Offices", "Renovations"], skills: ["Passive cooling", "Rammed earth", "Local materials"],
+    about: "We design buildings for Kenya's climate: shaded, ventilated and built from what's nearby, so they cost less to build and to live in.", cta: "Planning to build?" },
+  kevin: { pics: ["w-class", "w-maths", "w-room"], stats: [["9", "years teaching"], ["300+", "students"], ["5.0★", "29 Google reviews"]],
+    services: ["KCSE maths", "KCSE physics", "Group revision", "Online lessons"], skills: ["Form 1–4", "Past papers", "Nakuru & online"],
+    about: "I make maths make sense. My students learn the method, not just the answer, and most go up two grades in a term.", cta: "Book a free first lesson." },
+  kamau: { pics: ["w-garage", "w-engine", "w-car"], stats: [["7", "days a week"], ["20", "years"], ["4.6★", "158 Google reviews"]],
+    services: ["Servicing", "Diagnostics", "Bodywork & paint", "Fleet maintenance"], skills: ["Toyota", "Subaru", "Probox fleets"],
+    about: "Three mechanics, one honest rule: we tell you what needs fixing and what doesn't. Fleet owners in Thika trust us with their Proboxes.", cta: "Car trouble?" },
+  nekesa: { pics: ["w-florist", "w-tulips", "w-sunflower"], stats: [["7", "years"], ["350+", "weddings"], ["4.9★", "76 Google reviews"]],
+    services: ["Wedding flowers", "Arches & backdrops", "Table styling", "Bouquets"], skills: ["Naivasha roses", "Same-week setups"],
+    about: "We source roses straight from Naivasha farms and design every arrangement around your venue and colours.", cta: "Let's plan your flowers." },
+  mbogi: { pics: ["w-neon", "w-abstract", "w-mural", "w-sticker", "w-cover"], stats: [["40+", "nganyas painted"], ["2012", "since"], ["5", "painters"]],
+    services: ["Matatu art", "Shop signs", "Murals", "Brand walls"], skills: ["Airbrush", "Hand lettering", "Spray paint"],
+    about: "We paint the nganyas Nairobi talks about. Every matatu is a one-off, designed with the owner and painted by hand in Kariobangi.", cta: "Make it loud." },
+  neema: { pics: ["w-perform", "w-hall", "w-glow"], stats: [["200+", "stages"], ["2", "collections"], ["6", "years"]],
+    services: ["Spoken word", "MC & hosting", "Poems to order", "Workshops"], skills: ["English", "Kiswahili", "Sheng"],
+    about: "I write and perform poems about Nairobi, mothers and the matatu ride home, and I host events that people remember.", cta: "Need a voice for your stage?" },
+  nafasi: { pics: ["w-living", "w-lounge", "w-chair"], stats: [["5", "years"], ["70+", "rooms"], ["4.8★", "33 Google reviews"]],
+    services: ["Homes", "Cafés & restaurants", "Small offices", "Styling"], skills: ["Kenyan makers", "Natural materials", "3D visuals"],
+    about: "We design warm, calm rooms with furniture from Kenyan makers. You'll see the room in 3D before anything is bought.", cta: "Let's design your space." },
+  kiprop: { pics: ["w-code1", "w-code2", "w-code3", "w-code4"], stats: [["5", "years"], ["40+", "sites shipped"], ["1.2K", "GitHub stars"]],
+    services: ["Websites", "M-Pesa checkouts", "Android apps", "Hosting & support"], skills: ["TypeScript", "React", "Kotlin", "Daraja API"],
+    about: "I build fast, simple software for small businesses: a site that loads on 3G, a checkout that takes M-Pesa, an app your staff can use.", cta: "Let's build something." },
+  halima: { pics: ["w-pearl", "w-bracelet", "w-earring"], stats: [["3rd", "generation"], ["Lamu", "Old Town"], ["5.0★", "47 Google reviews"]],
+    services: ["Bridal pieces", "Beaded collars", "Brass cuffs", "Custom orders"], skills: ["Swahili beadwork", "Brass", "Leather"],
+    about: "My grandmother taught me beadwork in Lamu. Every piece is made by hand in our workshop near the old fort.", cta: "Order a piece." },
+  freshcutz: { pics: ["w-barber2", "w-barber1", "w-barber3"], stats: [["4", "barbers"], ["Open", "7 days"], ["4.8★", "189 Google reviews"]],
+    services: ["Fades", "Designs", "Beard sculpting", "Kids' cuts"], skills: ["Walk-ins welcome", "Book on WhatsApp"],
+    about: "Four barbers, one chair each, and the sharpest fades on Oginga Odinga Street. Walk in or book your slot on WhatsApp.", cta: "Book a chair." },
+};
+PEOPLE.forEach((p) => {
+  const x = EXTRA[p.id];
+  if (!x) return;
+  Object.assign(p, x, { photo: "p-" + p.id });
+  p.work = p.work.map((w, i) => [w[0], w[1], w[2], x.pics[i] || x.pics[i % x.pics.length]]);
+});
 const CATS = ["Graphic design", "Photography", "Video", "Music & DJs", "Makeup & hair", "Fashion", "Websites", "Writing", "Catering", "Events"];
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const first = (n) => n.split(" ")[0];
@@ -855,34 +1019,54 @@ function tile(i, who, s = i % 4) {
   const [a, b, c] = PAL[i % PAL.length];
   return `<div class="tile" data-s="${s}" style="--c1:${a};--c2:${b};--c3:${c}">${who ? `<span class="who"><i></i>${esc(who)}</span>` : ""}</div>`;
 }
-function emb([k, title, url], i, seed) {
+const img = (name, alt = "") => `<img src="img/${name}.webp" alt="${esc(alt)}" loading="lazy">`;
+// Work shows from where it lives. In the prototype each link has an example photo; a newly pasted link shows a placeholder.
+function emb([k, title, url, pic], i, seed) {
   const K = KINDS[k] || KINDS.link;
-  const art = tile(seed + i, "", i % 4);
   const extra = K.video ? `<span class="play"></span>` : K.audio ? `<span class="wave">${Array.from({ length: 28 }, (_, j) => `<i style="height:${20 + Math.abs(Math.sin(j * 1.7 + i)) * 80}%"></i>`).join("")}</span>` : "";
-  return `<div class="emb" data-k="${k}">${art.replace("</div>", extra + "</div>")}<div class="emb-cap"><strong>${esc(title)}</strong><span class="emb-src"><em>${K.tag}</em><span>${esc(url)}</span></span></div></div>`;
+  return `<div class="emb" data-k="${k}"><div class="emb-media">${pic ? img(pic, title) : tile(seed + i, "", i % 4)}<span class="emb-n">${String(i + 1).padStart(2, "0")}</span>${extra}</div><div class="emb-cap"><strong>${esc(title)}</strong><span class="emb-src"><em>${K.tag}</em><span>${esc(url)}</span></span></div></div>`;
 }
+const contactBtns = (p) => `<div class="s-contact">${p.contact.map(([k, v]) => `<button class="s-btn" data-toast="Opens ${esc(CONTACT[k][0])}: ${esc(v)}"><b><span>${CONTACT[k][1]}</span></b>${CONTACT[k][0]}</button>`).join("")}</div>`;
 function site(p, tpl = p.tpl, acc) {
+  const T = TPLS.find((t) => t.id === tpl) || TPLS[0];
   const proof = p.proof || {};
+  const we = p.kind === "Business";
   const cards = [];
-  if (proof.rating) cards.push(`<div class="s-card"><span class="s-stars">★★★★★</span><span class="s-big">${proof.rating.toFixed(1)}</span><span>${proof.reviews} Google reviews</span><span style="color:var(--s-mut)">“${esc(proof.quote)}”</span><span class="emb-src"><em>G</em><span>From the Google Business link on this page</span></span></div>`);
-  if (proof.clients) cards.push(`<div class="s-card"><span class="s-kicker">Worked with</span><span style="font-family:var(--s-fd);font-size:1.4rem;line-height:1.25">${esc(proof.clients)}</span></div>`);
-  return `<div class="site" data-tpl="${tpl}"${acc ? ` style="--s-acc:${acc}"` : ""}>
-    <header class="s-hero"><div class="s-in">
-      <div class="s-av">${p.initials}</div>
-      <span class="s-kicker">${esc(p.trade)} · ${esc(p.city)}</span>
-      <h1 class="s-name">${esc(p.name)}${p.tag ? `<span class="s-tag">@${esc(p.tag)}</span>` : ""}</h1>
-      <p class="s-bio">${esc(p.bio)}</p>
-      <div class="s-contact">${p.contact.map(([k, v]) => `<button class="s-btn" data-toast="Opens ${esc(CONTACT[k][0])}: ${esc(v)}"><b><span>${CONTACT[k][1]}</span></b>${CONTACT[k][0]}</button>`).join("")}</div>
+  if (proof.rating) cards.push(`<div class="s-card"><span class="s-stars">★★★★★</span><span class="s-big">${proof.rating.toFixed(1)}</span><span>${proof.reviews} Google reviews</span><span class="emb-src"><em>G</em><span>From the Google Business link on this page</span></span></div><div class="s-card"><span class="s-kicker">Kind words</span><p class="s-quote">“${esc(proof.quote)}”</p></div>`);
+  if (proof.clients) cards.push(`<div class="s-card"><span class="s-kicker">${we ? "We've worked with" : "Worked with"}</span><p class="s-quote">${esc(proof.clients)}</p></div>`);
+  const cover = (p.work[0] && p.work[0][3]) || "w-kili";
+  const aboutPic = (p.work[1] && p.work[1][3]) || p.photo;
+  const svc = p.services || [];
+  // Poster heroes set the name on one line: size it from its length and the font's average letter width.
+  const FW = { street: .46, groove: .62, stage: .42, garage: .72, matatu: .8, fade: .74 };
+  const bn = Math.min(17, 94 / (p.name.length * (FW[T.id] || .6))).toFixed(2) + "cqi";
+  const bnw = Math.min(17, 88 / (Math.max(...p.name.split(" ").map((w) => w.length)) * (FW[T.id] || .6))).toFixed(2) + "cqi";
+  return `<div class="site" data-tpl="${T.id}" data-hero="${T.hero}" data-work="${T.work}"${acc ? ` style="--s-acc:${acc}"` : ""}>
+    <nav class="s-nav"><div class="s-in"><span class="s-logo">${esc(p.name)}</span><span class="s-links"><span>Work</span><span>${we ? "What we do" : "Services"}</span><span>About</span></span><button class="s-btn" data-toast="Jumps to the contact buttons">Let's talk</button></div></nav>
+    <header class="s-hero" style="--cover:url(img/${cover}.webp);--bn:${bn};--bnw:${bnw}"><div class="s-in">
+      <div class="s-bigname" aria-hidden="true">${esc(p.name)}</div>${p.tag ? `<span class="s-tag">@${esc(p.tag)}</span>` : ""}
+      <div class="s-hero-text">
+        <span class="s-kicker">${esc(p.trade)} · ${esc(p.city)}</span>
+        <h1 class="s-name">${esc(p.name)}</h1>
+        <p class="s-bio">${esc(p.bio)}</p>
+        ${contactBtns(p)}
+      </div>
+      <figure class="s-portrait">${img(p.photo, `Portrait of ${p.name}`)}</figure>
     </div></header>
-    <section class="s-sec"><div class="s-in"><h2 class="s-h">Work</h2><div class="s-grid">${p.work.map((w, i) => emb(w, i, p.t)).join("")}</div></div></section>
-    ${cards.length ? `<section class="s-sec" style="padding-top:0"><div class="s-in"><div class="s-proof">${cards.join("")}</div></div></section>` : ""}
+    ${p.stats ? `<div class="s-stats"><div class="s-in">${p.stats.map(([n, l]) => `<div class="s-stat"><b>${esc(n)}</b><span>${esc(l)}</span></div>`).join("")}</div></div>` : ""}
+    ${svc.length ? `<div class="s-marquee" aria-hidden="true"><div>${(svc.join(" ✦ ") + " ✦ ").repeat(4)}</div></div>` : ""}
+    <section class="s-sec s-work"><div class="s-in"><div class="s-head"><h2 class="s-h">Selected work</h2><span class="s-count">(${String(p.work.length).padStart(2, "0")})</span></div><div class="s-grid">${p.work.map((w, i) => emb(w, i, p.t)).join("")}</div></div></section>
+    ${svc.length ? `<section class="s-sec"><div class="s-in"><div class="s-head"><h2 class="s-h">${we ? "What we do" : "What I do"}</h2></div><ol class="s-svc">${svc.map((s) => `<li>${esc(s)}</li>`).join("")}</ol></div></section>` : ""}
+    ${p.about ? `<section class="s-sec s-about"><div class="s-in"><figure>${img(aboutPic, "")}</figure><div class="s-about-text"><span class="s-kicker">About</span><p>${esc(p.about)}</p>${p.skills ? `<div class="s-chips">${p.skills.map((s) => `<span>${esc(s)}</span>`).join("")}</div>` : ""}</div></div></section>` : ""}
+    ${cards.length ? `<section class="s-sec"><div class="s-in"><div class="s-proof">${cards.join("")}</div></div></section>` : ""}
+    <section class="s-cta"><div class="s-in"><span class="s-kicker">${esc(p.city)} · Available for work</span><h2 class="s-cta-h">${esc(p.cta || "Let's work together")}</h2>${contactBtns(p)}</div></section>
     <footer class="s-foot"><div class="s-in"><div class="row" style="gap:12px"><div class="s-qr" data-qr="seen.wanlly.africa/${p.id}"></div><span>Scan or visit<br><strong style="color:var(--s-ink)">seen.wanlly.africa/${p.id}</strong></span></div><span class="s-made">Made on Seen · free</span></div></footer>
   </div>`;
 }
 function card(p) {
   if (!p.claimed) return `<button class="card unclaimed-card" data-open="unclaimed"><div class="tile"></div><div class="body"><span class="name">${esc(p.name)}</span><span class="meta">${esc(p.trade)} · ${esc(p.city)}</span><span><span class="pill flag">Unclaimed</span></span></div></button>`;
   const srcs = [...new Set(p.work.map((w) => KINDS[w[0]].name))].slice(0, 3).join(" · ");
-  return `<button class="card" data-open="${p.id}">${tile(p.t, p.work[0][1])}<div class="body"><span class="name">${esc(p.name)}</span><span class="meta">${esc(p.trade)} · ${esc(p.city)}</span><span class="meta"><span class="pill ${p.kind === "Business" ? "lav" : "mint"}">${p.kind}</span>${esc(srcs)}</span><span class="meta small">New work ${esc(p.updated)}</span></div></button>`;
+  return `<button class="card" data-open="${p.id}"><div class="tile cardpic">${img(p.work[0][3], p.work[0][1])}<span class="who"><i style="background:url(img/${p.photo}.webp) center/cover"></i>${esc(p.name)}</span></div><div class="body"><span class="name">${esc(p.name)}</span><span class="meta">${esc(p.trade)} · ${esc(p.city)}</span><span class="meta"><span class="pill ${p.kind === "Business" ? "lav" : "mint"}">${p.kind}</span>${esc(srcs)}</span><span class="meta small">New work ${esc(p.updated)}</span></div></button>`;
 }
 function drawQRs(root = document) {
   root.querySelectorAll("[data-qr]").forEach((el) => {

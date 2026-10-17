@@ -21,6 +21,7 @@ Start in Kenya with creative work, then add trades.
 | **Template** | Picked from a gallery made for each craft, filtered by category. 23 so far: Street (hip hop designers), Gallery (photographers), Reel (filmmakers), Studio (agencies), Kitenge (fashion), Glow (beauty), Groove (DJs), Menu (food), Ink (tattoo artists), Canvas (painters), Mono (black and white photographers), Stage (dancers), Pages (writers), Blueprint (architects), Chalk (tutors), Garage (mechanics), Bloom (florists), Matatu (sign writers and matatu art), Spoken (poets and MCs), Frame (interior designers), Pixel (developers), Craft (beadwork and jewellery), Fade (barbers). Growing towards 100. Every template is editable: accent colour, fonts, which sections show and their order. Switching keeps all links. |
 | **Work** | Links only. The owner pastes a link to an Instagram post or reel, TikTok, YouTube or Vimeo video, Behance or Dribbble project, SoundCloud or Mixcloud mix, Pinterest pin, or a public image link. Seen recognises the site and shows the post from where it lives. |
 | **Contact buttons** | Whatever the owner adds: WhatsApp, Instagram DM, email, phone, TikTok, X, LinkedIn. Each button opens that app directly (`wa.me`, `ig.me`, `mailto:`, `tel:`). |
+| **About, stats and services** | A portrait (a small upload or a link to their Instagram or Google photo), three numbers they choose, a list of what they do (never prices) and a short paragraph. |
 | **Proof** | Optional. A Google Business link shows the star rating and review count; a "worked with" line lists clients. |
 | **Share** | A short link (`seen.wanlly.africa/kaz`) and a QR code to put in an Instagram bio, a WhatsApp status, on posters, stickers and shop walls. |
 
@@ -70,6 +71,8 @@ Claiming: the owner opens the link from the email (it carries a one-time token) 
 
 ## 6. Templates, technically
 
+- Every page has the same sections, in the shape of the portfolios people save on Pinterest: a top bar, a hero, a stats strip, a scrolling band of services, numbered selected work, services, about, reviews and clients, and a big closing line with the contact buttons. Owners can hide any section.
+- Each template picks one of four hero layouts (**split**: text beside a framed portrait; **poster**: a giant name with the portrait in front; **center**: a round portrait above the name; **cover**: their best work full-width behind the name) and one of five work layouts (grid, bento, masonry, list, widescreen).
 - A template is **one HTML layout plus a set of design tokens** (colours, fonts, corner radius, section order), the same way the prototype restyles one markup with `data-tpl`. New templates are mostly new tokens and CSS, so reaching 100 is realistic.
 - An owner's customisations are a small JSON object saved on their page (`{ template: "street", accent: "#FFE600", sections: ["work", "proof"] }`).
 - Templates are server-rendered by the Worker, so pages load fast on slow phones and search engines can read them.
