@@ -73,7 +73,8 @@ Claiming: the owner opens the link from the email (it carries a one-time token) 
 - A template is **one HTML layout plus a set of design tokens** (colours, fonts, corner radius, section order), the same way the prototype restyles one markup with `data-tpl`. New templates are mostly new tokens and CSS, so reaching 100 is realistic.
 - An owner's customisations are a small JSON object saved on their page (`{ template: "street", accent: "#FFE600", sections: ["work", "proof"] }`).
 - Templates are server-rendered by the Worker, so pages load fast on slow phones and search engines can read them.
-- Fonts come from Google Fonts. - Each template loads at most two Google Fonts, so a page only pays for its own fonts. Templates are built in-house first. Later, designers in the community can submit templates, credited on the template card.
+- Fonts come from Google Fonts. Each template loads at most two, so a page only pays for its own fonts.
+- Templates are built in-house first. Later, designers in the community can submit templates, credited on the template card.
 
 ## 7. Stack
 
