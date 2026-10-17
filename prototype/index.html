@@ -1,7 +1,7 @@
 <title>Wanlly Seen</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700;800;900&family=Figtree:wght@400;500;600;700&family=Anton&family=Permanent+Marker&family=Instrument+Serif:ital@0;1&family=Archivo+Narrow:wght@500;700&family=DM+Serif+Display:ital@0;1&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700;800;900&family=Figtree:wght@400;500;600;700&family=Anton&family=Permanent+Marker&family=Instrument+Serif:ital@0;1&family=Archivo+Narrow:wght@500;700&family=DM+Serif+Display:ital@0;1&family=Caveat:wght@600&family=UnifrakturMaguntia&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=IBM+Plex+Mono:wght@400;500&family=Bebas+Neue&family=Lora:ital@0;1&family=Patrick+Hand&family=Black+Ops+One&family=Fraunces:ital,wght@1,300&family=Bungee&family=Abril+Fatface&family=VT323&family=Special+Elite&family=Alfa+Slab+One&display=swap">
 <style>
 /* Layout: warm off-white page broken into full-width pastel bands; centred chunky headlines; big rounded white cards with thick coloured arcs; black pill buttons, one yellow pill for the main sign-up. */
 :root {
@@ -350,7 +350,186 @@ tr:last-child td { border-bottom: 0 }
 .site[data-tpl="menu"] .s-h { text-align: center }
 .site[data-tpl="menu"] .s-av { background: var(--s-acc2); color: #2A1712 }
 
+
+/* Ink: tattoo flash, blackletter */
+.site[data-tpl="ink"] { --s-bg: #0D0D0D; --s-ink: #EDE6DA; --s-mut: #9A9187; --s-acc: #C1121F; --s-on: #EDE6DA; --s-acc2: #C1121F; --s-card: #141414; --s-line: #2E2E2E; --s-fd: "UnifrakturMaguntia", "Old English Text MT", serif; --s-r: 0 }
+.site[data-tpl="ink"] .s-hero .s-in { justify-items: center; text-align: center; border: 1px solid #3A3A3A; outline: 1px solid #3A3A3A; outline-offset: 6px; padding: 40px 24px; max-width: 980px }
+.site[data-tpl="ink"] .s-contact { justify-content: center }
+.site[data-tpl="ink"] .s-av { border-radius: 0; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); width: 84px; height: 84px; font-size: 1.3rem }
+.site[data-tpl="ink"] .s-btn { border-radius: 0; text-transform: uppercase; letter-spacing: .12em; font-size: 12.5px }
+.site[data-tpl="ink"] .s-h { text-align: center }
+.site[data-tpl="ink"] .emb { border: 1px solid var(--s-ink) }
+.site[data-tpl="ink"] .emb .tile { filter: grayscale(.7) contrast(1.25) }
+.site[data-tpl="ink"] .emb-cap strong { text-transform: uppercase; letter-spacing: .08em; font-size: 12.5px }
+
+/* Canvas: gallery wall, matted frames */
+.site[data-tpl="canvas"] { --s-bg: #F3EEE6; --s-ink: #2B2622; --s-mut: #7C7266; --s-acc: #2B2622; --s-on: #F3EEE6; --s-acc2: #B5562F; --s-card: #FFFFFF; --s-line: transparent; --s-fd: "Cormorant Garamond", Georgia, serif; --s-r: 0;
+  background-image: radial-gradient(rgb(0 0 0 / .035) 1px, transparent 1px); background-size: 6px 6px }
+.site[data-tpl="canvas"] .s-name { font-style: italic; font-weight: 500 }
+.site[data-tpl="canvas"] .s-av { display: none }
+.site[data-tpl="canvas"] .s-grid { gap: 34px }
+.site[data-tpl="canvas"] .emb { padding: 14px; box-shadow: 0 18px 30px -20px rgb(0 0 0 / .5); border: 0 }
+.site[data-tpl="canvas"] .emb-cap { text-align: center; justify-items: center; padding-bottom: 2px }
+.site[data-tpl="canvas"] .emb-cap strong { font-family: var(--s-fd); font-style: italic; font-size: 1.15rem; font-weight: 500 }
+.site[data-tpl="canvas"] .s-btn { border-width: 1px; font-weight: 500 }
+
+/* Mono: black and white */
+.site[data-tpl="mono"] { --s-bg: #FFFFFF; --s-ink: #000000; --s-mut: #555555; --s-acc: #000000; --s-on: #FFFFFF; --s-acc2: #000000; --s-card: #FFFFFF; --s-line: transparent; --s-fd: "IBM Plex Mono", ui-monospace, monospace; --s-r: 0 }
+.site[data-tpl="mono"] .s-name { text-transform: uppercase; font-weight: 500; letter-spacing: -0.05em; font-size: clamp(2.2rem, 8cqi, 5.6rem) }
+.site[data-tpl="mono"] .s-hero { border-bottom: 1px solid #000000 }
+.site[data-tpl="mono"] .s-av { display: none }
+.site[data-tpl="mono"] .s-btn { border-radius: 0; font-family: var(--s-fd); font-weight: 500; font-size: 13px; border-width: 1px }
+.site[data-tpl="mono"] .s-grid { gap: 4px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) }
+.site[data-tpl="mono"] .emb .tile { filter: grayscale(1) contrast(1.2); aspect-ratio: 1 }
+.site[data-tpl="mono"] .emb-cap { font-family: var(--s-fd); padding-inline: 0 }
+.site[data-tpl="mono"] .emb-cap strong { font-weight: 500; font-size: 12.5px }
+
+/* Stage: dance, diagonal energy */
+.site[data-tpl="stage"] { --s-bg: #111111; --s-ink: #F6EFE6; --s-mut: #B9B0A5; --s-acc: #E63946; --s-on: #FFFFFF; --s-acc2: #FFD23F; --s-card: #1C1C1C; --s-line: #2C2C2C; --s-fd: "Bebas Neue", Impact, sans-serif; --s-r: 0 }
+.site[data-tpl="stage"] .s-hero { background: linear-gradient(115deg, #E63946 0 34%, transparent 34.2%) }
+.site[data-tpl="stage"] .s-name { transform: skewX(-8deg); font-size: clamp(3.4rem, 16cqi, 10rem); line-height: .85 }
+.site[data-tpl="stage"] .s-kicker { color: var(--s-acc2) }
+.site[data-tpl="stage"] .s-av { border-radius: 0; transform: skewX(-8deg); background: var(--s-acc2); color: #111111 }
+.site[data-tpl="stage"] .s-btn { border-radius: 0; transform: skewX(-8deg); text-transform: uppercase }
+.site[data-tpl="stage"] .s-h { font-size: clamp(2.2rem, 7cqi, 4rem); color: var(--s-acc2) }
+.site[data-tpl="stage"] .emb .tile { clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%) }
+.site[data-tpl="stage"] .emb { border: 0; background: transparent }
+
+/* Pages: writers, one column, book type */
+.site[data-tpl="pages"] { --s-bg: #FBF8F1; --s-ink: #1F1B16; --s-mut: #6E655A; --s-acc: #1F1B16; --s-on: #FBF8F1; --s-acc2: #9C2F2F; --s-card: transparent; --s-line: #DDD3C2; --s-fd: "Lora", Georgia, serif; --s-fb: "Lora", Georgia, serif; --s-r: 0 }
+.site[data-tpl="pages"] .s-in { max-width: 760px }
+.site[data-tpl="pages"] .s-name { font-style: italic; font-size: clamp(2.4rem, 8cqi, 4.8rem) }
+.site[data-tpl="pages"] .s-av { display: none }
+.site[data-tpl="pages"] .s-bio { color: var(--s-ink); font-size: 1.2rem; line-height: 1.6 }
+.site[data-tpl="pages"] .s-bio::first-letter { float: left; font-size: 3.6em; line-height: .8; padding: 6px 8px 0 0; color: var(--s-acc2); font-family: var(--s-fd) }
+.site[data-tpl="pages"] .s-btn { border-width: 1px; font-family: var(--body) }
+.site[data-tpl="pages"] .s-grid { grid-template-columns: 1fr; gap: 0 }
+.site[data-tpl="pages"] .emb { grid-template-columns: 150px 1fr; gap: 18px; align-items: center; border: 0; border-bottom: 1px solid var(--s-line); padding-block: 16px; border-radius: 0 }
+.site[data-tpl="pages"] .emb .tile { aspect-ratio: 4/3 }
+.site[data-tpl="pages"] .emb-cap strong { font-size: 1.25rem; font-weight: 500 }
+.site[data-tpl="pages"] .s-h { font-style: italic }
+
+/* Blueprint: architects */
+.site[data-tpl="blueprint"] { --s-bg: #163A6B; --s-ink: #EAF2FF; --s-mut: #A9C1E6; --s-acc: #EAF2FF; --s-on: #163A6B; --s-acc2: #FFD166; --s-card: rgb(255 255 255 / .04); --s-line: rgb(234 242 255 / .45); --s-fd: "IBM Plex Mono", ui-monospace, monospace; --s-r: 0;
+  background-image: linear-gradient(rgb(255 255 255 / .07) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / .07) 1px, transparent 1px); background-size: 24px 24px }
+.site[data-tpl="blueprint"] .s-name { text-transform: uppercase; font-weight: 500; letter-spacing: -0.03em; font-size: clamp(2.2rem, 8cqi, 5.4rem) }
+.site[data-tpl="blueprint"] .s-hero .s-in::after { content: "DRAWING NO. 01 · SCALE 1:100 · NOT FOR CONSTRUCTION"; font: 500 11px/1 var(--s-fd); color: var(--s-mut); border-top: 1px solid var(--s-line); padding-top: 8px; width: 100%; letter-spacing: .06em }
+.site[data-tpl="blueprint"] .s-av { border-radius: 0; background: transparent; border: 1px dashed var(--s-ink); color: var(--s-ink); font-family: var(--s-fd) }
+.site[data-tpl="blueprint"] .s-btn { border-radius: 0; font-family: var(--s-fd); font-weight: 500; border-width: 1px }
+.site[data-tpl="blueprint"] .emb { border: 1px dashed var(--s-line) }
+.site[data-tpl="blueprint"] .emb .tile { filter: saturate(.4) brightness(1.05) }
+
+/* Chalk: tutors */
+.site[data-tpl="chalk"] { --s-bg: #2E3B33; --s-ink: #F2F0E8; --s-mut: #BFC7BF; --s-acc: #F7E26B; --s-on: #2E3B33; --s-acc2: #F7E26B; --s-card: #F7F3E8; --s-line: transparent; --s-fd: "Patrick Hand", "Comic Sans MS", cursive; --s-r: 2px;
+  background-image: radial-gradient(ellipse at 30% 20%, rgb(255 255 255 / .07), transparent 60%), radial-gradient(ellipse at 80% 70%, rgb(255 255 255 / .05), transparent 50%) }
+.site[data-tpl="chalk"] .s-name { font-size: clamp(2.8rem, 11cqi, 6.6rem) }
+.site[data-tpl="chalk"] .s-name::after { content: ""; display: block; height: 4px; width: 60%; margin-top: 8px; background: var(--s-acc); border-radius: 4px; opacity: .8 }
+.site[data-tpl="chalk"] .s-av { background: transparent; border: 3px solid var(--s-ink); color: var(--s-ink); font-family: var(--s-fd) }
+.site[data-tpl="chalk"] .s-btn { font-family: var(--s-fd); font-size: 17px; font-weight: 400 }
+.site[data-tpl="chalk"] .emb { overflow: visible; position: relative; padding: 10px; color: #2E3B33; box-shadow: 0 10px 18px -10px rgb(0 0 0 / .6) }
+.site[data-tpl="chalk"] .emb::before { content: ""; position: absolute; top: -9px; left: 50%; width: 70px; height: 20px; transform: translateX(-50%) rotate(-3deg); background: rgb(255 250 220 / .75); z-index: 2 }
+.site[data-tpl="chalk"] .emb:nth-child(odd) { transform: rotate(-1deg) }
+.site[data-tpl="chalk"] .emb:nth-child(even) { transform: rotate(1.2deg) }
+.site[data-tpl="chalk"] .emb-cap strong { font-family: var(--s-fd); font-size: 1.15rem; font-weight: 400 }
+.site[data-tpl="chalk"] .emb-src { color: #5E6B62 }
+.site[data-tpl="chalk"] .emb-src em { background: #2E3B33; color: #F7F3E8 }
+.site[data-tpl="chalk"] .s-card { color: #2E3B33 }
+
+/* Garage: mechanics */
+.site[data-tpl="garage"] { --s-bg: #2B2D2F; --s-ink: #F1F1F1; --s-mut: #A7ABAF; --s-acc: #FFC300; --s-on: #111111; --s-acc2: #FFC300; --s-card: #35383B; --s-line: #4A4E52; --s-fd: "Black Ops One", Impact, sans-serif; --s-r: 4px }
+.site[data-tpl="garage"] .s-hero { padding-bottom: 64px }
+.site[data-tpl="garage"] .s-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 16px; background: repeating-linear-gradient(45deg, #FFC300 0 16px, #111111 16px 32px) }
+.site[data-tpl="garage"] .s-name { text-transform: uppercase }
+.site[data-tpl="garage"] .s-av { border-radius: 6px; font-family: var(--s-fd) }
+.site[data-tpl="garage"] .s-btn { border-radius: 4px; text-transform: uppercase; letter-spacing: .05em }
+.site[data-tpl="garage"] .emb { border: 2px solid var(--s-line); background-image: radial-gradient(circle at 10px 10px, #6B7076 3px, transparent 4px), radial-gradient(circle at calc(100% - 10px) 10px, #6B7076 3px, transparent 4px); padding: 22px 8px 0 }
+.site[data-tpl="garage"] .emb .tile { border-radius: 2px }
+.site[data-tpl="garage"] .s-h { text-transform: uppercase; color: var(--s-acc) }
+
+/* Bloom: florists, arches */
+.site[data-tpl="bloom"] { --s-bg: #EEF2EA; --s-ink: #2F3B2C; --s-mut: #6F7D6A; --s-acc: #B85470; --s-on: #FFFFFF; --s-acc2: #B85470; --s-card: #FFFFFF; --s-line: #D9E2D3; --s-fd: "Fraunces", Georgia, serif; --s-r: 18px }
+.site[data-tpl="bloom"] .s-hero .s-in { justify-items: center; text-align: center }
+.site[data-tpl="bloom"] .s-contact { justify-content: center }
+.site[data-tpl="bloom"] .s-name { font-style: italic; font-weight: 300 }
+.site[data-tpl="bloom"] .s-av { width: 96px; height: 120px; border-radius: 60px 60px 12px 12px; background: #8BA77F; color: #FFFFFF }
+.site[data-tpl="bloom"] .s-h { text-align: center; font-style: italic; font-weight: 300 }
+.site[data-tpl="bloom"] .emb { border-radius: 400px 400px 18px 18px; padding: 8px }
+.site[data-tpl="bloom"] .emb .tile { aspect-ratio: 3/4; border-radius: 400px 400px 12px 12px }
+.site[data-tpl="bloom"] .emb-cap { text-align: center; justify-items: center }
+
+/* Matatu: sign writing, loud colour */
+.site[data-tpl="matatu"] { --s-bg: #111111; --s-ink: #FFFFFF; --s-mut: #CFCFCF; --s-acc: #FF2E88; --s-on: #FFFFFF; --s-acc2: #00E5FF; --s-card: #1A1A1A; --s-line: #FF2E88; --s-fd: "Bungee", Impact, sans-serif; --s-r: 14px }
+.site[data-tpl="matatu"] .s-hero { padding-top: 88px }
+.site[data-tpl="matatu"] .s-hero::before { content: ""; position: absolute; inset: 0 0 auto; height: 20px; background: linear-gradient(90deg, #FF2E88 0 20%, #FFD23F 0 40%, #00E5FF 0 60%, #7CFF6B 0 80%, #FF7A00 0) }
+.site[data-tpl="matatu"] .s-name { text-shadow: 3px 3px 0 #00E5FF, 6px 6px 0 #FF2E88; font-size: clamp(2.4rem, 10cqi, 6.4rem); line-height: 1.02 }
+.site[data-tpl="matatu"] .s-av { background: #FFD23F; color: #111111; font-family: var(--s-fd); font-size: 1.4rem }
+.site[data-tpl="matatu"] .s-btn { border-width: 2px }
+.site[data-tpl="matatu"] .s-h { color: #FFD23F }
+.site[data-tpl="matatu"] .emb { border: 3px solid #FF2E88 }
+.site[data-tpl="matatu"] .emb:nth-child(5n+2) { border-color: #FFD23F }
+.site[data-tpl="matatu"] .emb:nth-child(5n+3) { border-color: #00E5FF }
+.site[data-tpl="matatu"] .emb:nth-child(5n+4) { border-color: #7CFF6B }
+.site[data-tpl="matatu"] .emb:nth-child(5n+5) { border-color: #FF7A00 }
+
+/* Spoken: poets and MCs, the words lead */
+.site[data-tpl="spoken"] { --s-bg: #FFD23F; --s-ink: #111111; --s-mut: #3D3A2E; --s-acc: #111111; --s-on: #FFD23F; --s-acc2: #111111; --s-card: #FFE58A; --s-line: #111111; --s-fd: "Abril Fatface", Georgia, serif; --s-r: 0 }
+.site[data-tpl="spoken"] .s-av { display: none }
+.site[data-tpl="spoken"] .s-name { font-size: clamp(2rem, 6cqi, 3.6rem) }
+.site[data-tpl="spoken"] .s-bio { order: -1; font-family: var(--s-fd); color: var(--s-ink); font-size: clamp(1.6rem, 5.4cqi, 3.4rem); line-height: 1.12; max-width: 24ch }
+.site[data-tpl="spoken"] .s-bio::before { content: "“" }
+.site[data-tpl="spoken"] .s-bio::after { content: "”" }
+.site[data-tpl="spoken"] .s-btn { border-radius: 0; border-width: 2px }
+.site[data-tpl="spoken"] .emb { border: 2px solid #111111 }
+
+/* Frame: interior design, split hero with an arch */
+.site[data-tpl="frame"] { --s-bg: #EFE8DF; --s-ink: #3B302A; --s-mut: #8A7B70; --s-acc: #3B302A; --s-on: #EFE8DF; --s-acc2: #A0785A; --s-card: #F7F2EC; --s-line: #D8CCBF; --s-fd: "Cormorant Garamond", Georgia, serif; --s-r: 0 }
+.site[data-tpl="frame"] .s-hero .s-in { grid-template-columns: 1.15fr 1fr; column-gap: 48px; align-items: center }
+.site[data-tpl="frame"] .s-hero .s-in > * { grid-column: 1 }
+.site[data-tpl="frame"] .s-hero .s-in::after { content: ""; grid-column: 2; grid-row: 1 / span 6; width: 100%; aspect-ratio: 3/4; border-radius: 400px 400px 0 0; background: radial-gradient(circle at 70% 30%, #E9D8C4 0 18%, transparent 19%), linear-gradient(180deg, #C9B29B, #A0785A) }
+.site[data-tpl="frame"] .s-name { text-transform: uppercase; letter-spacing: .06em; font-weight: 500; font-size: clamp(2.2rem, 7cqi, 4.8rem) }
+.site[data-tpl="frame"] .s-av { display: none }
+.site[data-tpl="frame"] .s-btn { border-radius: 0; border-width: 1px; font-weight: 500; letter-spacing: .04em }
+.site[data-tpl="frame"] .s-h { text-transform: uppercase; letter-spacing: .1em; font-size: 1.4rem }
+.site[data-tpl="frame"] .emb { border: 0 }
+
+/* Pixel: developers, amber terminal */
+.site[data-tpl="pixel"] { --s-bg: #14110F; --s-ink: #FFB000; --s-mut: #B88A2E; --s-acc: #FFB000; --s-on: #14110F; --s-acc2: #FFB000; --s-card: #1C1814; --s-line: #3A2E1C; --s-fd: "VT323", ui-monospace, monospace; --s-fb: "IBM Plex Mono", ui-monospace, monospace; --s-r: 0;
+  background-image: repeating-linear-gradient(0deg, rgb(255 176 0 / .035) 0 1px, transparent 1px 3px) }
+.site[data-tpl="pixel"] .s-name { font-size: clamp(3rem, 12cqi, 7.6rem); line-height: .9 }
+.site[data-tpl="pixel"] .s-name::before { content: "> " }
+.site[data-tpl="pixel"] .s-name::after { content: "_" }
+@media (prefers-reduced-motion: no-preference) { .site[data-tpl="pixel"] .s-name::after { animation: blink 1s steps(1) infinite } @keyframes blink { 50% { opacity: 0 } } }
+.site[data-tpl="pixel"] .s-av { border-radius: 0; font-family: var(--s-fd); font-size: 2.2rem }
+.site[data-tpl="pixel"] .s-btn { border-radius: 0; font-family: var(--s-fb); font-size: 13px; border-width: 1px }
+.site[data-tpl="pixel"] .s-h::before { content: "## " }
+.site[data-tpl="pixel"] .emb .tile { filter: sepia(1) saturate(2.6) hue-rotate(-12deg) brightness(.85) }
+.site[data-tpl="pixel"] .emb-src em { background: var(--s-acc); color: var(--s-bg) }
+
+/* Craft: makers, kraft paper and stamps */
+.site[data-tpl="craft"] { --s-bg: #C9A27E; --s-ink: #2D1E12; --s-mut: #4F3A28; --s-acc: #2D1E12; --s-on: #EBD9C3; --s-acc2: #8B2E1A; --s-card: #F3E7D6; --s-line: #A9825F; --s-fd: "Special Elite", "Courier New", monospace; --s-r: 2px;
+  background-image: radial-gradient(rgb(60 35 15 / .12) 1px, transparent 1.5px); background-size: 9px 9px }
+.site[data-tpl="craft"] .s-kicker { display: inline-block; border: 2px solid var(--s-acc2); color: var(--s-acc2); padding: 4px 10px; transform: rotate(-3deg); font-family: var(--s-fd) }
+.site[data-tpl="craft"] .s-av { border-radius: 50%; background: transparent; border: 2px dashed var(--s-ink); color: var(--s-ink); font-family: var(--s-fd) }
+.site[data-tpl="craft"] .s-btn { border-radius: 2px; font-family: var(--s-fd); font-weight: 400 }
+.site[data-tpl="craft"] .emb { padding: 10px 10px 0; box-shadow: 0 12px 20px -14px rgb(0 0 0 / .6); border: 0 }
+.site[data-tpl="craft"] .emb:nth-child(odd) { transform: rotate(-1.5deg) }
+.site[data-tpl="craft"] .emb:nth-child(even) { transform: rotate(1.2deg) }
+.site[data-tpl="craft"] .emb-cap strong { font-family: var(--s-fd); font-weight: 400 }
+
+/* Fade: barbershops */
+.site[data-tpl="fade"] { --s-bg: #101820; --s-ink: #F5F1E8; --s-mut: #A9B3BD; --s-acc: #D7263D; --s-on: #FFFFFF; --s-acc2: #F5F1E8; --s-card: #18232E; --s-line: #2A3846; --s-fd: "Alfa Slab One", Georgia, serif; --s-r: 8px }
+.site[data-tpl="fade"] .s-hero { padding-left: 18px }
+.site[data-tpl="fade"] .s-hero::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 18px; background: repeating-linear-gradient(-45deg, #D7263D 0 12px, #F5F1E8 12px 24px, #1F4E9C 24px 36px, #F5F1E8 36px 48px) }
+.site[data-tpl="fade"] .s-name { text-transform: uppercase; font-size: clamp(2.4rem, 10cqi, 6.4rem) }
+.site[data-tpl="fade"] .s-av { background: #F5F1E8; color: #101820; font-family: var(--s-fd); font-size: 1.5rem }
+.site[data-tpl="fade"] .s-h { text-transform: uppercase }
+.site[data-tpl="fade"] .s-foot { border-top: 0; background: conic-gradient(#F5F1E8 25%, #101820 0 50%, #F5F1E8 0 75%, #101820 0) 0 0 / 24px 24px repeat-x, var(--s-bg); padding-top: 44px }
+
+
 @container (max-width: 560px) {
+  .site[data-tpl="frame"] .s-hero .s-in { grid-template-columns: 1fr }
+  .site[data-tpl="frame"] .s-hero .s-in::after { display: none }
+  .site[data-tpl="pages"] .emb { grid-template-columns: 96px 1fr; gap: 12px }
   .s-in { padding-inline: 16px }
   .s-hero { padding-block: 44px 28px }
   .s-grid { grid-template-columns: 1fr 1fr; gap: 10px }
@@ -364,7 +543,10 @@ tr:last-child td { border-bottom: 0 }
 /* Seen strip above a personal site */
 .strip { background: var(--card); border-bottom: 1px solid var(--line) }
 .strip .wrap { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding-block: 10px; font-size: 14px }
-.strip .tpls { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto }
+.strip .tpls { display: flex; gap: 6px; flex-wrap: nowrap; overflow-x: auto; margin-left: auto; min-width: 0; flex: 1 1 320px; padding-bottom: 2px }
+.strip .tpls .swatch, .strip .tpls > span { flex: none }
+.tfilters { display: flex; gap: 8px; flex-wrap: wrap }
+.tfilters .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink) }
 .swatch { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); cursor: pointer; font-size: 13px }
 .swatch i { width: 18px; height: 18px; border-radius: 50%; flex: none; border: 1px solid rgb(0 0 0 / .1) }
 .swatch[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--bg) }
@@ -510,22 +692,40 @@ const KINDS = {
   mx: { name: "Mixcloud", tag: "MX", re: /mixcloud\.com\//, audio: 1 },
   pin: { name: "Pinterest", tag: "PIN", re: /pin(terest\.com|\.it)\// },
   img: { name: "Image link", tag: "IMG", re: /\.(jpe?g|png|webp|gif)(\?|$)/i },
+  gh: { name: "GitHub", tag: "GH", re: /github\.com\// },
   link: { name: "Link", tag: "WEB", re: /./ },
 };
 const kindOf = (u) => Object.keys(KINDS).find((k) => KINDS[k].re.test(u));
 const CONTACT = { wa: ["WhatsApp", "W"], ig: ["Instagram DM", "IG"], em: ["Email", "@"], ph: ["Call", "☎"], tt: ["TikTok", "TT"], x: ["X", "X"], li: ["LinkedIn", "in"] };
 
+const TCATS = ["All", "Art & design", "Photo & video", "Music & stage", "Beauty & fashion", "Food & events", "Words & teaching", "Services & trades"];
 const TPLS = [
-  { id: "street", name: "Street", for: "Designers, illustrators, streetwear", dot: "#FFE600" },
-  { id: "gallery", name: "Gallery", for: "Photographers", dot: "#F7F6F2" },
-  { id: "reel", name: "Reel", for: "Videographers and filmmakers", dot: "#FF5A36" },
-  { id: "studio", name: "Studio", for: "Agencies, brand and web designers", dot: "#E5341D" },
-  { id: "kitenge", name: "Kitenge", for: "Fashion and tailoring", dot: "#E0592A" },
-  { id: "glow", name: "Glow", for: "Makeup, hair and beauty", dot: "#D9467A" },
-  { id: "groove", name: "Groove", for: "DJs, musicians and producers", dot: "#0F2A22" },
-  { id: "menu", name: "Menu", for: "Caterers, chefs and food", dot: "#8E2A1E" },
+  { id: "street", name: "Street", for: "Designers, illustrators, streetwear", dot: "#FFE600", cat: "Art & design" },
+  { id: "gallery", name: "Gallery", for: "Photographers", dot: "#F7F6F2", cat: "Photo & video" },
+  { id: "reel", name: "Reel", for: "Videographers and filmmakers", dot: "#FF5A36", cat: "Photo & video" },
+  { id: "studio", name: "Studio", for: "Agencies, brand and web designers", dot: "#E5341D", cat: "Art & design" },
+  { id: "kitenge", name: "Kitenge", for: "Fashion and tailoring", dot: "#E0592A", cat: "Beauty & fashion" },
+  { id: "glow", name: "Glow", for: "Makeup, hair and beauty", dot: "#D9467A", cat: "Beauty & fashion" },
+  { id: "groove", name: "Groove", for: "DJs, musicians and producers", dot: "#0F2A22", cat: "Music & stage" },
+  { id: "menu", name: "Menu", for: "Caterers, chefs and food", dot: "#8E2A1E", cat: "Food & events" },
+  { id: "ink", name: "Ink", for: "Tattoo artists and piercers", dot: "#C1121F", cat: "Art & design" },
+  { id: "canvas", name: "Canvas", for: "Painters and fine artists", dot: "#F3EEE6", cat: "Art & design" },
+  { id: "mono", name: "Mono", for: "Black and white, street and documentary photographers", dot: "#000000", cat: "Photo & video" },
+  { id: "stage", name: "Stage", for: "Dancers and dance crews", dot: "#E63946", cat: "Music & stage" },
+  { id: "pages", name: "Pages", for: "Writers, journalists and copywriters", dot: "#FBF8F1", cat: "Words & teaching" },
+  { id: "blueprint", name: "Blueprint", for: "Architects and draughtsmen", dot: "#163A6B", cat: "Services & trades" },
+  { id: "chalk", name: "Chalk", for: "Tutors, teachers and coaches", dot: "#2E3B33", cat: "Words & teaching" },
+  { id: "garage", name: "Garage", for: "Mechanics, panel beaters and fundis", dot: "#FFC300", cat: "Services & trades" },
+  { id: "bloom", name: "Bloom", for: "Florists and event decor", dot: "#B85470", cat: "Food & events" },
+  { id: "matatu", name: "Matatu", for: "Matatu art, sign writers and graffiti", dot: "#FF2E88", cat: "Art & design" },
+  { id: "spoken", name: "Spoken", for: "Poets, MCs and hosts", dot: "#FFD23F", cat: "Music & stage" },
+  { id: "frame", name: "Frame", for: "Interior designers and stylists", dot: "#A0785A", cat: "Art & design" },
+  { id: "pixel", name: "Pixel", for: "Developers and tech freelancers", dot: "#FFB000", cat: "Services & trades" },
+  { id: "craft", name: "Craft", for: "Beadwork, jewellery and makers", dot: "#C9A27E", cat: "Beauty & fashion" },
+  { id: "fade", name: "Fade", for: "Barbers and barbershops", dot: "#101820", cat: "Beauty & fashion" },
 ];
-const SOON = ["Ink (tattoo artists)", "Canvas (painters)", "Lens Mono (black & white)", "Stage (dancers)", "Pages (writers)", "Blueprint (architects)", "Chalk (teachers & tutors)", "Garage (mechanics)", "Bloom (florists)", "Matatu (graffiti & sign writers)", "Spoken (poets & MCs)", "Frame (interior design)"];
+const SOON = ["Wild (wildlife photographers)", "Runway (models)", "Party (kids' entertainers)", "Pitch (sports coaches)", "Mic (podcasters)", "Shamba (farmers & agribusiness)", "Safari (tour guides)", "Brew (coffee & bars)", "Plot (real estate agents)", "Clinic (therapists & wellness)", "Choir (choirs & bands)", "Thread (embroidery)"];
+let TFILTER = "All";
 
 const PEOPLE = [
   { id: "kaz", name: "Kaz Ndegwa", initials: "KZ", tag: "kazdrips", kind: "Freelancer", trade: "Graphic designer & illustrator", city: "Nairobi", tpl: "street", t: 7, claimed: true, updated: "2 days ago",
@@ -568,6 +768,81 @@ const PEOPLE = [
     contact: [["wa", "+254 701 777 222"], ["ph", "+254 701 777 222"], ["em", "orders@pishikitchen.co.ke"]],
     work: [["ig", "Wedding buffet, Lake Elementaita", "instagram.com/p/C5…"], ["ig", "Pilau day", "instagram.com/p/C4…"], ["tt", "Biryani for 300", "tiktok.com/@pishi/…"]],
     proof: { rating: 4.8, reviews: 87, quote: "Our guests are still talking about the biryani." } },
+  { id: "blackrose", name: "Black Rose Tattoo", initials: "BR", kind: "Business", trade: "Tattoo studio", city: "Nairobi", tpl: "ink", t: 6, claimed: true, updated: "3 days ago",
+    bio: "Fine line, blackwork and cover-ups in Westlands. Walk-ins on Saturdays.",
+    contact: [["wa", "+254 790 111 666"], ["ig", "@blackrose.ink"], ["ph", "+254 790 111 666"]],
+    work: [["ig", "Fine line botanical sleeve", "instagram.com/p/Cz1…"], ["ig", "Cover-up, before and after", "instagram.com/reel/Cy7…"], ["tt", "Healing in 14 days", "tiktok.com/@blackrose/…"], ["ig", "Flash sheet, October", "instagram.com/p/Cx2…"]],
+    proof: { rating: 4.9, reviews: 204, quote: "Clean studio, steady hands, zero pressure." } },
+  { id: "achieng", name: "Achieng Odhiambo", initials: "AO", kind: "Freelancer", trade: "Painter", city: "Kisumu", tpl: "canvas", t: 4, claimed: true, updated: "1 week ago",
+    bio: "Oil and acrylic paintings of the lake, its people and its light. Commissions open.",
+    contact: [["em", "studio@achiengpaints.com"], ["ig", "@achiengpaints"], ["wa", "+254 711 909 303"]],
+    work: [["ig", "Fishermen at Dunga, oil on canvas", "instagram.com/p/Cw…"], ["pin", "Studio series, 2026", "pinterest.com/achieng/…"], ["img", "Market women, acrylic", "achiengpaints.com/img/market.jpg"], ["ig", "Commission for a hotel lobby", "instagram.com/p/Cv…"]],
+    proof: { clients: "Shown at Circle Art Gallery · Kisumu Museum · Nairobi National Museum" } },
+  { id: "kariuki", name: "Tom Kariuki", initials: "TK", kind: "Freelancer", trade: "Street & documentary photographer", city: "Nairobi", tpl: "mono", t: 3, claimed: true, updated: "today",
+    bio: "Black and white photographs of Nairobi's streets, markets and matatu stages.",
+    contact: [["ig", "@tomkariuki.bw"], ["em", "tom@kariuki.photo"]],
+    work: [["ig", "Gikomba, 6am", "instagram.com/p/Cu…"], ["ig", "Kencom stage", "instagram.com/p/Ct…"], ["ig", "Rain on Moi Avenue", "instagram.com/p/Cs…"], ["be", "Nairobi in Monochrome", "behance.net/gallery/1555…"], ["ig", "Portraits: Kibera", "instagram.com/p/Cr…"], ["ig", "Toi market", "instagram.com/p/Cq…"]],
+    proof: { clients: "Published in The Nation · Debut Arts Festival · Nairobi Photo Week" } },
+  { id: "mdundo", name: "Mdundo Dance Crew", initials: "MD", kind: "Business", trade: "Dance crew", city: "Mombasa", tpl: "stage", t: 5, claimed: true, updated: "2 days ago",
+    bio: "Afro-fusion and Amapiano choreography for music videos, weddings and launches.",
+    contact: [["wa", "+254 722 555 090"], ["ig", "@mdundocrew"], ["tt", "@mdundocrew"]],
+    work: [["yt", "Mombasa Raha, music video", "youtube.com/watch?v=Md1"], ["tt", "Amapiano challenge", "tiktok.com/@mdundocrew/…"], ["yt", "Wedding entrance, Diani", "youtube.com/watch?v=Md2"], ["tt", "Rehearsal day", "tiktok.com/@mdundocrew/…"]],
+    proof: { clients: "Mombasa Carnival · Diani Beach Festival · Coast weddings since 2019" } },
+  { id: "wairimu", name: "Wairimu Gathoni", initials: "WG", kind: "Freelancer", trade: "Writer & copywriter", city: "Remote · Kenya", tpl: "pages", t: 1, claimed: true, updated: "4 days ago",
+    bio: "I write long features, short website copy and everything between, for brands and publications across East Africa.",
+    contact: [["em", "wairimu@gathoni.co"], ["li", "Wairimu Gathoni"], ["x", "@wairimuwrites"]],
+    work: [["link", "Why Nairobi's boda riders are going electric", "medium.com/@wairimu/…"], ["link", "Homepage copy for Lipa Later", "lipalater.com"], ["link", "The last tailors of Biashara Street", "wairimu.substack.com/p/…"], ["link", "Newsletter: Akiba Weekly", "akiba.substack.com"]],
+    proof: { clients: "Lipa Later · Akiba · Twiga · Kahawa Bora" } },
+  { id: "nyumba", name: "Nyumba Design Studio", initials: "ND", kind: "Business", trade: "Architects", city: "Nairobi", tpl: "blueprint", t: 4, claimed: true, updated: "2 weeks ago",
+    bio: "Homes, schools and small commercial buildings. Designed for the climate, built with local materials.",
+    contact: [["em", "studio@nyumba.design"], ["ph", "+254 20 555 0101"], ["li", "Nyumba Design Studio"]],
+    work: [["be", "Rammed earth house, Naivasha", "behance.net/gallery/1444…"], ["pin", "School in Machakos, plans", "pinterest.com/nyumba/…"], ["img", "Courtyard office, Karen", "nyumba.design/img/karen.jpg"], ["ig", "Site visit, week 12", "instagram.com/p/Cp…"]],
+    proof: { clients: "Homes in Naivasha, Karen and Nanyuki · 3 schools in Machakos County" } },
+  { id: "kevin", name: "Mwalimu Kevin", initials: "MK", kind: "Freelancer", trade: "Maths & physics tutor", city: "Nakuru", tpl: "chalk", t: 1, claimed: true, updated: "yesterday",
+    bio: "KCSE maths and physics, one-to-one or small groups, in Nakuru or online.",
+    contact: [["wa", "+254 708 222 777"], ["ph", "+254 708 222 777"], ["tt", "@mwalimukevin"]],
+    work: [["yt", "Quadratic equations in 10 minutes", "youtube.com/watch?v=Mk1"], ["tt", "Physics trick: moments", "tiktok.com/@mwalimukevin/…"], ["yt", "KCSE 2025 paper 2, worked", "youtube.com/watch?v=Mk2"]],
+    proof: { rating: 5.0, reviews: 29, quote: "My son went from a D to a B+ in one term." } },
+  { id: "kamau", name: "Kamau Auto Garage", initials: "KA", kind: "Business", trade: "Mechanics", city: "Thika", tpl: "garage", t: 6, claimed: true, updated: "5 days ago",
+    bio: "Service, diagnostics and bodywork for Toyotas, Subarus and Probox fleets. Open 7 days.",
+    contact: [["wa", "+254 712 888 444"], ["ph", "+254 712 888 444"]],
+    work: [["tt", "Subaru engine rebuild", "tiktok.com/@kamauauto/…"], ["ig", "Probox fleet service day", "instagram.com/p/Co…"], ["yt", "How we diagnose a check engine light", "youtube.com/watch?v=Ka1"]],
+    proof: { rating: 4.6, reviews: 158, quote: "Honest. They told me what didn't need fixing." } },
+  { id: "nekesa", name: "Petals by Nekesa", initials: "PN", kind: "Business", trade: "Florist & event decor", city: "Nairobi", tpl: "bloom", t: 2, claimed: true, updated: "3 days ago",
+    bio: "Wedding flowers, table styling and arches, with roses from Naivasha farms.",
+    contact: [["wa", "+254 799 303 121"], ["ig", "@petalsbynekesa"], ["em", "hello@petalsbynekesa.co.ke"]],
+    work: [["ig", "Garden wedding, Karen", "instagram.com/p/Cn…"], ["pin", "Bridal bouquets", "pinterest.com/petalsbynekesa/…"], ["ig", "Arch, Windsor", "instagram.com/p/Cm…"]],
+    proof: { rating: 4.9, reviews: 76, quote: "The arch made every photo." } },
+  { id: "mbogi", name: "Mbogi Signs", initials: "MS", kind: "Business", trade: "Matatu art & sign writing", city: "Nairobi", tpl: "matatu", t: 7, claimed: true, updated: "today",
+    bio: "Nganya art, shop signs and murals, painted by hand in Kariobangi since 2012.",
+    contact: [["wa", "+254 723 404 505"], ["ig", "@mbogisigns"], ["tt", "@mbogisigns"]],
+    work: [["ig", "Nganya: “Mood” on route 46", "instagram.com/p/Cl…"], ["tt", "Airbrush timelapse", "tiktok.com/@mbogisigns/…"], ["yt", "Painting a nganya in 5 days", "youtube.com/watch?v=Mb1"], ["ig", "Duka sign, Eastleigh", "instagram.com/p/Ck…"], ["ig", "Mural, Kariobangi North", "instagram.com/p/Cj…"]],
+    proof: { clients: "40+ nganyas painted · shop signs across Eastlands" } },
+  { id: "neema", name: "Neema the Poet", initials: "NP", kind: "Freelancer", trade: "Spoken word poet & MC", city: "Nairobi", tpl: "spoken", t: 0, claimed: true, updated: "6 days ago",
+    bio: "I write the words you'll still hear in your head on the way home.",
+    contact: [["wa", "+254 700 909 808"], ["ig", "@neematpoet"], ["em", "bookings@neemapoet.com"]],
+    work: [["yt", "“Mama's Hands”, live", "youtube.com/watch?v=Ne1"], ["sc", "Poems for the matatu ride", "soundcloud.com/neemapoet/…"], ["tt", "60-second poem: Nairobi", "tiktok.com/@neematpoet/…"]],
+    proof: { clients: "Open mics, weddings, launches and graduations across Nairobi" } },
+  { id: "nafasi", name: "Nafasi Interiors", initials: "NI", kind: "Business", trade: "Interior design", city: "Nairobi", tpl: "frame", t: 3, claimed: true, updated: "1 week ago",
+    bio: "Calm, warm rooms for homes, cafés and small offices. Kenyan makers, natural materials.",
+    contact: [["em", "studio@nafasi.co.ke"], ["wa", "+254 711 404 909"], ["ig", "@nafasi.interiors"]],
+    work: [["pin", "Kilimani apartment", "pinterest.com/nafasi/…"], ["ig", "Café in Lavington", "instagram.com/p/Ci…"], ["be", "Small office, Westlands", "behance.net/gallery/1333…"]],
+    proof: { rating: 4.8, reviews: 33, quote: "Our flat finally feels like home." } },
+  { id: "kiprop", name: "Brian Kiprop", initials: "BK", kind: "Freelancer", trade: "Web & mobile developer", city: "Eldoret", tpl: "pixel", t: 8, claimed: true, updated: "today",
+    bio: "I build fast websites, M-Pesa checkouts and Android apps for small businesses.",
+    contact: [["em", "brian@kiprop.dev"], ["wa", "+254 745 121 989"], ["li", "Brian Kiprop"]],
+    work: [["gh", "mpesa-checkout: open source payments kit", "github.com/bkiprop/mpesa-checkout"], ["link", "Rift Valley Dairy shop", "riftvalleydairy.co.ke"], ["yt", "Building an M-Pesa app, part 1", "youtube.com/watch?v=Bk1"], ["link", "Kerio Lodge bookings", "keriolodge.com"]],
+    proof: { clients: "Rift Valley Dairy · Kerio Lodge · Eldoret Hospital" } },
+  { id: "halima", name: "Shanga by Halima", initials: "SH", kind: "Freelancer", trade: "Beadwork & jewellery", city: "Lamu", tpl: "craft", t: 5, claimed: true, updated: "4 days ago",
+    bio: "Handmade Swahili beadwork, brass and leather jewellery from Lamu Old Town.",
+    contact: [["wa", "+254 722 606 131"], ["ig", "@shangabyhalima"]],
+    work: [["ig", "Bridal collar, red and gold", "instagram.com/p/Ch…"], ["tt", "Making a brass cuff", "tiktok.com/@shanga/…"], ["pin", "Earrings collection", "pinterest.com/shanga/…"]],
+    proof: { rating: 5.0, reviews: 47, quote: "Even prettier in person." } },
+  { id: "freshcutz", name: "Fresh Cutz Barbershop", initials: "FC", kind: "Business", trade: "Barbershop", city: "Kisumu", tpl: "fade", t: 8, claimed: true, updated: "yesterday",
+    bio: "Fades, designs and beard work on Oginga Odinga Street. Book on WhatsApp or walk in.",
+    contact: [["wa", "+254 790 777 333"], ["ig", "@freshcutz.ksm"], ["tt", "@freshcutz"]],
+    work: [["tt", "Skin fade, start to finish", "tiktok.com/@freshcutz/…"], ["ig", "Freestyle design", "instagram.com/p/Cg…"], ["ig", "Beard sculpt", "instagram.com/p/Cf…"]],
+    proof: { rating: 4.8, reviews: 189, quote: "Best fade in Kisumu, no debate." } },
   { id: "mwangi", name: "Mwangi & Co. Catering", initials: "MC", kind: "Business", trade: "Event catering", city: "Nakuru", t: 3, claimed: false, work: [] },
 ];
 const CATS = ["Graphic design", "Photography", "Video", "Music & DJs", "Makeup & hair", "Fashion", "Websites", "Writing", "Catering", "Events"];
@@ -655,7 +930,7 @@ const views = {
     <section class="band mint"><div class="wrap">
       <div class="stack center" style="margin-bottom:40px"><span class="eyebrow t-teal">Templates</span><h2 class="t-teal">A Site That Looks<br>Like Your Work</h2><p class="lead" style="color:var(--teal)">A hip hop designer and a wedding photographer shouldn't have the same page. Pick a template made for your craft, then make it yours.</p><button class="btn teal" data-go="templates">Browse templates</button></div>
       <div class="feature teal">
-        <div class="copy"><h2 class="t-teal">Street, Gallery,<br>Groove and More</h2><p class="muted">8 templates to start, growing to 100: one for designers, photographers, videographers, DJs, makeup artists, tailors, caterers and more. Change colours, fonts and layout any time.</p></div>
+        <div class="copy"><h2 class="t-teal">Street, Ink, Groove,<br>Fade and More</h2><p class="muted">23 templates already, growing to 100: for designers, photographers, tattoo artists, DJs, poets, barbers, tutors, mechanics, caterers and more. Change colours, fonts and layout any time.</p></div>
         <div class="art"><div class="mini" style="grid-template-columns:repeat(3,1fr);gap:8px">${thumbs}</div></div>
       </div>
       <div class="feature teal flip">
@@ -722,7 +997,8 @@ const views = {
   templates() {
     return `<section class="band plain" style="background:linear-gradient(180deg,var(--mint),var(--bg) 360px)"><div class="wrap stack">
       <div class="pagehead" style="padding-bottom:8px"><span class="eyebrow t-teal">Templates</span><h2 class="t-teal">Pick a Look Made<br>for Your Craft</h2><p class="muted" style="max-width:60ch">Every template is free and fully editable: colours, fonts, which sections show and in what order. Switch any time without losing your links.</p></div>
-      <div class="tgrid">${TPLS.map((t) => { const p = PEOPLE.find((x) => x.tpl === t.id); return `<div class="tcard" role="link" tabindex="0" data-open="${p.id}" aria-label="${t.name} template, example: ${esc(p.name)}"><div class="thumb" aria-hidden="true">${site(p, t.id)}</div><div class="body"><span class="name">${t.name}</span><span class="small muted">${t.for}</span><span class="small">Example: ${esc(p.name)}</span></div></div>`; }).join("")}</div>
+      <div class="tfilters" role="group" aria-label="Filter templates">${TCATS.map((c) => `<button class="chip" aria-pressed="${c === TFILTER}" data-tfilter="${c}">${c}${c === "All" ? ` · ${TPLS.length}` : ""}</button>`).join("")}</div>
+      <div class="tgrid">${TPLS.filter((t) => TFILTER === "All" || t.cat === TFILTER).map((t) => { const p = PEOPLE.find((x) => x.tpl === t.id); return `<div class="tcard" role="link" tabindex="0" data-open="${p.id}" aria-label="${t.name} template, example: ${esc(p.name)}"><div class="thumb" aria-hidden="true">${site(p, t.id)}</div><div class="body"><span class="name">${t.name}</span><span class="small muted">${t.for}</span><span class="small">Example: ${esc(p.name)}</span></div></div>`; }).join("")}</div>
       <div class="box" style="margin-top:12px"><span class="eyebrow">Coming next, on the way to 100</span><div class="soon">${SOON.map((s) => `<span class="pill">${s}</span>`).join("")}</div></div>
     </div></section>`;
   },
@@ -871,10 +1147,11 @@ function toast(msg) {
 }
 
 document.addEventListener("click", (e) => {
-  const el = e.target.closest("[data-go],[data-open],[data-toast],[data-copy],[data-close],[data-remove],[data-retpl],[data-edtpl],[data-edrm],[data-edreset]");
+  const el = e.target.closest("[data-go],[data-open],[data-toast],[data-copy],[data-close],[data-remove],[data-retpl],[data-edtpl],[data-edrm],[data-edreset],[data-tfilter]");
   if (!el) return;
   if (el.dataset.go) go(el.dataset.go);
   else if (el.dataset.open) el.dataset.open === "unclaimed" ? go("unclaimed") : go("profile", el.dataset.open);
+  else if (el.dataset.tfilter) { TFILTER = el.dataset.tfilter; const y = window.scrollY; go("templates"); window.scrollTo(0, y); }
   else if (el.dataset.retpl) { const [id, t] = el.dataset.retpl.split(":"); const y = window.scrollY; go("profile", id, t); window.scrollTo(0, y); }
   else if (el.dataset.edtpl) { ED.tpl = el.dataset.edtpl; ED.acc = ""; const y = window.scrollY; go("edit"); window.scrollTo(0, y); }
   else if (el.dataset.edrm) { ED.work.splice(+el.dataset.edrm, 1); const y = window.scrollY; go("edit"); window.scrollTo(0, y); }
@@ -905,7 +1182,7 @@ const TOUR = [
   { part: "1 · A client looks for talent", v: "profile", arg: "kaz", sel: ".s-grid", title: "Every piece is a link", text: "Instagram posts, a TikTok, a YouTube video, a Behance project. They show here but stay hosted on those sites. Seen stores no files." },
   { part: "1 · A client looks for talent", v: "profile", arg: "kaz", sel: ".s-contact", title: "Brian reaches Kaz directly", text: "WhatsApp, Instagram DM, email or TikTok, whatever Kaz added. There's no inbox on Seen and no cut. They sort out the job between them." },
   { part: "1 · A client looks for talent", v: "profile", arg: "kaz", tpl: "gallery", sel: ".strip .tpls", title: "Same page, different look", text: "Here's Kaz's page in the Gallery template. Owners can switch any time without losing their links." },
-  { part: "2 · Making a page", v: "templates", sel: ".tgrid", title: "A template for every craft", text: "8 to start, growing to 100: Street for designers, Gallery for photographers, Reel for filmmakers, Groove for DJs, Kitenge for tailors, and more." },
+  { part: "2 · Making a page", v: "templates", sel: ".tgrid", title: "A template for every craft", text: "23 so far, growing to 100: Street for designers, Ink for tattoo artists, Matatu for sign writers, Groove for DJs, Fade for barbers, Chalk for tutors, and more." },
   { part: "2 · Making a page", v: "edit", sel: ".ed-work", title: "Add work by pasting a link", text: "Kaz pastes a link to his latest Instagram post. Seen recognises where it's from and shows it on his page.", run: () => { if (!ED.work.some((w) => w[2] === "instagram.com/p/DA2kZ9")) { ED.work = [["ig", "New Instagram post", "instagram.com/p/DA2kZ9"], ...ED.work]; go("edit"); } } },
   { part: "2 · Making a page", v: "edit", sel: ".ed-tpl", title: "Make it his own", text: "One tap changes the template. He can change the accent colour too, and the preview updates as he goes." },
   { part: "2 · Making a page", v: "dash", sel: ".share-box", title: "Share with a link or QR code", text: "Kaz puts seen.wanlly.africa/kaz in his Instagram bio and the QR code on his stickers and posters." },

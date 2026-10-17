@@ -18,7 +18,7 @@ Start in Kenya with creative work, then add trades.
 
 | Part | How it works |
 |---|---|
-| **Template** | Picked from a gallery made for each craft: Street (hip hop designers), Gallery (photographers), Reel (filmmakers), Studio (agencies), Kitenge (fashion), Glow (beauty), Groove (DJs), Menu (food). 8 at launch, growing towards 100. Every template is editable: accent colour, fonts, which sections show and their order. Switching keeps all links. |
+| **Template** | Picked from a gallery made for each craft, filtered by category. 23 so far: Street (hip hop designers), Gallery (photographers), Reel (filmmakers), Studio (agencies), Kitenge (fashion), Glow (beauty), Groove (DJs), Menu (food), Ink (tattoo artists), Canvas (painters), Mono (black and white photographers), Stage (dancers), Pages (writers), Blueprint (architects), Chalk (tutors), Garage (mechanics), Bloom (florists), Matatu (sign writers and matatu art), Spoken (poets and MCs), Frame (interior designers), Pixel (developers), Craft (beadwork and jewellery), Fade (barbers). Growing towards 100. Every template is editable: accent colour, fonts, which sections show and their order. Switching keeps all links. |
 | **Work** | Links only. The owner pastes a link to an Instagram post or reel, TikTok, YouTube or Vimeo video, Behance or Dribbble project, SoundCloud or Mixcloud mix, Pinterest pin, or a public image link. Seen recognises the site and shows the post from where it lives. |
 | **Contact buttons** | Whatever the owner adds: WhatsApp, Instagram DM, email, phone, TikTok, X, LinkedIn. Each button opens that app directly (`wa.me`, `ig.me`, `mailto:`, `tel:`). |
 | **Proof** | Optional. A Google Business link shows the star rating and review count; a "worked with" line lists clients. |
@@ -73,8 +73,7 @@ Claiming: the owner opens the link from the email (it carries a one-time token) 
 - A template is **one HTML layout plus a set of design tokens** (colours, fonts, corner radius, section order), the same way the prototype restyles one markup with `data-tpl`. New templates are mostly new tokens and CSS, so reaching 100 is realistic.
 - An owner's customisations are a small JSON object saved on their page (`{ template: "street", accent: "#FFE600", sections: ["work", "proof"] }`).
 - Templates are server-rendered by the Worker, so pages load fast on slow phones and search engines can read them.
-- Fonts come from Google Fonts. Each template uses at most two.
-- Templates are built in-house first. Later, designers in the community can submit templates, credited on the template card.
+- Fonts come from Google Fonts. - Each template loads at most two Google Fonts, so a page only pays for its own fonts. Templates are built in-house first. Later, designers in the community can submit templates, credited on the template card.
 
 ## 7. Stack
 
@@ -114,7 +113,7 @@ Each phase ends with something you can click on.
 4. Apply for Meta's oEmbed Read feature (for Instagram titles and thumbnails). Set up a Google Places API key with a hard daily cap.
 
 ### Phase 1: Personal sites
-The template renderer with the first 3 templates (Street, Gallery, Reel), link cards for every source in §3, contact buttons, share link and QR code. Pages made by hand from example data.
+The template renderer with all 23 templates from the prototype, link cards for every source in §3, contact buttons, share link and QR code. Pages made by hand from example data.
 
 ### Phase 2: Owner accounts and the editor
 Sign up, claim a slug, pick a template, paste links, add contact buttons, change the accent colour, live preview, publish.
@@ -126,7 +125,7 @@ Home, search, category and town pages, "new work first" ranking.
 CSV import that creates unclaimed business pages, the do-not-list, the claim flow with email or SMS code, and the 3-email sequence. Start with 25 a day and watch replies and removals for two weeks before raising it.
 
 ### Phase 5: Retention
-Stats in the dashboard, the monthly "you were seen" email, broken-link checks, and the remaining 5 launch templates.
+Stats in the dashboard, the monthly "you were seen" email, and broken-link checks.
 
 ### Later
 - More templates every month, on the way to 100, then templates submitted by designers.
